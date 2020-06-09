@@ -10,6 +10,5 @@ export const AppRoot = styled.div`
 
 export const CentralBox = styled.div`
 	width: 60%;
-	background-color: green;
 	flex-grow: 1;
 `;
