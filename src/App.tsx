@@ -1,19 +1,17 @@
 import React from 'react'
 import Header from "./components/Header/Header";
-import {AppRoot, CentralBox} from "./AppStyles";
+import {AppRoot} from "./AppStyles";
 import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
 
 const App = () => {
-  return (
-    <AppRoot>
-        <CentralBox>
+    return (
+        <AppRoot>
             <Header/>
             <Main/>
-        </CentralBox>
-        <Footer/>
-    </AppRoot>
-  )
+            <Footer/>
+        </AppRoot>
+    )
 }
 
 export default App
