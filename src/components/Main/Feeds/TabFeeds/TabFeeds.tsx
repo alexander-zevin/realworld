@@ -5,7 +5,7 @@ import Divider from '@material-ui/core/Divider';
 
 const TabFeeds = () => {
 
-    const [value, setValue] = React.useState(2)
+    const [value, setValue] = React.useState(0)
 
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => setValue(newValue)
 

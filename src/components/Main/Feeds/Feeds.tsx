@@ -1,12 +1,23 @@
 import React from 'react'
 import TabFeeds from "./TabFeeds/TabFeeds";
-import {FeedRoot} from "./FeedsStyles";
+import {FeedsRoot} from "./FeedsStyles";
+import Feed from "./Feed/Feed";
+import {IGetArticles} from "./FeedsTypes";
+import {articlesAPI} from "../../../api/api";
 
 const Feeds = () => {
+
+    const getArticles: IGetArticles = async () => {
+        const response = await articlesAPI.getArticles();
+        console.log(response.data)
+    }
+    getArticles()
+
     return (
-        <FeedRoot>
+        <FeedsRoot>
             <TabFeeds/>
-        </FeedRoot>
+            <Feed/>
+        </FeedsRoot>
     )
 }
 
