@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
-export const FeedsRoot = styled.section`
+export const ArticlesRoot = styled.section`
 	flex-grow: 1;
 `;

@@ -1,12 +1,12 @@
 import React from 'react'
 import {MainRoot} from "./MainStyles";
 import Tags from "./Tags/Tags";
-import Feeds from "./Feeds/Feeds";
+import Articles from "./Articles/Articles";
 
 const Main = () => {
     return (
         <MainRoot>
-            <Feeds/>
+            <Articles/>
             <Tags/>
         </MainRoot>
     )

@@ -3,7 +3,7 @@ import Tabs from '@material-ui/core/Tabs';
 import {Tab} from "@material-ui/core";
 import Divider from '@material-ui/core/Divider';
 
-const TabFeeds = () => {
+const TabArticles = () => {
 
     const [value, setValue] = React.useState(0)
 
@@ -17,12 +17,12 @@ const TabFeeds = () => {
                 textColor="primary"
                 onChange={handleChange}
             >
-                <Tab label="Your Feed"/>
-                <Tab label="Global Feed"/>
+                <Tab label="Your Article"/>
+                <Tab label="Global Article"/>
             </Tabs>
             <Divider/>
         </>
     )
 }
 
-export default TabFeeds
+export default TabArticles

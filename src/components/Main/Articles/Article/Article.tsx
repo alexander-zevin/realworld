@@ -1,5 +1,5 @@
 import React from 'react'
-import {FeedRoot} from "./FeedStyles";
+import {ArticleRoot} from "./ArticleStyles";
 import {List} from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
@@ -8,38 +8,39 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ImageIcon from '@material-ui/icons/Image';
 import WorkIcon from '@material-ui/icons/Work';
 import BeachAccessIcon from '@material-ui/icons/BeachAccess';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
-const Feed = () => {
+const Article = () => {
     return (
-        <FeedRoot>
+        <ArticleRoot>
             <List dense>
                 <ListItem>
                     <ListItemAvatar>
                         <Avatar>
-                            <ImageIcon />
+                            <AccountCircleIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Photos" secondary="Jan 9, 2014" />
+                    <ListItemText primary="Article1" secondary="Jan 9, 2014" />
                 </ListItem>
                 <ListItem>
                     <ListItemAvatar>
                         <Avatar>
-                            <WorkIcon />
+                            <AccountCircleIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Work" secondary="Jan 7, 2014" />
+                    <ListItemText primary="Article2" secondary="Jan 7, 2014" />
                 </ListItem>
                 <ListItem>
                     <ListItemAvatar>
                         <Avatar>
-                            <BeachAccessIcon />
+                            <AccountCircleIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Vacation" secondary="July 20, 2014" />
+                    <ListItemText primary="Article3" secondary="July 20, 2014" />
                 </ListItem>
             </List>
-        </FeedRoot>
+        </ArticleRoot>
     )
 }
 
-export default Feed
+export default Article
