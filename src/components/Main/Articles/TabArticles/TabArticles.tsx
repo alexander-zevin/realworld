@@ -17,8 +17,8 @@ const TabArticles = () => {
                 textColor="primary"
                 onChange={handleChange}
             >
-                <Tab label="Your Article"/>
-                <Tab label="Global Article"/>
+                <Tab label="Your Feed"/>
+                <Tab label="Global Feed"/>
             </Tabs>
             <Divider/>
         </>

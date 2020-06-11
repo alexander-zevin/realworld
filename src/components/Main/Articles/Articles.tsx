@@ -1,22 +1,26 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import TabFeeds from "./TabArticles/TabArticles";
 import {ArticlesRoot} from "./ArticlesStyles";
-import Article from "./Article/Article";
-import {IGetArticles} from "./ArticlesTypes";
-import {articlesAPI} from "../../../api/api";
+import ArticleList from "./ArticleList/ArticleList";
+import {getArticlesThunkCreator} from "../../../store/actions/appActions";
+import {useDispatch, useSelector} from "react-redux";
+import {RootStateType} from "../../../store/store";
+import {IArticlesState} from "../../../store/types/articlesType";
 
 const Articles = () => {
 
-    const getArticles: IGetArticles = async () => {
-        const response = await articlesAPI.getArticles();
-        console.log(response.data)
-    }
-    getArticles()
+    const dispatch = useDispatch()
+
+    const articlesState: IArticlesState = useSelector((state: RootStateType) => state.articles);
+
+    useEffect(() => {
+        dispatch(getArticlesThunkCreator())
+    }, [])
 
     return (
         <ArticlesRoot>
-            <TabFeeds/>
-            <Article/>
+            <TabFeeds />
+            <ArticleList articlesState={articlesState}/>
         </ArticlesRoot>
     )
 }
