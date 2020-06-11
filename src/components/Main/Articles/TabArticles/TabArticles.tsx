@@ -1,9 +1,9 @@
-import React, {FC, useEffect} from 'react'
+import React from 'react'
 import Tabs from '@material-ui/core/Tabs';
 import {Tab} from "@material-ui/core";
 import Divider from '@material-ui/core/Divider';
-import {getArticlesThunkCreator} from "../../../../store/actions/appActions";
 import {useDispatch} from "react-redux";
+import {getArticlesThunkCreator} from "../../../../store/actions/articlesActions";
 
 const TabArticles = () => {
 

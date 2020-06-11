@@ -7,22 +7,22 @@ import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import Login from "./components/Login/Login";
 
 const App = () => {
-		return (
-				<AppRoot>
-						<Router>
-								<Header/>
-								<Switch>
-										<Route exact path="/">
-												<Main/>
-										</Route>
-										<Route path="/login">
-												<Login/>
-										</Route>
-								</Switch>
-								<Footer/>
-						</Router>
-				</AppRoot>
-		)
+    return (
+        <AppRoot>
+            <Router>
+                <Header/>
+                <Switch>
+                    <Route exact path="/">
+                        <Main/>
+                    </Route>
+                    <Route path="/login">
+                        <Login/>
+                    </Route>
+                </Switch>
+                <Footer/>
+            </Router>
+        </AppRoot>
+    )
 }
 
 export default App

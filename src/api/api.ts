@@ -9,3 +9,9 @@ export const articlesAPI = {
 				return instance.get(`articles`);
 		}
 };
+
+export const tagsAPI = {
+	getTags() {
+		return instance.get(`tags`);
+	}
+};
