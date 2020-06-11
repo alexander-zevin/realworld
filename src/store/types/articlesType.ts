@@ -21,6 +21,7 @@ export interface IArticle {
 export interface IArticlesState {
 		articles: Array<IArticle>
 		articlesCount: number | null
+		isProgress: boolean
 }
 
 export interface IGetArticlesAction {
