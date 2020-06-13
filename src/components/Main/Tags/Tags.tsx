@@ -3,7 +3,6 @@ import Chip from '@material-ui/core/Chip';
 import {TagsBox, TagsRoot, TagsTitle} from "./TagsStyles";
 import {useDispatch, useSelector} from "react-redux";
 import {getTagsThunkCreator} from "../../../store/actions/tagsActions";
-import {IArticlesState} from "../../../store/types/articlesType";
 import {RootStateType} from "../../../store/store";
 
 const Tags = () => {
@@ -14,13 +13,13 @@ const Tags = () => {
 
     useEffect(() => {
         dispatch(getTagsThunkCreator())
-    }, [])
+    }, [dispatch])
 
     return (
         <TagsRoot>
             <TagsTitle>Popular Tags</TagsTitle>
             <TagsBox>
-                { tags.map(tag => <Chip label={tag} size="small"/>) }
+                { tags.map((tag, index) => <Chip label={tag} size="small" key={tag + index}/>) }
             </TagsBox>
         </TagsRoot>
     )

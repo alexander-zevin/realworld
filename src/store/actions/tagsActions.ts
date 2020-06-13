@@ -1,5 +1,4 @@
 import {Dispatch} from "redux";
-import {ArticlesActionType} from "../types/articlesType";
 import {tagsAPI} from "../../api/api";
 import {IGetTagsAction, ITagsState, TagsActionType} from "../types/tagsTypes";
 import {SET_TAGS} from "../constants/tagsConstants";

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import TabArticles from "./TabArticles/TabArticles";
 import {ArticlesRoot} from "./ArticlesStyles";
 import ArticleList from "./ArticleList/ArticleList";
