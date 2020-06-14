@@ -1,7 +1,7 @@
 import React from 'react'
-import {LoginDescription, LoginForm, LoginRoot, LoginTitle, SignLink} from "./SignInStyles";
+import {LoginDescription, LoginForm, LoginRoot, LoginTitle} from "./SignInStyles";
 import {TextField} from "@material-ui/core";
-import {StyledButton} from "../common/styles";
+import {SignLink, StyledButton} from "../common/styles";
 
 const SignIn = () => {
     return (

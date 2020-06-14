@@ -21,3 +21,9 @@ export const TagsBox = styled.div`
 export const StyledLink = styled(Link)`
     text-decoration: none;
 `;
+
+export const SignLink = styled(StyledLink)`
+	&:hover {
+		text-decoration: underline;
+	}
+`;

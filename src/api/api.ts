@@ -15,3 +15,9 @@ export const tagsAPI = {
 		return instance.get(`tags`);
 	}
 };
+
+export const usersAPI = {
+	signUp() {
+		return instance.post(`users`);
+	}
+};

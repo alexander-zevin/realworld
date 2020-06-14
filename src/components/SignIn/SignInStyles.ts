@@ -31,9 +31,3 @@ export const LoginDescription = styled.a`
 	color: ${green[500]}
 `;
 
-export const SignLink = styled(StyledLink)`
-	&:hover {
-		text-decoration: underline
-	}
-`;
-

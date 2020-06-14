@@ -1,4 +1,5 @@
 export const convertDate = (date: string) => {
-		const months = ["Jan.","Feb.","Mar.","Apr.","May","June","July","Aug.","Sept.","Oct.","Nov.","Dec."];
-		return `${ months[new Date(date).getMonth()]} ${new Date(date).getDate()}, ${new Date(date).getFullYear()}`
+    const months = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
+    const newDate = new Date(date)
+    return `${months[newDate.getMonth()]} ${newDate.getDate()}, ${newDate.getFullYear()}`
 }
