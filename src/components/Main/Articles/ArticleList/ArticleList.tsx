@@ -1,4 +1,4 @@
-import React, {FC} from 'react'
+import React, {FC, Fragment} from 'react'
 import {ArticleListRoot} from "./ArticleListStyles";
 import {Divider, List} from "@material-ui/core";
 import Article from "./Article/Article";
@@ -10,7 +10,7 @@ const ArticleList: FC<IArticlesListProps> = ({articlesState}) => {
         <ArticleListRoot>
             <List dense>
                 {articlesState.articles.map((item, index) =>
-                    <>
+                    <Fragment key = {item.slug}>
                         <Article
                             username = {item.author.username}
                             createdAt = {convertDate(item.createdAt)}
@@ -19,10 +19,9 @@ const ArticleList: FC<IArticlesListProps> = ({articlesState}) => {
                             favorited = {item.favorited}
                             favoritesCount = {item.favoritesCount}
                             tagList = {item.tagList}
-                            key = {item.slug}
                         />
                         { articlesState.articles.length - 1 !== index && <Divider/> }
-                    </>
+                    </Fragment>
                 )}
             </List>
         </ArticleListRoot>

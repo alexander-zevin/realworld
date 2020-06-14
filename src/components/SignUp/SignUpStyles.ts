@@ -16,7 +16,7 @@ export const LoginForm = styled.form.attrs( () => ({
 		novalidate: true,
 		autocomplete: 'on'
 }))`
-    height: 300px;
+    height: 400px;
     width: 300px;
     background-color: white;
     padding: 8px;
@@ -30,3 +30,5 @@ export const LoginDescription = styled.a`
 	color: ${green[500]}
 `;
 
+export const ErrorText = styled.span`
+`;

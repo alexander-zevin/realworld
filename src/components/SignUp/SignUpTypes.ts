@@ -6,6 +6,10 @@ export interface ISignUpState{
     password: string
 }
 
+export interface ISignUp {
+    (username: string, email: string, password: string): void
+}
+
 export interface ISignUpAction {
     type: typeof SIGN_UP
     username: string

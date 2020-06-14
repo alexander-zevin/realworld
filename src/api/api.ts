@@ -17,7 +17,13 @@ export const tagsAPI = {
 };
 
 export const usersAPI = {
-	signUp() {
-		return instance.post(`users`);
+	signUp(username: string, email: string, password: string) {
+		return instance.post(`users`, {
+			user: {
+				username: username,
+				email: email,
+				password: password
+			}
+		})
 	}
 };
