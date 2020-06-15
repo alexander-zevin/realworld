@@ -3,13 +3,15 @@ import thunk from 'redux-thunk'
 import {articlesReducer} from "./reducers/articlesReducer";
 import {tagsReducer} from "./reducers/tagsReducer";
 import {profileReducer} from "./reducers/profileReducer";
+import {authReducer} from "./reducers/authReducer";
 
 const middlewares = [thunk]
 
 const rootReducer = combineReducers({
     articles: articlesReducer,
     tags: tagsReducer,
-    profile: profileReducer
+    profile: profileReducer,
+    auth: authReducer
 });
 
 export type RootStateType = ReturnType<typeof rootReducer>

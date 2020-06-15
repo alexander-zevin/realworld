@@ -6,18 +6,19 @@ import {initialState, signUpReducer} from "./SignUpReducer";
 import {setEmailActionCreator, setPasswordActionCreator, setUsernameActionCreator} from "./SignUpActions";
 import {usersAPI} from "../../api/api";
 import {useDispatch, useSelector} from "react-redux";
-import {setErrorActionCreator, setProfileActionCreator} from "../../store/actions/profileActions";
+import {setProfileActionCreator} from "../../store/actions/profileActions";
 import {useHistory} from "react-router-dom";
 import { Alert } from '@material-ui/lab';
 import {RootStateType} from "../../store/store";
-import {IProfileState} from "../../store/types/profileTypes";
+import {IAuthState} from "../../store/types/authTypes";
+import {setAuthActionCreator, setAuthErrorActionCreator} from "../../store/actions/authActions";
 
 
 const SignUp = () => {
 
     const dispatchRedux = useDispatch()
 
-    const profileState: IProfileState = useSelector((state: RootStateType) => state.profile);
+    const authState: IAuthState = useSelector((state: RootStateType) => state.auth);
 
     const [state, dispatch] = useReducer(signUpReducer, initialState);
 
@@ -26,11 +27,13 @@ const SignUp = () => {
     const signUp = async () => {
         try {
             const response = await usersAPI.signUp(state.username, state.email, state.password);
+            console.log(response.data) //Где ошибка?
             dispatchRedux(setProfileActionCreator(response.data.user))
-            dispatchRedux(setErrorActionCreator(null, null))
+            dispatchRedux(setAuthErrorActionCreator(null, null))
+            dispatchRedux(setAuthActionCreator(true))
             history.push("/");
         } catch (err) {
-            dispatchRedux(setErrorActionCreator(err.name, err.message))
+            dispatchRedux(setAuthErrorActionCreator(err.name, err.message))
         }
     }
 
@@ -64,8 +67,8 @@ const SignUp = () => {
                     onChange={(event => dispatch(setPasswordActionCreator(event.target.value)))}
                 />
                 {
-                    profileState.error.message &&
-                        <Alert severity="error">{profileState.error.message}</Alert>
+                    authState.error.message &&
+                        <Alert severity="error">{authState.error.message}</Alert>
                 }
                 <StyledButton
                     variant='contained'
