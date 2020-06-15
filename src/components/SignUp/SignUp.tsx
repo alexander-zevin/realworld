@@ -29,6 +29,7 @@ const SignUp = () => {
         try {
             const response = await usersAPI.signUp(state.username, state.email, state.password);
             setToken(response.data.user.token)
+            setTokenLocalStorage(response.data.user.token)
             dispatchRedux(setProfileActionCreator(response.data.user))
             dispatchRedux(setAuthErrorActionCreator(null, null))
             dispatchRedux(setAuthActionCreator(true))
