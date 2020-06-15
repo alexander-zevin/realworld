@@ -5,7 +5,7 @@ const instance = axios.create({
 });
 
 export const setToken = (token: string) => {
-		axios.defaults.headers.common['Authorization'] = token
+		instance.defaults.headers.common['Authorization'] = `Token ${token}`
 }
 
 export const articlesAPI = {
