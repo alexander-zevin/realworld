@@ -1,5 +1,5 @@
 import {ArticlesActionType, IArticlesState} from "../types/articlesType";
-import {SET_ARTICLES} from "../constants/articlesContants";
+import {SET_ARTICLES, SET_PROGRESS} from "../constants/articlesContants";
 
 const initialState: IArticlesState = {
     articles: [],
@@ -11,6 +11,8 @@ export const articlesReducer = (state = initialState, action: ArticlesActionType
     switch (action.type) {
         case SET_ARTICLES:
             return Object.assign({}, action.articlesState)
+        case SET_PROGRESS:
+            return {...state, isProgress: action.isProgress}
     }
     return state
 }

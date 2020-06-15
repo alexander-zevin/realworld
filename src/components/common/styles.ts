@@ -2,6 +2,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import {Button} from "@material-ui/core";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 export const StyledButton = withStyles({
     label: {
@@ -26,4 +27,12 @@ export const SignLink = styled(StyledLink)`
 	&:hover {
 		text-decoration: underline;
 	}
+`;
+
+export const ProgressRoot = styled.div`
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;

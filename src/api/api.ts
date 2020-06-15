@@ -5,8 +5,11 @@ const instance = axios.create({
 });
 
 export const articlesAPI = {
-		getArticles() {
+		getGlobalArticles() {
 				return instance.get(`articles`);
+		},
+		getYourArticles(author: string) {
+				return instance.get(`articles?author=${author}`);
 		}
 };
 
