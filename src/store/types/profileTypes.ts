@@ -4,6 +4,8 @@ export interface IProfileState {
     user: {
         username: string
         email: string
+        /*bio: string
+        image: string | null*/
     }
     error: {
         name: string | null

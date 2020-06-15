@@ -5,7 +5,6 @@ import ArticleList from "./ArticleList/ArticleList";
 import {useSelector} from "react-redux";
 import {RootStateType} from "../../../store/store";
 import {IArticlesState} from "../../../store/types/articlesType";
-import CircularProgress from '@material-ui/core/CircularProgress';
 import Progress from "../../common/Progress";
 
 const Articles = () => {

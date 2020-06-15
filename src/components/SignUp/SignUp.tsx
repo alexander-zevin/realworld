@@ -4,7 +4,7 @@ import {TextField} from "@material-ui/core";
 import {SignLink, StyledButton} from "../common/styles";
 import {initialState, signUpReducer} from "./SignUpReducer";
 import {setEmailActionCreator, setPasswordActionCreator, setUsernameActionCreator} from "./SignUpActions";
-import {usersAPI} from "../../api/api";
+import {setToken, usersAPI} from "../../api/api";
 import {useDispatch, useSelector} from "react-redux";
 import {setProfileActionCreator} from "../../store/actions/profileActions";
 import {useHistory} from "react-router-dom";
@@ -12,6 +12,7 @@ import { Alert } from '@material-ui/lab';
 import {RootStateType} from "../../store/store";
 import {IAuthState} from "../../store/types/authTypes";
 import {setAuthActionCreator, setAuthErrorActionCreator} from "../../store/actions/authActions";
+import {setTokenLocalStorage} from "../../lib/localStorage";
 
 
 const SignUp = () => {
@@ -27,11 +28,12 @@ const SignUp = () => {
     const signUp = async () => {
         try {
             const response = await usersAPI.signUp(state.username, state.email, state.password);
-            console.log(response.data) //Где ошибка?
+            setToken(response.data.user.token)
             dispatchRedux(setProfileActionCreator(response.data.user))
             dispatchRedux(setAuthErrorActionCreator(null, null))
             dispatchRedux(setAuthActionCreator(true))
             history.push("/");
+            console.log(response.data)
         } catch (err) {
             dispatchRedux(setAuthErrorActionCreator(err.name, err.message))
         }

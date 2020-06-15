@@ -1,8 +1,17 @@
 import axios from 'axios';
+import {setTokenLocalStorage} from "../lib/localStorage";
 
 const instance = axios.create({
-		baseURL: `http://localhost:3000/api/`
+		baseURL: `http://localhost:3000/api/`,
+		/*headers: {
+				'Authorization': `${getTokenLocalStorage()}`
+		}*/
 });
+
+export const setToken = (token: string) => {
+		axios.defaults.headers.common['Authorization'] = token
+		setTokenLocalStorage(token)
+}
 
 export const articlesAPI = {
 		getGlobalArticles() {
@@ -36,5 +45,9 @@ export const usersAPI = {
 								password: password
 						}
 				})
+		},
+		getUser() {
+				return instance.get(`user`);
 		}
 };
+

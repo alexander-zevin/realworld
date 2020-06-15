@@ -6,12 +6,13 @@ import {initialState, signInReducer} from "./SignInReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {setEmailActionCreator, setPasswordActionCreator} from "./SignInActions";
-import {usersAPI} from "../../api/api";
+import {setToken, usersAPI} from "../../api/api";
 import {setProfileActionCreator} from "../../store/actions/profileActions";
 import {setAuthActionCreator, setAuthErrorActionCreator} from "../../store/actions/authActions";
 import {IAuthState} from "../../store/types/authTypes";
 import {RootStateType} from "../../store/store";
 import {Alert} from "@material-ui/lab";
+import {getTokenLocalStorage, setTokenLocalStorage} from "../../lib/localStorage";
 
 const SignIn = () => {
 
@@ -26,10 +27,12 @@ const SignIn = () => {
     const signIn = async () => {
         try {
             const response = await usersAPI.signIn(state.email, state.password)
+            setToken(response.data.user.token)
             dispatchRedux(setProfileActionCreator(response.data.user))
             dispatchRedux(setAuthErrorActionCreator(null, null))
             dispatchRedux(setAuthActionCreator(true))
             history.push("/");
+            console.log(response.data)
         } catch (err) {
             dispatchRedux(setAuthErrorActionCreator(err.name, err.message))
         }
