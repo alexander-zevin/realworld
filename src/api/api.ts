@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {IEditorState} from "../components/Editor/EditorTypes";
+import {IEditorState, IModifiedEditState} from "../components/Editor/EditorTypes";
 
 const instance = axios.create({
 		baseURL: `http://localhost:3000/api/`,
@@ -16,7 +16,7 @@ export const articlesAPI = {
 		getYourArticles(author: string) {
 				return instance.get(`articles?author=${author}`);
 		},
-		postArticle(article: IEditorState) {
+		postArticle(article: IModifiedEditState) {
 				return instance.post(`articles`, article)
 		}
 };

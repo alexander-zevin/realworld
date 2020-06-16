@@ -14,7 +14,6 @@ import {IAuthState} from "../../store/types/authTypes";
 import {setAuthActionCreator, setAuthErrorActionCreator} from "../../store/actions/authActions";
 import {setTokenLocalStorage} from "../../lib/localStorage";
 
-
 const SignUp = () => {
 
     const dispatchRedux = useDispatch()

@@ -2,11 +2,17 @@ import React, {useReducer} from 'react'
 import {ButtonContainer, EditorForm, EditorRoot} from "./EdtorStyles";
 import {StyledButton} from "../common/styles";
 import {editorReducer, initialState} from "./EditorReducer";
-import {setBodyActionCreator, setDescriptionActionCreator, setEditTitleActionCreator} from "./EditorActions";
+import {
+    setBodyActionCreator,
+    setDescriptionActionCreator,
+    setEditTitleActionCreator,
+    setTagsActionCreator
+} from "./EditorActions";
 import {TextField} from "@material-ui/core";
 import {articlesAPI} from "../../api/api";
 import {setArticleActionCreator} from "../../store/actions/articlesActions";
 import {useDispatch} from "react-redux";
+import {splitTags} from "../../lib/splitString";
 
 const Editor = () => {
 
@@ -15,7 +21,8 @@ const Editor = () => {
     const [state, dispatch] = useReducer(editorReducer, initialState);
 
     const postArticle = () => {
-        articlesAPI.postArticle(state)
+        const modifiedState = {...state, article: {...state.article, tagList: splitTags(state.article.tagList)}}
+        articlesAPI.postArticle(modifiedState)
             .then(res => {
                 dispatchRedux(setArticleActionCreator(res.data.article))
                 console.log(res.data.article)
@@ -60,6 +67,7 @@ const Editor = () => {
                     size='medium'
                     variant="outlined"
                     margin='normal'
+                    onChange={event => dispatch(setTagsActionCreator(event.target.value))}
                 />
                 <ButtonContainer>
                     <StyledButton
