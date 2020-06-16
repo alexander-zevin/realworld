@@ -12,7 +12,7 @@ import {setAuthActionCreator, setAuthErrorActionCreator} from "../../store/actio
 import {IAuthState} from "../../store/types/authTypes";
 import {RootStateType} from "../../store/store";
 import {Alert} from "@material-ui/lab";
-import {getTokenLocalStorage, setTokenLocalStorage} from "../../lib/localStorage";
+import {setTokenLocalStorage} from "../../lib/localStorage";
 
 const SignIn = () => {
 

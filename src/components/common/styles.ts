@@ -2,14 +2,15 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import {Button} from "@material-ui/core";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
-import CircularProgress from '@material-ui/core/CircularProgress';
 
-export const StyledButton = withStyles({
-    label: {
-        fontWeight: 'normal',
-        color: "white"
-    },
-})(Button);
+export const StyledButton = styled(Button).attrs(props => ({
+
+}))`
+    & .MuiButton-label {
+        fontWeight: normal;
+        color: white
+    }
+`;
 
 export const TagsBox = styled.div`
 	display: flex;
@@ -34,5 +35,13 @@ export const ProgressRoot = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+`;
+
+export const FullScreenBox = styled.div`
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
     align-items: center;
 `;

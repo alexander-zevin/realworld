@@ -1,5 +1,12 @@
-import {SET_ARTICLES, SET_PROGRESS} from "../constants/articlesContants";
-import {ArticlesActionType, IArticlesState, IGetArticlesAction, ISetProgressAction} from "../types/articlesType";
+import {SET_ARTICLE, SET_ARTICLES, SET_PROGRESS} from "../constants/articlesContants";
+import {
+		ArticlesActionType,
+		IArticle,
+		IArticlesState,
+		IGetArticlesAction,
+		ISetArticleAction,
+		ISetProgressAction
+} from "../types/articlesType";
 import {articlesAPI} from "../../api/api";
 import {Dispatch} from "redux";
 
@@ -21,3 +28,8 @@ export const getYourArticlesThunkCreator = (author: string) => async (dispatch: 
 		dispatch(setArticlesActionCreator(response.data))
 		dispatch(setProgressActionCreator(false))
 }
+
+export const setArticleActionCreator = (article: IArticle): ISetArticleAction => ({
+		type: SET_ARTICLE,
+		article: article
+})

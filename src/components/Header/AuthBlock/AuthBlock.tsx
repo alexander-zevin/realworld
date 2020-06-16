@@ -3,22 +3,22 @@ import {StyledButton, StyledLink} from "../../common/styles";
 import {IProfileState} from "../../../store/types/profileTypes";
 import {useSelector} from "react-redux";
 import {RootStateType} from "../../../store/store";
+import {useHistory} from "react-router-dom";
 
 const AuthBlock = () => {
 
-		const profileState: IProfileState = useSelector((state: RootStateType) => state.profile);
+		const username: string = useSelector((state: RootStateType) => state.profile.user.username);
+
+		const history = useHistory();
+		const toEditor = () => history.push('/editor')
+		const toSettings = () => history.push('/settings')
+		const toProfiles = () => history.push(`/profiles/${username}`)
 
 		return (
 				<>
-						<StyledLink to="/editor">
-								<StyledButton>New Article</StyledButton>
-						</StyledLink>
-						<StyledLink to="/settings">
-								<StyledButton>Settings</StyledButton>
-						</StyledLink>
-						<StyledLink to="/profiles/:username">
-								<StyledButton>{profileState.user.username}</StyledButton>
-						</StyledLink>
+						<StyledButton onClick={toEditor}>New Article</StyledButton>
+						<StyledButton onClick={toSettings}>Settings</StyledButton>
+						<StyledButton onClick={toProfiles}>{username}</StyledButton>
 				</>
 		)
 }

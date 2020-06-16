@@ -4,9 +4,7 @@ import {SET_ERROR, SET_PROFILE} from "../constants/profileConstants";
 const initialState: IProfileState = {
     user: {
         username: '',
-        email: '',
-        /*bio: '',
-        image: null*/
+        email: ''
     },
     error: {
         name: null,

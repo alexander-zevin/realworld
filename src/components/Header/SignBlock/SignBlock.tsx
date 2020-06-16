@@ -1,15 +1,17 @@
 import React from 'react'
 import {StyledButton, StyledLink} from "../../common/styles";
+import {useHistory} from "react-router-dom";
 
 const SignBlock = () => {
+
+		const history = useHistory();
+		const toSignIn = () => history.push('/signin')
+		const toSignUp = () => history.push('/signup')
+
 		return (
 				<>
-						<StyledLink to="/signin">
-								<StyledButton>Sign in</StyledButton>
-						</StyledLink>
-						<StyledLink to="/signup">
-								<StyledButton>Sign up</StyledButton>
-						</StyledLink>
+						<StyledButton onClick={toSignIn}>Sign in</StyledButton>
+						<StyledButton onClick={toSignUp}>Sign up</StyledButton>
 				</>
 		)
 }

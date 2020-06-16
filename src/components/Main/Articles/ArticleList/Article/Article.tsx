@@ -17,9 +17,9 @@ import {
 } from "./ArticleStyles";
 import Chip from "@material-ui/core/Chip";
 import {TagsBox} from "../../../Tags/TagsStyles";
-import {Divider} from "@material-ui/core";
 
-const Article: FC<IArticlesProps> = ({username, createdAt, title, description, favorited, favoritesCount, tagList}) => {
+const Article: FC<IArticlesProps> = ({username, createdAt, title, description, favorited,
+                                         favoritesCount, tagList}) => {
 
     return (
         <ArticleRoot>

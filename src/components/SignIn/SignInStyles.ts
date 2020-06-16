@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import {green} from "@material-ui/core/colors";
-import {StyledLink} from "../common/styles";
 
 export const LoginRoot = styled.main`
 	flex-grow: 1;

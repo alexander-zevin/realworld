@@ -5,18 +5,21 @@ import SignBlock from "./SignBlock/SignBlock";
 import {useSelector} from "react-redux";
 import {RootStateType} from "../../store/store";
 import AuthBlock from "./AuthBlock/AuthBlock";
+import { useHistory } from "react-router-dom";
+import TextField from '@material-ui/core/TextField';
 
 const Header = () => {
 
     const isAuth: boolean = useSelector((state: RootStateType) => state.auth.isAuth);
 
+    const history = useHistory();
+    const toMain = () => history.push('/')
+
     return (
         <HeaderRoot>
             <Title>conduit</Title>
             <Navigation>
-                <StyledLink to="/">
-                    <StyledButton>Home</StyledButton>
-                </StyledLink>
+                <StyledButton onClick={toMain}>Home</StyledButton>
                 { !isAuth ? <SignBlock /> : <AuthBlock/> }
             </Navigation>
         </HeaderRoot>

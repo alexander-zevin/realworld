@@ -8,18 +8,37 @@ import SignUp from "./components/SignUp/SignUp";
 import SignIn from "./components/SignIn/SignIn";
 import {getTokenLocalStorage} from "./lib/localStorage";
 import {setToken, usersAPI} from "./api/api";
+import {useDispatch, useSelector} from "react-redux";
+import {setProfileActionCreator} from "./store/actions/profileActions";
+import {setAuthActionCreator, setAuthErrorActionCreator} from "./store/actions/authActions";
+import {RootStateType} from "./store/store";
+import Progress from "./components/common/Progress";
+import {setInitializedSuccess} from "./store/actions/appActions";
+import {FullScreenBox} from "./components/common/styles";
+import Editor from "./components/Editor/Editor";
 
 const App = () => {
 
-    const getUser = async () => {
-        const response = await usersAPI.getUser()
-    }
+    const dispatch = useDispatch()
+
+    const initialized: boolean = useSelector((state: RootStateType) => state.app.initialized)
 
     useEffect(() => {
         setToken(getTokenLocalStorage())
-        getUser()
-    }, [])
+        usersAPI.getUser()
+            .then(res => {
+                dispatch(setProfileActionCreator(res.data.user))
+                dispatch(setAuthActionCreator(true))
+            })
+            .catch(err => dispatch(setAuthErrorActionCreator(err.name, err.message)))
+            .then(() => dispatch(setInitializedSuccess(true)))
+    }, [dispatch])
 
+    if ( !initialized ) return (
+        <FullScreenBox>
+            <Progress/>
+        </FullScreenBox>
+    )
     return (
         <AppRoot>
             <Router>
@@ -27,6 +46,9 @@ const App = () => {
                 <Switch>
                     <Route exact path="/">
                         <Main/>
+                    </Route>
+                    <Route path='/editor'>
+                        <Editor/>
                     </Route>
                     <Route path="/signup">
                         <SignUp/>

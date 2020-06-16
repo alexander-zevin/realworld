@@ -1,4 +1,4 @@
-import {SET_ARTICLES, SET_PROGRESS} from "../constants/articlesContants";
+import {SET_ARTICLE, SET_ARTICLES, SET_PROGRESS} from "../constants/articlesContants";
 
 export interface IArticle {
     slug: string
@@ -34,4 +34,9 @@ export interface ISetProgressAction {
     isProgress: boolean
 }
 
-export type ArticlesActionType = IGetArticlesAction | ISetProgressAction
+export interface ISetArticleAction {
+    type: typeof SET_ARTICLE
+    article: IArticle
+}
+
+export type ArticlesActionType = IGetArticlesAction | ISetProgressAction | ISetArticleAction
