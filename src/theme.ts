@@ -1,5 +1,5 @@
 import {createMuiTheme, Theme} from "@material-ui/core";
-import {green} from "@material-ui/core/colors";
+import {green, grey} from "@material-ui/core/colors";
 
 const theme: Theme = createMuiTheme({
 	palette: {
@@ -10,6 +10,11 @@ const theme: Theme = createMuiTheme({
 	typography: {
 		button: {
 			textTransform: 'none'
+		},
+		subtitle2: {
+			fontSize: '1em',
+			fontWeight: 'normal',
+			color: grey[600]
 		}
 	}
 });

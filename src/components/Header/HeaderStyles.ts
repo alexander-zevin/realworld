@@ -1,14 +1,16 @@
 import styled from "styled-components";
-import {green} from "@material-ui/core/colors";
 
 export const HeaderRoot = styled.header`
-	display: flex;
-	justify-content: space-between;
-	background-color: ${green[500]};
-	align-self: stretch;
-	padding: 10px 20%;
-	position: static;
-	box-shadow: 0 0 7px 0 rgba(0, 0, 0, 1);
+    ${({ theme }) => `
+        display: flex;
+        justify-content: space-between;
+        background-color: ${theme.palette.primary.main};
+        align-self: stretch;
+        padding: 10px 20%;
+        position: static;
+        box-shadow: 0 0 7px 0 rgba(0, 0, 0, 1);
+        margin-bottom: 16px;
+    `}
 `;
 
 export const Title = styled.span`

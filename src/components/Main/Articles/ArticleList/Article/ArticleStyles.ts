@@ -1,10 +1,9 @@
 import styled from "styled-components";
-import {green} from "@material-ui/core/colors";
 import Favorite from '@material-ui/icons/Favorite';
+import {ListItem, Typography} from "@material-ui/core";
+import React from "react";
 
 export const ListBasis = styled.div`
-	padding-left: 16px;
-    padding-right: 16px;
     display: flex;
     justify-content: space-between;
 `;
@@ -15,27 +14,25 @@ export const ListBasisRight = styled.div`
     align-self: flex-end;
 `;
 
-export const ListTitle = styled.span`
-    font-size: 1.4em;
-`;
-
-export const ListDescription = styled.div`
-    font-size: 14px;
-`;
-
 export const FavoriteButton = styled.button`
-    outline: none;
-    border: 1px solid ${green[500]};
-    border-radius: 3px;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    padding: 4px;
+    ${({theme}) => `
+        outline: none;
+        border: 1px solid ${theme.palette.primary.main};
+        border-radius: 3px;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        padding: 4px;
+    `}
+    
 `;
 
 export const FavoriteCount = styled.span`
-    margin-left: 4px;
-    color: ${green[500]};
+    ${({theme}) => `
+        margin-left: 4px;
+        color: ${theme.palette.primary.main};
+    `}
+    
 `;
 
 export const FavoriteIcon = styled(Favorite).attrs(props => ({
@@ -51,8 +48,26 @@ export const ArticleRoot = styled.div`
     margin-bottom: 16px;
 `;
 
-export const ReadMore = styled.div`
-    font-size: 0.8em;
+export const ListDescription = styled(Typography).attrs(props => ({
+    variant: "subtitle2",
+    component: "div"
+}))`
+   
+`;
+
+export const ReadMore = styled(Typography).attrs(props => ({
+    variant: "caption",
+    component: "div"
+}))`
+   font-size: 0.8em;
     cursor: pointer;  
     margin-top: 16px;  
 `;
+
+export const ListTitle = styled(Typography).attrs(props => ({
+    variant: "h5",
+    component: "div"
+}))`
+   
+`;
+

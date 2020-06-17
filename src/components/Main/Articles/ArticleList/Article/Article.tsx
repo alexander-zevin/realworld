@@ -31,7 +31,7 @@ const Article: FC<IArticlesProps> = ({username, createdAt, title, description, f
 
     return (
         <ArticleRoot>
-            <ListItem>
+            <ListItem disableGutters>
                 <ListItemAvatar>
                     <Avatar>
                         <AccountCircleIcon/>
