@@ -1,7 +1,4 @@
 import React, {useReducer} from 'react'
-import {LoginDescription, LoginForm, LoginRoot, LoginTitle, MarginContainer} from "./SignUpStyles";
-import {TextField} from "@material-ui/core";
-import {SignLink, StyledButton} from "../common/styles";
 import {initialState, signUpReducer} from "./SignUpReducer";
 import {
     setEmailActionCreator,
@@ -10,12 +7,12 @@ import {
     setUsernameActionCreator
 } from "./SignUpActions";
 import {setToken, usersAPI} from "../../api/api";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {setProfileActionCreator} from "../../store/actions/profileActions";
 import {useHistory} from "react-router-dom";
-import { Alert } from '@material-ui/lab';
 import {setAuthActionCreator, setAuthErrorActionCreator} from "../../store/actions/authActions";
 import {setTokenLocalStorage} from "../../lib/localStorage";
+import {SignDescription, SignForm, SignInput, SignRoot, SignTitle, Error, SignButton} from "../common/styled/sign";
 
 const SignUp = () => {
 
@@ -41,53 +38,40 @@ const SignUp = () => {
     }
 
     return (
-        <LoginRoot>
-            <LoginForm>
-                <LoginTitle>Sign Up</LoginTitle>
-                <SignLink to="/signin">
-                    <LoginDescription>Have an account?</LoginDescription>
-                </SignLink>
-                <TextField
+        <SignRoot>
+            <SignForm>
+                <SignTitle>Sign Up</SignTitle>
+                <SignDescription onClick={() => history.push("/signin")}>
+                    Have an account?
+                </SignDescription>
+                <SignInput
                     id='textFieldUsername'
                     label='Username'
-                    fullWidth
-                    margin='normal'
                     value={state.username}
                     onChange={(event => dispatch(setUsernameActionCreator(event.target.value)))}
                 />
-                <TextField
+                <SignInput
                     id='textFieldEmail'
                     label='Email'
-                    fullWidth
-                    margin='normal'
                     value={state.email}
                     onChange={(event => dispatch(setEmailActionCreator(event.target.value)))}
                 />
-                <TextField
+                <SignInput
                     id='textFieldPassword'
                     label='Password'
                     type='password'
-                    fullWidth
-                    margin='normal'
                     value={state.password}
                     onChange={(event => dispatch(setPasswordActionCreator(event.target.value)))}
                 />
                 {
                     state.error &&
-                        <Alert severity="error">{state.error}</Alert>
+                        <Error>{state.error}</Error>
                 }
-                <MarginContainer>
-                    <StyledButton
-                        variant='contained'
-                        color='primary'
-                        size='large'
-                        onClick={() => signUp()}
-                    >
-                        Sign Up
-                    </StyledButton>
-                </MarginContainer>
-            </LoginForm>
-        </LoginRoot>
+                <SignButton onClick={() => signUp()}>
+                    Sign Up
+                </SignButton>
+            </SignForm>
+        </SignRoot>
     )
 }
 

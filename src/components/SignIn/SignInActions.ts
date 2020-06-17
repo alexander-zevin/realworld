@@ -1,11 +1,5 @@
 import {ISetEmailAction, ISetErrorAction, ISetPasswordAction, ISignInAction} from "./SignInTypes";
-import {SET_EMAIL, SET_ERROR, SET_PASSWORD, SIGN_IN} from "./SignInConstants";
-
-export const signInActionCreator = (email: string, password: string): ISignInAction => ({
-    type: SIGN_IN,
-    email: email,
-    password: password
-})
+import {SET_EMAIL, SET_ERROR, SET_PASSWORD} from "./SignInConstants";
 
 export const setEmailActionCreator = (email: string): ISetEmailAction => ({
     type: SET_EMAIL,

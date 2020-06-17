@@ -14,7 +14,7 @@ import {setAuthActionCreator, setAuthErrorActionCreator} from "./store/actions/a
 import {RootStateType} from "./store/store";
 import Progress from "./components/common/Progress";
 import {setInitializedSuccess} from "./store/actions/appActions";
-import {FullScreenBox} from "./components/common/styles";
+import {FullScreenBox} from "./components/common/styled/rest";
 import Editor from "./components/Editor/Editor";
 import ArticlePage from "./components/ArticlePage/ArticlePage";
 

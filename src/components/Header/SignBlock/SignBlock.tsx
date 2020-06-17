@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyledButton, StyledLink} from "../../common/styles";
+import {StyledButton, StyledLink} from "../../common/styled/rest";
 import {useHistory} from "react-router-dom";
 
 const SignBlock = () => {

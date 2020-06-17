@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyledButton, StyledLink} from "../../common/styles";
+import {StyledButton, StyledLink} from "../../common/styled/rest";
 import {IProfileState} from "../../../store/types/profileTypes";
 import {useSelector} from "react-redux";
 import {RootStateType} from "../../../store/store";

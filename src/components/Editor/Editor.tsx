@@ -1,6 +1,6 @@
 import React, {useReducer} from 'react'
 import {ButtonContainer, EditorForm, EditorRoot} from "./EdtorStyles";
-import {StyledButton} from "../common/styles";
+import {StyledButton} from "../common/styled/rest";
 import {editorReducer, initialState} from "./EditorReducer";
 import {
     setBodyActionCreator,

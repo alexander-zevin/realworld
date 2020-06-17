@@ -11,7 +11,7 @@ export const ArticleHeaderRoot = styled.main`
 `;
 
 export const Title = styled.h1`
-		margin-top: 0;
+    margin-top: 0;
 `;
 
 export const AuthorBlock = styled.div`
@@ -21,12 +21,12 @@ export const AuthorBlock = styled.div`
 `;
 
 export const ListItemTextStyled = styled(ListItemText)`
-		& .MuiTypography-colorTextSecondary {
-			color: #bdbdbd;
-		}	
+    & .MuiTypography-colorTextSecondary {
+        color: #bdbdbd;
+    }	
 `;
 
 export const FollowButton = styled(Button)`
-  border: 1px solid #bdbdbd;
-  color: #bdbdbd;
+    border: 1px solid #bdbdbd;
+    color: #bdbdbd;
 `;

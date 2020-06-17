@@ -8,21 +8,21 @@ import ArticleHeader from "./ArticleHeader/ArticleHeader";
 
 const ArticlePage = () => {
 
-		const {slug} = useParams();
+    const {slug} = useParams();
 
-		const [state, dispatch] = useReducer(articlePageReducer, initialState)
+    const [state, dispatch] = useReducer(articlePageReducer, initialState)
 
-		useEffect(() => {
-				articlesAPI.getArticle(slug)
-						.then(res => dispatch(setArticleActionCreator(res.data.article)))
-						.catch(err => console.log(err))
-		}, [slug])
+    useEffect(() => {
+        articlesAPI.getArticle(slug)
+            .then(res => dispatch(setArticleActionCreator(res.data.article)))
+            .catch(err => console.log(err))
+    }, [slug])
 
-		return (
-				<ArticlePageRoot>
-						<ArticleHeader/>
-				</ArticlePageRoot>
-		)
+    return (
+        <ArticlePageRoot>
+            <ArticleHeader/>
+        </ArticlePageRoot>
+    )
 }
 
 export default ArticlePage
