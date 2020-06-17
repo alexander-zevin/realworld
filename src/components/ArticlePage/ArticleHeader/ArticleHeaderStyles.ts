@@ -17,16 +17,16 @@ export const Title = styled.h1`
 export const AuthorBlock = styled.div`
 	position: relative;
 	left: -16px;
-	width: 300px;
+	width: 400px;
 `;
 
 export const ListItemTextStyled = styled(ListItemText)`
 		& .MuiTypography-colorTextSecondary {
-			color: white;
+			color: #bdbdbd;
 		}	
 `;
 
 export const FollowButton = styled(Button)`
-  border: 1px solid white;
-  color: white;
+  border: 1px solid #bdbdbd;
+  color: #bdbdbd;
 `;
