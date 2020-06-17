@@ -1,5 +1,5 @@
-import {ArticlesActionType, IArticlesState} from "../types/articlesType";
 import {SET_ARTICLE, SET_ARTICLES, SET_PROGRESS} from "../constants/articlesContants";
+import {ArticlesActionType, IArticlesState} from "../types/articlesType";
 
 const initialState: IArticlesState = {
     articles: [],

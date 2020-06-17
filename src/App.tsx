@@ -16,6 +16,7 @@ import Progress from "./components/common/Progress";
 import {setInitializedSuccess} from "./store/actions/appActions";
 import {FullScreenBox} from "./components/common/styles";
 import Editor from "./components/Editor/Editor";
+import ArticlePage from "./components/ArticlePage/ArticlePage";
 
 const App = () => {
 
@@ -55,6 +56,9 @@ const App = () => {
                     </Route>
                     <Route path="/signin">
                         <SignIn/>
+                    </Route>
+                    <Route path="/article/:slug">
+                        <ArticlePage/>
                     </Route>
                 </Switch>
                 <Footer/>

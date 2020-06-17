@@ -6,7 +6,6 @@ import {useSelector} from "react-redux";
 import {RootStateType} from "../../store/store";
 import AuthBlock from "./AuthBlock/AuthBlock";
 import { useHistory } from "react-router-dom";
-import TextField from '@material-ui/core/TextField';
 
 const Header = () => {
 

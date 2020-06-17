@@ -5,7 +5,7 @@ import {editorReducer, initialState} from "./EditorReducer";
 import {
     setBodyActionCreator,
     setDescriptionActionCreator,
-    setEditTitleActionCreator,
+    setEditTitleActionCreator, setErrorActionCreator,
     setTagsActionCreator
 } from "./EditorActions";
 import {TextField} from "@material-ui/core";
@@ -13,6 +13,7 @@ import {articlesAPI} from "../../api/api";
 import {setArticleActionCreator} from "../../store/actions/articlesActions";
 import {useDispatch} from "react-redux";
 import {splitTags} from "../../lib/splitString";
+import { useHistory } from "react-router-dom";
 
 const Editor = () => {
 
@@ -20,13 +21,24 @@ const Editor = () => {
 
     const [state, dispatch] = useReducer(editorReducer, initialState);
 
+    const history = useHistory()
+
     const postArticle = () => {
-        const modifiedState = {...state, article: {...state.article, tagList: splitTags(state.article.tagList)}}
-        articlesAPI.postArticle(modifiedState)
-            .then(res => {
-                dispatchRedux(setArticleActionCreator(res.data.article))
-                console.log(res.data.article)
-            })
+        if (state.article.title && state.article.description && state.article.body) {
+
+            let modifiedState
+
+            if(state.article.tagList) {
+                modifiedState = {...state, article: {...state.article, tagList: splitTags(state.article.tagList)}}
+            } else modifiedState = {...state, article: {...state.article, tagList: []}}
+
+            articlesAPI.postArticle(modifiedState)
+                .then(res => {
+                    dispatchRedux(setArticleActionCreator(res.data.article))
+                    history.push("/");
+                })
+                .catch(err => dispatch(setErrorActionCreator(err.message)))
+        }
     }
 
     return (

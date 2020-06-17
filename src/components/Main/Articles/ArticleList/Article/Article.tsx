@@ -13,13 +13,21 @@ import {
     ListBasis,
     ListBasisLeft, ListBasisRight,
     ListDescription,
-    ListTitle
+    ListTitle, ReadMore
 } from "./ArticleStyles";
 import Chip from "@material-ui/core/Chip";
 import {TagsBox} from "../../../Tags/TagsStyles";
+import {articlesAPI} from "../../../../../api/api";
 
 const Article: FC<IArticlesProps> = ({username, createdAt, title, description, favorited,
-                                         favoritesCount, tagList}) => {
+                                         favoritesCount, tagList, slug}) => {
+
+    const favoriteArticle = (slug: string) => {
+        console.log(slug)
+        articlesAPI.favoriteArticle(slug)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+    }
 
     return (
         <ArticleRoot>
@@ -30,7 +38,7 @@ const Article: FC<IArticlesProps> = ({username, createdAt, title, description, f
                     </Avatar>
                 </ListItemAvatar>
                 <ListItemText primary={username} secondary={createdAt}/>
-                <FavoriteButton>
+                <FavoriteButton onClick={() => favoriteArticle(slug)}>
                     <FavoriteIcon color='primary'/>
                     <FavoriteCount>{favoritesCount}</FavoriteCount>
                 </FavoriteButton>
@@ -39,6 +47,7 @@ const Article: FC<IArticlesProps> = ({username, createdAt, title, description, f
                 <ListBasisLeft>
                     <ListTitle>{title}</ListTitle>
                     <ListDescription>{description}</ListDescription>
+                    <ReadMore>Read more...</ReadMore>
                 </ListBasisLeft>
                 <ListBasisRight>
                     <TagsBox>

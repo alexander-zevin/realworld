@@ -1,4 +1,4 @@
-import {SET_BODY, SET_DESCRIPTION, SET_TAGS, SET_TITLE} from "./EditorConstants";
+import {SET_BODY, SET_DESCRIPTION, SET_ERROR, SET_TAGS, SET_TITLE} from "./EditorConstants";
 
 export interface IEditorState {
     article: {
@@ -7,6 +7,7 @@ export interface IEditorState {
         body: string
         tagList: string
     }
+    error: null | string
 }
 
 export interface IModifiedEditState {
@@ -38,4 +39,9 @@ export interface ISetTagsAction {
     tagList: string
 }
 
-export type EditActionType = ISetTitleAction | ISetDescriptionAction | ISetBodyAction | ISetTagsAction
+export interface ISetErrorAction {
+    type: typeof SET_ERROR
+    error: string | null
+}
+
+export type EditActionType = ISetTitleAction | ISetDescriptionAction | ISetBodyAction | ISetTagsAction | ISetErrorAction

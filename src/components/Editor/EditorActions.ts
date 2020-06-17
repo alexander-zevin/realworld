@@ -1,5 +1,5 @@
-import {ISetBodyAction, ISetDescriptionAction, ISetTagsAction, ISetTitleAction} from "./EditorTypes";
-import {SET_BODY, SET_DESCRIPTION, SET_TAGS, SET_TITLE} from "./EditorConstants";
+import {ISetBodyAction, ISetDescriptionAction, ISetErrorAction, ISetTagsAction, ISetTitleAction} from "./EditorTypes";
+import {SET_BODY, SET_DESCRIPTION, SET_ERROR, SET_TAGS, SET_TITLE} from "./EditorConstants";
 
 export const setEditTitleActionCreator = (title: string): ISetTitleAction => ({
     type: SET_TITLE,
@@ -19,4 +19,9 @@ export const setBodyActionCreator = (body: string): ISetBodyAction => ({
 export const setTagsActionCreator = (tagList: string): ISetTagsAction => ({
     type: SET_TAGS,
     tagList: tagList
+})
+
+export const setErrorActionCreator = (error: string): ISetErrorAction => ({
+    type: SET_ERROR,
+    error: error
 })

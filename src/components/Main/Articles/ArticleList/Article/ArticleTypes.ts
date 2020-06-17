@@ -6,4 +6,5 @@ export interface IArticlesProps {
     favorited: boolean
     favoritesCount: number
     tagList: Array<string>
+    slug: string
 }

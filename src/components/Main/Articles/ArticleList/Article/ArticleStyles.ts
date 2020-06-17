@@ -16,10 +16,12 @@ export const ListBasisRight = styled.div`
 `;
 
 export const ListTitle = styled.span`
-    font-size: 1.5em;
+    font-size: 1.4em;
 `;
 
-export const ListDescription = styled.div``;
+export const ListDescription = styled.div`
+    font-size: 14px;
+`;
 
 export const FavoriteButton = styled.button`
     outline: none;
@@ -47,4 +49,10 @@ export const FavoriteIcon = styled(Favorite).attrs(props => ({
 
 export const ArticleRoot = styled.div`
     margin-bottom: 16px;
+`;
+
+export const ReadMore = styled.div`
+    font-size: 0.8em;
+    cursor: pointer;  
+    margin-top: 16px;  
 `;

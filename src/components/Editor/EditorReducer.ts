@@ -1,5 +1,5 @@
 import {EditActionType, IEditorState} from "./EditorTypes";
-import {SET_BODY, SET_DESCRIPTION, SET_TAGS, SET_TITLE} from "./EditorConstants";
+import {SET_BODY, SET_DESCRIPTION, SET_ERROR, SET_TAGS, SET_TITLE} from "./EditorConstants";
 
 export const initialState: IEditorState = {
     article: {
@@ -7,7 +7,8 @@ export const initialState: IEditorState = {
         description: '',
         body: '',
         tagList: ''
-    }
+    },
+    error: null
 };
 
 export const editorReducer = (state: IEditorState, action: EditActionType): IEditorState => {
@@ -20,6 +21,8 @@ export const editorReducer = (state: IEditorState, action: EditActionType): IEdi
             return {...state, article: {...state.article, body: action.body}}
         case SET_TAGS:
             return {...state, article: {...state.article, tagList: action.tagList}}
+        case SET_ERROR:
+            return {...state, error: action.error}
         default:
             return state
     }

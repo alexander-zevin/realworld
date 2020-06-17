@@ -19,6 +19,8 @@ const ArticleList: FC<IArticlesListProps> = ({articlesState}) => {
                             favorited = {item.favorited}
                             favoritesCount = {item.favoritesCount}
                             tagList = {item.tagList}
+                            slug={item.slug}
+
                         />
                         { articlesState.articles.length - 1 !== index && <Divider/> }
                     </Fragment>
