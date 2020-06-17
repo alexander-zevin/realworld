@@ -16,7 +16,8 @@ export const Title = styled.h1`
 
 export const AuthorBlock = styled.div`
 	position: relative;
-	left: -16px
+	left: -16px;
+	width: 300px;
 `;
 
 export const ListItemTextStyled = styled(ListItemText)`
@@ -26,11 +27,6 @@ export const ListItemTextStyled = styled(ListItemText)`
 `;
 
 export const FollowButton = styled(Button)`
-	background-color: white;
-  color: #fff;
-  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-  padding: 7px 14px;
-  &:hover {
-    background-color: #5469d4;
-  }
+  border: 1px solid white;
+  color: white;
 `;
