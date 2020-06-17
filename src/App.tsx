@@ -30,7 +30,7 @@ const App = () => {
                 dispatch(setProfileActionCreator(res.data.user))
                 dispatch(setAuthActionCreator(true))
             })
-            .catch(err => dispatch(setAuthErrorActionCreator(err.name, err.message)))
+            .catch(err => dispatch(setAuthErrorActionCreator(err.response.data.errors.error.name)))
             .then(() => dispatch(setInitializedSuccess(true)))
     }, [dispatch])
 

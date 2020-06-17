@@ -1,8 +1,9 @@
-import {SET_EMAIL, SET_PASSWORD, SET_USERNAME, SIGN_IN} from "./SignInConstants";
+import {SET_EMAIL, SET_ERROR, SET_PASSWORD, SET_USERNAME, SIGN_IN} from "./SignInConstants";
 
 export interface ISignInState{
     email: string
     password: string
+    error: string | null
 }
 
 export interface ISignInAction {
@@ -17,8 +18,13 @@ export interface ISetEmailAction {
 }
 
 export interface ISetPasswordAction {
-    type: typeof SET_PASSWORD,
+    type: typeof SET_PASSWORD
     password: string
 }
 
-export type SignInActionType = ISignInAction | ISetEmailAction | ISetPasswordAction
+export interface ISetErrorAction {
+    type: typeof SET_ERROR
+    error: string
+}
+
+export type SignInActionType = ISignInAction | ISetEmailAction | ISetPasswordAction | ISetErrorAction

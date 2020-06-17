@@ -3,10 +3,7 @@ import {SET_AUTH, SET_AUTH_ERROR} from "../constants/authConstants";
 
 const initialState: IAuthState = {
 		isAuth: false,
-		error: {
-				name: null,
-				message: null
-		}
+		error: null
 };
 
 export const authReducer = (state = initialState, action: AuthStateType): IAuthState => {

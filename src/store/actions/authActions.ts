@@ -6,10 +6,7 @@ export const setAuthActionCreator = (isAuth: boolean): ISetAuthAction => ({
 		isAuth: isAuth
 })
 
-export const setAuthErrorActionCreator = (name: string | null, message: string | null): ISetAuthErrorAction => ({
+export const setAuthErrorActionCreator = (error: string | null): ISetAuthErrorAction => ({
 		type: SET_AUTH_ERROR,
-		error: {
-				name: name,
-				message: message
-		}
+		error: error
 })

@@ -1,9 +1,11 @@
 import {SET_EMAIL, SET_PASSWORD, SET_USERNAME, SIGN_UP} from "./SignUpConstants";
+import {SET_ERROR} from "../SignIn/SignInConstants";
 
 export interface ISignUpState{
     username: string
     email: string
     password: string
+    error: null | string
 }
 
 export interface ISignUp {
@@ -32,4 +34,9 @@ export interface ISetPasswordAction {
     password: string
 }
 
-export type SignUpActionType = ISignUpAction | ISetUsernameAction | ISetEmailAction | ISetPasswordAction
+export interface ISetErrorAction {
+    type: typeof SET_ERROR
+    error: string
+}
+
+export type SignUpActionType = ISignUpAction | ISetUsernameAction | ISetEmailAction | ISetPasswordAction | ISetErrorAction

@@ -2,6 +2,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import {Button} from "@material-ui/core";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
+import React from "react";
 
 export const StyledButton = styled(Button).attrs(props => ({
 
