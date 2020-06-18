@@ -3,11 +3,9 @@ import Tabs from '@material-ui/core/Tabs';
 import {Tab} from "@material-ui/core";
 import Divider from '@material-ui/core/Divider';
 import {useDispatch, useSelector} from "react-redux";
-import {getGlobalArticlesThunkCreator, getYourArticlesThunkCreator} from "../../../../store/actions/articlesActions";
-import {RootStateType} from "../../../../store/store";
-import {IProfileState} from "../../../../store/types/profileTypes";
+import {getGlobalArticles, getYourArticles} from "../../../../store/actions/articlesActions";
+import {RootState} from "../../../../store/store";
 import {useHistory} from "react-router-dom";
-import {articlesAPI} from "../../../../api/api";
 
 const TabArticles = () => {
 
@@ -15,16 +13,16 @@ const TabArticles = () => {
 
     const history = useHistory();
 
-    const [value, setValue] = React.useState(1)
+    const [value, setValue] = React.useState<number>(1)
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => setValue(newValue)
 
-    const isAuth: boolean = useSelector((state: RootStateType) => state.auth.isAuth);
+    const isAuth: boolean = useSelector((state: RootState) => state.auth.isAuth);
 
-    const getGlobalFeed = () => dispatch(getGlobalArticlesThunkCreator())
+    const getGlobalFeed = () => dispatch(getGlobalArticles())
 
     const getYourFeed = () => {
         if (isAuth) {
-            dispatch(getYourArticlesThunkCreator())
+            dispatch(getYourArticles())
         } else {
             history.push('/signin')
         }

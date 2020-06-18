@@ -1,6 +1,5 @@
-import {IArticlesState} from "../../../../store/types/articlesType";
+import {ArticlesState} from "../../../../store/types/articlesType";
 
-
-export interface IArticlesListProps {
-		articlesState: IArticlesState
+export interface ArticlesListProps {
+    articlesState: ArticlesState
 }

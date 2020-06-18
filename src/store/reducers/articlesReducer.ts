@@ -1,14 +1,14 @@
 import {SET_ARTICLE, SET_ARTICLES, SET_PROGRESS, SHOW_TAB_TAGS} from "../constants/articlesContants";
-import {ArticlesActionType, IArticlesState} from "../types/articlesType";
+import {ArticlesActions, ArticlesState} from "../types/articlesType";
 
-const initialState: IArticlesState = {
+const initialState: ArticlesState = {
     articles: [],
     articlesCount: null,
     isProgress: false,
     showTabTags: false
 };
 
-export const articlesReducer = (state = initialState, action: ArticlesActionType): IArticlesState => {
+export const articlesReducer = (state = initialState, action: ArticlesActions): ArticlesState => {
     switch (action.type) {
         case SET_ARTICLES:
             return Object.assign({}, action.articlesState)

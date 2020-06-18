@@ -1,27 +1,27 @@
-import {ISetBodyAction, ISetDescriptionAction, ISetErrorAction, ISetTagsAction, ISetTitleAction} from "./EditorTypes";
+import {SetBody, SetDescription, SetError, SetTags, SetTitle} from "./EditorTypes";
 import {SET_BODY, SET_DESCRIPTION, SET_ERROR, SET_TAGS, SET_TITLE} from "./EditorConstants";
 
-export const setEditTitleActionCreator = (title: string): ISetTitleAction => ({
+export const setEditTitle = (title: string): SetTitle => ({
     type: SET_TITLE,
     title: title
 })
 
-export const setDescriptionActionCreator = (description: string): ISetDescriptionAction => ({
+export const setDescription = (description: string): SetDescription => ({
     type: SET_DESCRIPTION,
     description: description
 })
 
-export const setBodyActionCreator = (body: string): ISetBodyAction => ({
+export const setBody = (body: string): SetBody => ({
     type: SET_BODY,
     body: body
 })
 
-export const setTagsActionCreator = (tagList: string): ISetTagsAction => ({
+export const setTags = (tagList: string): SetTags => ({
     type: SET_TAGS,
     tagList: tagList
 })
 
-export const setErrorActionCreator = (error: string): ISetErrorAction => ({
+export const setError = (error: string): SetError => ({
     type: SET_ERROR,
     error: error
 })

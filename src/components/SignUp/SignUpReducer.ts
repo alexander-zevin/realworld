@@ -1,15 +1,15 @@
-import {ISignUpState, SignUpActionType} from "./SignUpTypes";
+import {SignUpState, SignUpActions} from "./SignUpTypes";
 import {SET_EMAIL, SET_PASSWORD, SET_USERNAME} from "./SignUpConstants";
 import {SET_ERROR} from "../SignIn/SignInConstants";
 
-export const initialState: ISignUpState = {
+export const initialState: SignUpState = {
     username: '',
     email: '',
     password: '',
     error: null
 };
 
-export const signUpReducer = (state: ISignUpState, action: SignUpActionType): ISignUpState => {
+export const signUpReducer = (state: SignUpState, action: SignUpActions): SignUpState => {
     switch (action.type) {
         case SET_USERNAME:
             return {...state, username: action.username};

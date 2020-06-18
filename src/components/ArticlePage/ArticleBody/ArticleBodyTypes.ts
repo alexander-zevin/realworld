@@ -1,3 +1,3 @@
 export interface IArticleBodyProps {
-		body: string
+    body: string
 }

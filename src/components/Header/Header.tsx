@@ -3,13 +3,13 @@ import {HeaderRoot, Navigation, Title} from "./HeaderStyles";
 import {StyledButton, StyledLink} from "../common/styled/rest";
 import SignBlock from "./SignBlock/SignBlock";
 import {useSelector} from "react-redux";
-import {RootStateType} from "../../store/store";
+import {RootState} from "../../store/store";
 import AuthBlock from "./AuthBlock/AuthBlock";
 import { useHistory } from "react-router-dom";
 
 const Header = () => {
 
-    const isAuth: boolean = useSelector((state: RootStateType) => state.auth.isAuth);
+    const isAuth: boolean = useSelector((state: RootState) => state.auth.isAuth);
 
     const history = useHistory();
     const toMain = () => history.push('/')

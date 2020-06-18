@@ -1,16 +1,16 @@
 import React, {useReducer} from 'react'
 import {initialState, signUpReducer} from "./SignUpReducer";
 import {
-    setEmailActionCreator,
-    setErrorActionCreator,
-    setPasswordActionCreator,
-    setUsernameActionCreator
+    setEmail,
+    setError,
+    setPassword,
+    setUsername
 } from "./SignUpActions";
 import {setToken, usersAPI} from "../../api/api";
 import {useDispatch} from "react-redux";
-import {setProfileActionCreator} from "../../store/actions/profileActions";
+import {setProfile} from "../../store/actions/profileActions";
 import {useHistory} from "react-router-dom";
-import {setAuthActionCreator, setAuthErrorActionCreator} from "../../store/actions/authActions";
+import {setAuth, setAuthError} from "../../store/actions/authActions";
 import {setTokenLocalStorage} from "../../lib/localStorage";
 import {SignDescription, SignForm, SignInput, SignRoot, SignTitle, Error, SignButton} from "../common/styled/sign";
 
@@ -27,13 +27,13 @@ const SignUp = () => {
             const response = await usersAPI.signUp(state.username, state.email, state.password);
             setToken(response.data.user.token)
             setTokenLocalStorage(response.data.user.token)
-            dispatchRedux(setProfileActionCreator(response.data.user))
-            dispatchRedux(setAuthErrorActionCreator(null))
-            dispatchRedux(setAuthActionCreator(true))
+            dispatchRedux(setProfile(response.data.user))
+            dispatchRedux(setAuthError(null))
+            dispatchRedux(setAuth(true))
             history.push("/");
             console.log(response.data)
         } catch (err) {
-            dispatch(setErrorActionCreator(err.response.data.errors.email))
+            dispatch(setError(err.response.data.errors.email))
         }
     }
 
@@ -48,20 +48,20 @@ const SignUp = () => {
                     id='textFieldUsername'
                     label='Username'
                     value={state.username}
-                    onChange={(event => dispatch(setUsernameActionCreator(event.target.value)))}
+                    onChange={(event => dispatch(setUsername(event.target.value)))}
                 />
                 <SignInput
                     id='textFieldEmail'
                     label='Email'
                     value={state.email}
-                    onChange={(event => dispatch(setEmailActionCreator(event.target.value)))}
+                    onChange={(event => dispatch(setEmail(event.target.value)))}
                 />
                 <SignInput
                     id='textFieldPassword'
                     label='Password'
                     type='password'
                     value={state.password}
-                    onChange={(event => dispatch(setPasswordActionCreator(event.target.value)))}
+                    onChange={(event => dispatch(setPassword(event.target.value)))}
                 />
                 {
                     state.error &&

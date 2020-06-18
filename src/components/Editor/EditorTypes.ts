@@ -1,6 +1,6 @@
 import {SET_BODY, SET_DESCRIPTION, SET_ERROR, SET_TAGS, SET_TITLE} from "./EditorConstants";
 
-export interface IEditorState {
+export interface EditorState {
     article: {
         title: string
         description: string
@@ -10,7 +10,7 @@ export interface IEditorState {
     error: null | string
 }
 
-export interface IModifiedEditState {
+export interface ModifiedEditState {
     article: {
         title: string
         description: string
@@ -19,29 +19,29 @@ export interface IModifiedEditState {
     }
 }
 
-export interface ISetTitleAction {
+export interface SetTitle {
     type: typeof SET_TITLE
     title: string
 }
 
-export interface ISetDescriptionAction {
+export interface SetDescription {
     type: typeof SET_DESCRIPTION
     description: string
 }
 
-export interface ISetBodyAction {
+export interface SetBody {
     type: typeof SET_BODY
     body: string
 }
 
-export interface ISetTagsAction {
+export interface SetTags {
     type: typeof SET_TAGS
     tagList: string
 }
 
-export interface ISetErrorAction {
+export interface SetError {
     type: typeof SET_ERROR
     error: string | null
 }
 
-export type EditActionType = ISetTitleAction | ISetDescriptionAction | ISetBodyAction | ISetTagsAction | ISetErrorAction
+export type EditActions = SetTitle | SetDescription | SetBody | SetTags | SetError

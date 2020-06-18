@@ -1,10 +1,10 @@
 import {INITIALIZED_SUCCESS} from "../constants/appConstants";
 
-export interface IInitializedSuccessAction {
-		type: typeof INITIALIZED_SUCCESS
-		initialized: boolean
+export interface InitializedSuccess {
+    type: typeof INITIALIZED_SUCCESS
+    initialized: boolean
 }
 
-export interface IAppState {
-		initialized: boolean
+export interface AppState {
+    initialized: boolean
 }

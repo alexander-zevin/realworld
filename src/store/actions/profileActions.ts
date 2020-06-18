@@ -1,13 +1,13 @@
-import {SET_ERROR, SET_PROFILE} from "../constants/profileConstants";
-import {ISetErrorAction, ISetProfileAction} from "../types/profileTypes";
+import {SET_PROFILE_ERROR, SET_PROFILE} from "../constants/profileConstants";
+import {SetError, SetProfile} from "../types/profileTypes";
 
-export const setProfileActionCreator = (user: {username: string, email: string}): ISetProfileAction => ({
+export const setProfile = (user: {username: string, email: string}): SetProfile => ({
     type: SET_PROFILE,
     user: user
 })
 
-export const setErrorActionCreator = (name: string | null, message: string | null): ISetErrorAction => ({
-    type: SET_ERROR,
+export const setProfileError = (name: string | null, message: string | null): SetError => ({
+    type: SET_PROFILE_ERROR,
     error: {
         name: name,
         message: message

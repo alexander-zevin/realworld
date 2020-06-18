@@ -1,4 +1,4 @@
-export interface IArticlesProps {
+export interface ArticlesProps {
     username: string
     createdAt: string
     title: string

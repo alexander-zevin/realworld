@@ -12,8 +12,8 @@ export const ArticleHeaderRoot = styled.main`
 `;
 
 export const Title = styled(Typography).attrs(() => ({
-		variant: "h2",
-		component: "h1"
+    variant: "h2",
+    component: "h1"
 }))`
 `;
 
@@ -28,16 +28,12 @@ export const ListItemTextStyled = styled(ListItemText)`
     
 `;
 
-export const FollowButton = styled(Button).attrs(() => ({
-
-}))`
+export const FollowButton = styled(Button).attrs(() => ({}))`
     border: 1px solid #bdbdbd;
     color: #bdbdbd;
 `;
 
-export const FavoriteButton = styled(Button).attrs(() => ({
-
-}))`
+export const FavoriteButton = styled(Button).attrs(() => ({}))`
     ${({theme}) => `
         border: 1px solid ${theme.palette.primary.main};
         color: ${theme.palette.primary.main};

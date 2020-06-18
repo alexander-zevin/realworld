@@ -1,12 +1,12 @@
 import {SET_AUTH, SET_AUTH_ERROR} from "../constants/authConstants";
-import {ISetAuthAction, ISetAuthErrorAction} from "../types/authTypes";
+import {SetAuth, SetAuthError} from "../types/authTypes";
 
-export const setAuthActionCreator = (isAuth: boolean): ISetAuthAction => ({
-		type: SET_AUTH,
-		isAuth: isAuth
+export const setAuth = (isAuth: boolean): SetAuth => ({
+    type: SET_AUTH,
+    isAuth: isAuth
 })
 
-export const setAuthErrorActionCreator = (error: string | null): ISetAuthErrorAction => ({
-		type: SET_AUTH_ERROR,
-		error: error
+export const setAuthError = (error: string | null): SetAuthError => ({
+    type: SET_AUTH_ERROR,
+    error: error
 })

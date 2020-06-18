@@ -4,7 +4,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import {IArticlesProps} from "./ArticleTypes";
+import {ArticlesProps} from "./ArticleTypes";
 import {
     ArticleRoot,
     FavoriteButton,
@@ -19,7 +19,7 @@ import {TagsBox} from "../../../Tags/TagsStyles";
 import {articlesAPI} from "../../../../../api/api";
 import { useHistory } from "react-router-dom";
 
-const Article: FC<IArticlesProps> = ({username, createdAt, title, description,
+const Article: FC<ArticlesProps> = ({username, createdAt, title, description,
                                          favorited, favoritesCount, tagList, slug}) => {
 
     const history = useHistory()

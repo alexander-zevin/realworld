@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import {TextField} from "@material-ui/core";
-import React from "react";
 
 export const EditorRoot = styled.main`
 		flex-grow: 1;
@@ -14,12 +13,12 @@ export const EditorForm = styled.form`
 `;
 
 export const EditorTextField = styled(TextField).attrs(props => ({
-		label: props.label,
-		fullWidth: true,
-		size: 'medium',
-		multiline: props.multiline || false,
-		variant: "outlined",
-		margin: 'normal'
+    label: props.label,
+    fullWidth: true,
+    size: 'medium',
+    multiline: props.multiline || false,
+    variant: "outlined",
+    margin: 'normal'
 }))`
 `;
 

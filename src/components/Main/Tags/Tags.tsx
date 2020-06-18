@@ -2,15 +2,15 @@ import React, {useEffect} from 'react'
 import Chip from '@material-ui/core/Chip';
 import {TagsBox, TagsRoot, TagsTitle} from "./TagsStyles";
 import {useDispatch, useSelector} from "react-redux";
-import {getTagsThunkCreator} from "../../../store/actions/tagsActions";
-import {RootStateType} from "../../../store/store";
+import {getTags} from "../../../store/actions/tagsActions";
+import {RootState} from "../../../store/store";
 import {articlesAPI} from "../../../api/api";
 
 const Tags = () => {
 
     const dispatch = useDispatch()
 
-    const tags: Array<string> = useSelector((state: RootStateType) => state.tags.tags);
+    const tags: Array<string> = useSelector((state: RootState) => state.tags.tags);
 
     const getGlobalArticlesByTag = (tag: string) => {
         articlesAPI.getGlobalArticlesByTag(tag)
@@ -21,7 +21,7 @@ const Tags = () => {
     }
 
     useEffect(() => {
-        dispatch(getTagsThunkCreator())
+        dispatch(getTags())
     }, [dispatch])
 
     return (

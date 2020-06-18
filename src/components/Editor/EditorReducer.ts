@@ -1,7 +1,7 @@
-import {EditActionType, IEditorState} from "./EditorTypes";
+import {EditActions, EditorState} from "./EditorTypes";
 import {SET_BODY, SET_DESCRIPTION, SET_ERROR, SET_TAGS, SET_TITLE} from "./EditorConstants";
 
-export const initialState: IEditorState = {
+export const initialState: EditorState = {
     article: {
         title: '',
         description: '',
@@ -11,7 +11,7 @@ export const initialState: IEditorState = {
     error: null
 };
 
-export const editorReducer = (state: IEditorState, action: EditActionType): IEditorState => {
+export const editorReducer = (state: EditorState, action: EditActions): EditorState => {
     switch (action.type) {
         case SET_TITLE:
             return {...state, article: {...state.article, title: action.title}}

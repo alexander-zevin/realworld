@@ -8,18 +8,19 @@ import {IArticleHeaderProps} from "./ArticleHeaderTypes";
 import AddIcon from '@material-ui/icons/Add';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import {articlesAPI, profileAPI} from "../../../api/api";
+import {setFollowing} from "../ArticlePageAction";
 
 const ArticleHeader: FC<IArticleHeaderProps> = ({title, author, createdAt, favoritesCount,
-                    favorited, setArticle, setFollowing, slug}) => {
+                    favorited, slug, dispatch}) => {
 
     const follow = () => {
         if (author.following) {
             profileAPI.unfollow(author.username)
-                .then(res => setFollowing(res.data.profile.following))
+                .then(res => dispatch(setFollowing(res.data.profile.following)))
                 .catch(err => console.log(err))
         } else {
             profileAPI.follow(author.username)
-                .then(res => setFollowing(res.data.profile.following))
+                .then(res => dispatch(setFollowing(res.data.profile.following)))
                 .catch(err => console.log(err))
         }
     }

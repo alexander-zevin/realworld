@@ -3,13 +3,13 @@ import TabArticles from "./TabArticles/TabArticles";
 import {ArticlesRoot} from "./ArticlesStyles";
 import ArticleList from "./ArticleList/ArticleList";
 import {useSelector} from "react-redux";
-import {RootStateType} from "../../../store/store";
+import {RootState} from "../../../store/store";
 import Progress from "../../common/Progress";
-import {IArticlesState} from "../../../store/types/articlesType";
+import {ArticlesState} from "../../../store/types/articlesType";
 
 const Articles = () => {
 
-    const articlesState: IArticlesState = useSelector((state: RootStateType) => state.articles);
+    const articlesState: ArticlesState = useSelector((state: RootState) => state.articles);
 
     return (
         <ArticlesRoot>

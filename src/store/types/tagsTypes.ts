@@ -1,13 +1,12 @@
 import {SET_TAGS} from "../constants/tagsConstants";
-import {SHOW_TAB_TAGS} from "../constants/articlesContants";
 
-export interface ITagsState {
+export interface TagsState {
     tags: Array<string>
 }
 
-export interface IGetTagsAction {
+export interface GetTags {
     type: typeof SET_TAGS
     tags: Array<string>
 }
 
-export type TagsActionType = IGetTagsAction
+export type TagsActions = GetTags

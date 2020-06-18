@@ -9,33 +9,33 @@ import SignIn from "./components/SignIn/SignIn";
 import {getTokenLocalStorage} from "./lib/localStorage";
 import {setToken, usersAPI} from "./api/api";
 import {useDispatch, useSelector} from "react-redux";
-import {setProfileActionCreator} from "./store/actions/profileActions";
-import {setAuthActionCreator, setAuthErrorActionCreator} from "./store/actions/authActions";
-import {RootStateType} from "./store/store";
+import {setProfile} from "./store/actions/profileActions";
+import {setAuth, setAuthError} from "./store/actions/authActions";
+import {RootState} from "./store/store";
 import Progress from "./components/common/Progress";
-import {setInitializedSuccess} from "./store/actions/appActions";
+import {initializedSuccess} from "./store/actions/appActions";
 import {FullScreenBox} from "./components/common/styled/rest";
 import Editor from "./components/Editor/Editor";
 import ArticlePage from "./components/ArticlePage/ArticlePage";
-import {getGlobalArticlesThunkCreator} from "./store/actions/articlesActions";
+import {getGlobalArticles} from "./store/actions/articlesActions";
 
 const App = () => {
 
     const dispatch = useDispatch()
 
-    const initialized: boolean = useSelector((state: RootStateType) => state.app.initialized)
+    const initialized: boolean = useSelector((state: RootState) => state.app.initialized)
 
     useEffect(() => {
         setToken(getTokenLocalStorage())
         usersAPI.getUser()
             .then(res => {
-                dispatch(setProfileActionCreator(res.data.user))
-                dispatch(setAuthActionCreator(true))
+                dispatch(setProfile(res.data.user))
+                dispatch(setAuth(true))
             })
-            .catch(err => dispatch(setAuthErrorActionCreator(err.response.data.errors.error.name)))
+            .catch(err => dispatch(setAuthError(err.response.data.errors.error.name)))
             .then(() => {
-                dispatch(setInitializedSuccess(true))
-                dispatch(getGlobalArticlesThunkCreator())
+                dispatch(initializedSuccess(true))
+                dispatch(getGlobalArticles())
             })
     }, [dispatch])
 

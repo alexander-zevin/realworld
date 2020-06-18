@@ -3,14 +3,14 @@ import {ButtonContainer, EditorForm, EditorRoot} from "./EdtorStyles";
 import {StyledButton} from "../common/styled/rest";
 import {editorReducer, initialState} from "./EditorReducer";
 import {
-    setBodyActionCreator,
-    setDescriptionActionCreator,
-    setEditTitleActionCreator, setErrorActionCreator,
-    setTagsActionCreator
+    setBody,
+    setDescription,
+    setEditTitle, setError,
+    setTags
 } from "./EditorActions";
 import {TextField} from "@material-ui/core";
 import {articlesAPI} from "../../api/api";
-import {setArticleActionCreator} from "../../store/actions/articlesActions";
+import {setArticle} from "../../store/actions/articlesActions";
 import {useDispatch} from "react-redux";
 import {splitTags} from "../../lib/splitString";
 import { useHistory } from "react-router-dom";
@@ -34,10 +34,10 @@ const Editor = () => {
 
             articlesAPI.postArticle(modifiedState)
                 .then(res => {
-                    dispatchRedux(setArticleActionCreator(res.data.article))
+                    dispatchRedux(setArticle(res.data.article))
                     history.push("/");
                 })
-                .catch(err => dispatch(setErrorActionCreator(err.message)))
+                .catch(err => dispatch(setError(err.message)))
         }
     }
 
@@ -51,7 +51,7 @@ const Editor = () => {
                     size='medium'
                     variant="outlined"
                     margin='normal'
-                    onChange={event => dispatch(setEditTitleActionCreator(event.target.value))}
+                    onChange={event => dispatch(setEditTitle(event.target.value))}
                 />
                 <TextField
                     label='Whats this article about?'
@@ -60,7 +60,7 @@ const Editor = () => {
                     size='medium'
                     variant="outlined"
                     margin='normal'
-                    onChange={event => dispatch(setDescriptionActionCreator(event.target.value))}
+                    onChange={event => dispatch(setDescription(event.target.value))}
                 />
                 <TextField
                     label='Write your article (in markdown)'
@@ -70,7 +70,7 @@ const Editor = () => {
                     size='medium'
                     variant="outlined"
                     margin='normal'
-                    onChange={event => dispatch(setBodyActionCreator(event.target.value))}
+                    onChange={event => dispatch(setBody(event.target.value))}
                 />
                 <TextField
                     label='Enter tags'
@@ -79,7 +79,7 @@ const Editor = () => {
                     size='medium'
                     variant="outlined"
                     margin='normal'
-                    onChange={event => dispatch(setTagsActionCreator(event.target.value))}
+                    onChange={event => dispatch(setTags(event.target.value))}
                 />
                 <ButtonContainer>
                     <StyledButton

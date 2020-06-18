@@ -1,6 +1,6 @@
-import {SET_ERROR, SET_PROFILE} from "../constants/profileConstants";
+import {SET_PROFILE_ERROR, SET_PROFILE} from "../constants/profileConstants";
 
-export interface IProfileState {
+export interface ProfileState {
     user: {
         username: string
         email: string
@@ -13,7 +13,7 @@ export interface IProfileState {
     }
 }
 
-export interface ISetProfileAction {
+export interface SetProfile {
     type: typeof SET_PROFILE
     user: {
         username: string
@@ -21,12 +21,12 @@ export interface ISetProfileAction {
     }
 }
 
-export interface ISetErrorAction {
-    type: typeof SET_ERROR
+export interface SetError {
+    type: typeof SET_PROFILE_ERROR
     error: {
         name: string | null
         message: string | null
     }
 }
 
-export type ProfileActionType = ISetProfileAction | ISetErrorAction
+export type ProfileActionType = SetProfile | SetError

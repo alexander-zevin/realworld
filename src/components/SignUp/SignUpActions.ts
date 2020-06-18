@@ -1,31 +1,23 @@
-import {ISetEmailAction, ISetPasswordAction, ISetUsernameAction, ISignUpAction} from "./SignUpTypes";
-import {SET_EMAIL, SET_PASSWORD, SET_USERNAME, SIGN_UP} from "./SignUpConstants";
-import {ISetErrorAction} from "../SignIn/SignInTypes";
+import {SetEmail, SetError, SetPassword, SetUsername} from "./SignUpTypes";
+import {SET_EMAIL, SET_PASSWORD, SET_USERNAME} from "./SignUpConstants";
 import {SET_ERROR} from "../SignIn/SignInConstants";
 
-export const signUpActionCreator = (username: string, email: string, password: string): ISignUpAction => ({
-    type: SIGN_UP,
-    username: username,
-    email: email,
-    password: password
-})
-
-export const setUsernameActionCreator = (username: string): ISetUsernameAction => ({
+export const setUsername = (username: string): SetUsername => ({
     type: SET_USERNAME,
     username: username,
 })
 
-export const setEmailActionCreator = (email: string): ISetEmailAction => ({
+export const setEmail = (email: string): SetEmail => ({
     type: SET_EMAIL,
     email: email
 })
 
-export const setPasswordActionCreator = (password: string): ISetPasswordAction => ({
+export const setPassword = (password: string): SetPassword => ({
     type: SET_PASSWORD,
     password: password
 })
 
-export const setErrorActionCreator = (error: string): ISetErrorAction => ({
+export const setError = (error: string): SetError => ({
     type: SET_ERROR,
     error: error
 })

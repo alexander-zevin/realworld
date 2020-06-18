@@ -1,13 +1,13 @@
 import React from 'react'
 import {StyledButton, StyledLink} from "../../common/styled/rest";
-import {IProfileState} from "../../../store/types/profileTypes";
+import {ProfileState} from "../../../store/types/profileTypes";
 import {useSelector} from "react-redux";
-import {RootStateType} from "../../../store/store";
+import {RootState} from "../../../store/store";
 import {useHistory} from "react-router-dom";
 
 const AuthBlock = () => {
 
-    const username: string = useSelector((state: RootStateType) => state.profile.user.username);
+    const username: string = useSelector((state: RootState) => state.profile.user.username);
 
     const history = useHistory();
     const toEditor = () => history.push('/editor')

@@ -2,10 +2,10 @@ import React, {FC, Fragment} from 'react'
 import {ArticleListRoot} from "./ArticleListStyles";
 import {Divider, List} from "@material-ui/core";
 import Article from "./Article/Article";
-import {IArticlesListProps} from "./ArticlesListTypes";
+import {ArticlesListProps} from "./ArticlesListTypes";
 import {convertDate} from "../../../../lib/convertDate";
 
-const ArticleList: FC<IArticlesListProps> = ({articlesState}) => {
+const ArticleList: FC<ArticlesListProps> = ({articlesState}) => {
     return (
         <ArticleListRoot>
             <List dense>
