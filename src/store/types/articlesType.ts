@@ -1,4 +1,4 @@
-import {SET_ARTICLE, SET_ARTICLES, SET_PROGRESS} from "../constants/articlesContants";
+import {SET_ARTICLE, SET_ARTICLES, SET_PROGRESS, SHOW_TAB_TAGS} from "../constants/articlesContants";
 
 export interface IArticle {
 		slug: string
@@ -22,6 +22,7 @@ export interface IArticlesState {
 		articles: Array<IArticle>
 		articlesCount: number | null
 		isProgress: boolean
+		showTabTags: boolean
 }
 
 export interface IGetArticlesAction {
@@ -39,4 +40,9 @@ export interface ISetArticleAction {
 		article: IArticle
 }
 
-export type ArticlesActionType = IGetArticlesAction | ISetProgressAction | ISetArticleAction
+export interface IShowTabTagsAction {
+		type: typeof SHOW_TAB_TAGS
+		showTabTags: boolean
+}
+
+export type ArticlesActionType = IGetArticlesAction | ISetProgressAction | ISetArticleAction | IShowTabTagsAction

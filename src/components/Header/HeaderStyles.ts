@@ -9,7 +9,6 @@ export const HeaderRoot = styled.header`
         padding: 10px 20%;
         position: static;
         box-shadow: 0 0 7px 0 rgba(0, 0, 0, 1);
-        margin-bottom: 16px;
     `}
 `;
 

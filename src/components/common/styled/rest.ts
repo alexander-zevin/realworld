@@ -16,11 +16,10 @@ export const StyledLink = styled(Link)`
 `;
 
 export const ProgressRoot = styled.div`
-    height: 100%;
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 32px;
 `;
 
 export const FullScreenBox = styled.div`

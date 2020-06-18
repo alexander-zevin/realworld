@@ -4,7 +4,7 @@ import {FooterRoot} from "./FooterStyles";
 const Footer = () => {
   return (
     <FooterRoot>
-
+      Footer
     </FooterRoot>
   )
 }

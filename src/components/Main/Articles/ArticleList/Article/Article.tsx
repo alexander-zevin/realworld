@@ -8,7 +8,6 @@ import {IArticlesProps} from "./ArticleTypes";
 import {
     ArticleRoot,
     FavoriteButton,
-    FavoriteCount,
     FavoriteIcon,
     ListBasis,
     ListBasisLeft, ListBasisRight,
@@ -18,11 +17,14 @@ import {
 import Chip from "@material-ui/core/Chip";
 import {TagsBox} from "../../../Tags/TagsStyles";
 import {articlesAPI} from "../../../../../api/api";
+import { useHistory } from "react-router-dom";
 
-const Article: FC<IArticlesProps> = ({username, createdAt, title, description, favorited,
-                                         favoritesCount, tagList, slug}) => {
+const Article: FC<IArticlesProps> = ({username, createdAt, title, description,
+                                         favorited, favoritesCount, tagList, slug}) => {
 
-    const favoriteArticle = (slug: string) => {
+    const history = useHistory()
+
+    const favoriteArticle = () => {
         console.log(slug)
         articlesAPI.favoriteArticle(slug)
             .then(res => console.log(res))
@@ -38,16 +40,18 @@ const Article: FC<IArticlesProps> = ({username, createdAt, title, description, f
                     </Avatar>
                 </ListItemAvatar>
                 <ListItemText primary={username} secondary={createdAt}/>
-                <FavoriteButton onClick={() => favoriteArticle(slug)}>
-                    <FavoriteIcon color='primary'/>
-                    <FavoriteCount>{favoritesCount}</FavoriteCount>
+                <FavoriteButton
+                    startIcon={<FavoriteIcon />}
+                    onClick={favoriteArticle}
+                >
+                    {favoritesCount}
                 </FavoriteButton>
             </ListItem>
             <ListBasis>
                 <ListBasisLeft>
                     <ListTitle>{title}</ListTitle>
                     <ListDescription>{description}</ListDescription>
-                    <ReadMore>Read more...</ReadMore>
+                    <ReadMore onClick={() => history.push(`/article/${slug}`)}>Read more...</ReadMore>
                 </ListBasisLeft>
                 <ListBasisRight>
                     <TagsBox>

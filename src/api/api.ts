@@ -22,9 +22,18 @@ export const articlesAPI = {
 		favoriteArticle(slug: string) {
 				return instance.post(`articles/${slug}/favorite`)
 		},
+		unFavoriteArticle(slug: string) {
+				return instance.delete(`articles/${slug}/favorite`)
+		},
 		getArticle(slug: string) {
 				return instance.get(`articles/${slug}`)
-		}
+		},
+		feedArticles() {
+				return instance.get(`articles/feed`)
+		},
+		getGlobalArticlesByTag(tag: string) {
+				return instance.get(`articles?tag=${tag}`);
+		},
 };
 
 export const tagsAPI = {
@@ -55,4 +64,13 @@ export const usersAPI = {
 				return instance.get(`user`);
 		}
 };
+
+export const profileAPI = {
+		follow(username: string) {
+				return instance.post(`profiles/${username}/follow`)
+		},
+		unfollow(username: string) {
+				return instance.delete(`profiles/${username}/follow`)
+		}
+}
 

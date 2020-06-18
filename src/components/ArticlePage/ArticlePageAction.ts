@@ -1,8 +1,13 @@
 import {IArticle} from "../../store/types/articlesType";
-import {SET_ARTICLE} from "./ArticlePageConstants";
-import {ISetArticleAction} from "./ArticlePageTypes";
+import {SET_ARTICLE, SET_FOLLOWING} from "./ArticlePageConstants";
+import {ISetArticleAction, ISetFollowingAction} from "./ArticlePageTypes";
 
 export const setArticleActionCreator = (article: IArticle): ISetArticleAction => ({
 		type: SET_ARTICLE,
 		article: article
+})
+
+export const setFollowingActionCreator = (following: boolean): ISetFollowingAction => ({
+		type: SET_FOLLOWING,
+		following: following
 })

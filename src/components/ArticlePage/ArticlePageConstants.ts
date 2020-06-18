@@ -1,1 +1,2 @@
 export const SET_ARTICLE = 'SET_ARTICLE'
+export const SET_FOLLOWING = 'SET_FOLLOWING'

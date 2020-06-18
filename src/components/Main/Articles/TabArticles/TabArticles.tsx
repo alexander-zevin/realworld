@@ -7,6 +7,7 @@ import {getGlobalArticlesThunkCreator, getYourArticlesThunkCreator} from "../../
 import {RootStateType} from "../../../../store/store";
 import {IProfileState} from "../../../../store/types/profileTypes";
 import {useHistory} from "react-router-dom";
+import {articlesAPI} from "../../../../api/api";
 
 const TabArticles = () => {
 
@@ -17,18 +18,13 @@ const TabArticles = () => {
     const [value, setValue] = React.useState(1)
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => setValue(newValue)
 
-    const prifileState: IProfileState = useSelector((state: RootStateType) => state.profile);
     const isAuth: boolean = useSelector((state: RootStateType) => state.auth.isAuth);
 
     const getGlobalFeed = () => dispatch(getGlobalArticlesThunkCreator())
 
-    useEffect(() => {
-        getGlobalFeed()
-    }, [])
-
     const getYourFeed = () => {
         if (isAuth) {
-            dispatch(getYourArticlesThunkCreator(prifileState.user.username))
+            dispatch(getYourArticlesThunkCreator())
         } else {
             history.push('/signin')
         }
@@ -43,7 +39,8 @@ const TabArticles = () => {
                 onChange={handleChange}
             >
                 <Tab label="Your Feed" onClick={getYourFeed} />
-                <Tab label="Global Feed" onClick={getGlobalFeed} />
+                <Tab label="Global Feed"  onClick={getGlobalFeed}/>
+                <Tab label="#" />
             </Tabs>
             <Divider/>
         </>

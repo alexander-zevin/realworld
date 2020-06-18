@@ -9,7 +9,7 @@ const ArticleList: FC<IArticlesListProps> = ({articlesState}) => {
     return (
         <ArticleListRoot>
             <List dense>
-                {articlesState.articles.map((item, index) =>
+                {articlesState.articles.map((item, index, array) =>
                     <Fragment key = {item.slug}>
                         <Article
                             username = {item.author.username}

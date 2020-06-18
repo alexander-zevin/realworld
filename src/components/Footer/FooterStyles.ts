@@ -4,6 +4,8 @@ export const FooterRoot = styled.footer`
     ${({theme}) => `
         background-color: ${theme.palette.primary.main};
         width: 100%;
-        height: 30px;
+        padding: 8px;
+        box-sizing: border-box;
+        color: white;
     `}
 `;

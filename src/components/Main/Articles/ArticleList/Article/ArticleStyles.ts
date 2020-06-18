@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Favorite from '@material-ui/icons/Favorite';
-import {ListItem, Typography} from "@material-ui/core";
-import React from "react";
+import {Typography} from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 
 export const ListBasis = styled.div`
     display: flex;
@@ -12,27 +12,6 @@ export const ListBasisLeft = styled.div``;
 
 export const ListBasisRight = styled.div`
     align-self: flex-end;
-`;
-
-export const FavoriteButton = styled.button`
-    ${({theme}) => `
-        outline: none;
-        border: 1px solid ${theme.palette.primary.main};
-        border-radius: 3px;
-        background-color: transparent;
-        display: flex;
-        align-items: center;
-        padding: 4px;
-    `}
-    
-`;
-
-export const FavoriteCount = styled.span`
-    ${({theme}) => `
-        margin-left: 4px;
-        color: ${theme.palette.primary.main};
-    `}
-    
 `;
 
 export const FavoriteIcon = styled(Favorite).attrs(props => ({
@@ -59,9 +38,12 @@ export const ReadMore = styled(Typography).attrs(props => ({
     variant: "caption",
     component: "div"
 }))`
-   font-size: 0.8em;
+    font-size: 0.8em;
     cursor: pointer;  
     margin-top: 16px;  
+    &:hover {
+        text-decoration-line: underline;
+    }
 `;
 
 export const ListTitle = styled(Typography).attrs(props => ({
@@ -69,5 +51,17 @@ export const ListTitle = styled(Typography).attrs(props => ({
     component: "div"
 }))`
    
+`;
+
+export const FavoriteButton = styled(Button).attrs(() => ({
+
+}))`
+    ${({theme}) => `
+        border: 1px solid ${theme.palette.primary.main};
+        color: ${theme.palette.primary.main};
+        background-color: transparent;
+        padding: 0 8px;
+        min-width: 0px;
+    `}
 `;
 
