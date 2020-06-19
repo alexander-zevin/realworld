@@ -31,11 +31,10 @@ export const getGlobalArticles = () => async (dispatch: Dispatch<ArticlesActions
     dispatch(setProgress(true))
     const response = await articlesAPI.getGlobalArticles();
     dispatch(setArticles(response.data))
-    console.log(response.data)
     dispatch(setProgress(false))
 }
 
-export const getYourArticles = () => async (dispatch: Dispatch<ArticlesActions>) => {
+export const getFeedArticles = () => async (dispatch: Dispatch<ArticlesActions>) => {
     dispatch(setProgress(true))
     const response = await articlesAPI.feedArticles()
     console.log(response.data)
@@ -71,7 +70,15 @@ export const getGlobalArticlesByTag = (tag: string) => (dispatch: Dispatch<Artic
             dispatch(setActiveTab(2))
             dispatch(setTagName(tag))
             dispatch(setArticles(res.data))
-            dispatch(setProgress(false))
         })
         .catch(err => console.log(err))
+        .then(() => dispatch(setProgress(false)))
+}
+
+export const getMyArticles = (author: string) => (dispatch: Dispatch<ArticlesActions>) => {
+    dispatch(setProgress(true))
+    articlesAPI.getMyArticles(author)
+        .then(res => dispatch(setArticles(res.data)))
+        .catch(err => console.log(err))
+        .then(() => dispatch(setProgress(false)))
 }

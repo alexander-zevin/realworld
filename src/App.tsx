@@ -1,11 +1,6 @@
 import React, {useEffect} from 'react'
-import Header from "./components/Header/Header";
 import {AppRoot} from "./AppStyles";
-import Main from "./components/Main/Main";
-import Footer from "./components/Footer/Footer";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import SignUp from "./components/SignUp/SignUp";
-import SignIn from "./components/SignIn/SignIn";
 import {getTokenLocalStorage} from "./lib/localStorage";
 import {setToken, usersAPI} from "./api/api";
 import {useDispatch, useSelector} from "react-redux";
@@ -15,9 +10,13 @@ import {RootState} from "./store/store";
 import Progress from "./components/common/Progress";
 import {initializedSuccess} from "./store/actions/appActions";
 import {FullScreenBox} from "./components/common/styled/rest";
-import Editor from "./components/Editor/Editor";
-import ArticlePage from "./components/ArticlePage/ArticlePage";
 import {getGlobalArticles} from "./store/actions/articlesActions";
+import Home from "./components/Home/Home";
+import NewArticle from "./components/NewArticle/NewArticle";
+import SignIn from "./components/SignIn/SignIn";
+import SignUp from "./components/SignUp/SignUp";
+import ArticlePage from "./components/ArticlePage/ArticlePage";
+import Profile from "./components/Profile/Profile";
 
 const App = () => {
 
@@ -47,25 +46,26 @@ const App = () => {
     return (
         <AppRoot>
             <Router>
-                <Header/>
                 <Switch>
                     <Route exact path="/">
-                        <Main/>
+                        <Home/>
                     </Route>
-                    <Route path='/editor'>
-                        <Editor/>
+                    <Route path='/newArticle'>
+                        <NewArticle/>
                     </Route>
-                    <Route path="/signup">
-                        <SignUp/>
-                    </Route>
-                    <Route path="/signin">
+                    <Route path='/signin'>
                         <SignIn/>
                     </Route>
-                    <Route path="/article/:slug">
+                    <Route path='/signup'>
+                        <SignUp/>
+                    </Route>
+                    <Route path='/article/:slug'>
                         <ArticlePage/>
                     </Route>
+                    <Route path='/profiles/:username'>
+                        <Profile/>
+                    </Route>
                 </Switch>
-                <Footer/>
             </Router>
         </AppRoot>
     )

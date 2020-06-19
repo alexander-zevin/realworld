@@ -1,8 +1,8 @@
 import React from 'react'
-import {StyledButton, StyledLink} from "../../common/styled/rest";
-import {ProfileState} from "../../../store/types/profileTypes";
+import {StyledButton, StyledLink} from "../../styled/rest";
+import {ProfileState} from "../../../../store/types/profileTypes";
 import {useSelector} from "react-redux";
-import {RootState} from "../../../store/store";
+import {RootState} from "../../../../store/store";
 import {useHistory} from "react-router-dom";
 
 const AuthBlock = () => {
@@ -10,7 +10,7 @@ const AuthBlock = () => {
     const username: string = useSelector((state: RootState) => state.profile.user.username);
 
     const history = useHistory();
-    const toEditor = () => history.push('/editor')
+    const toEditor = () => history.push('/newArticle')
     const toSettings = () => history.push('/settings')
     const toProfiles = () => history.push(`/profiles/${username}`)
 

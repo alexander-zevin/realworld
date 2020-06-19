@@ -6,11 +6,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {
     getGlobalArticles,
     getGlobalArticlesByTag,
-    getYourArticles,
-    setActiveTab
+    getFeedArticles,
+    setActiveTab, getMyArticles
 } from "../../../../store/actions/articlesActions";
 import {RootState} from "../../../../store/store";
-import {useHistory} from "react-router-dom";
+import {useHistory, Route} from "react-router-dom";
 import {ArticlesState} from "../../../../store/types/articlesType";
 
 const TabArticles = () => {
@@ -19,11 +19,10 @@ const TabArticles = () => {
 
     const history = useHistory();
 
-    // const tabTags: boolean = useSelector((state: RootState) => state.tags.tabTags);
-
     const articlesState: ArticlesState = useSelector((state: RootState) => state.articles);
+    const username: string = useSelector((state: RootState) => state.profile.user.username);
+    console.log(articlesState)
 
-    // const [value, setValue] = React.useState<number>(1)
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => dispatch(setActiveTab(newValue))
 
     const isAuth: boolean = useSelector((state: RootState) => state.auth.isAuth);
@@ -32,11 +31,13 @@ const TabArticles = () => {
 
     const getYourFeed = () => {
         if (isAuth) {
-            dispatch(getYourArticles())
+            dispatch(getFeedArticles())
         } else {
             history.push('/signin')
         }
     }
+
+
 
     return (
         <>
@@ -46,8 +47,13 @@ const TabArticles = () => {
                 textColor="primary"
                 onChange={handleChange}
             >
+
+                <Tab label="My posts" onClick={() => dispatch(getMyArticles(username))} />
+                <Tab label="Favorited posts" />
+
                 <Tab label="Your Feed" onClick={getYourFeed} />
                 <Tab label="Global Feed"  onClick={getGlobalFeed}/>
+
                 { articlesState.tabTags &&
                     <Tab
                         label={`#${articlesState.tagName}`}

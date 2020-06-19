@@ -18,11 +18,15 @@ import Chip from "@material-ui/core/Chip";
 import {TagsBox} from "../../../Tags/TagsStyles";
 import {articlesAPI} from "../../../../../api/api";
 import { useHistory } from "react-router-dom";
+import {getGlobalArticlesByTag} from "../../../../../store/actions/articlesActions";
+import {useDispatch} from "react-redux";
 
 const Article: FC<ArticlesProps> = ({username, createdAt, title, description,
                                          favorited, favoritesCount, tagList, slug}) => {
 
     const history = useHistory()
+
+    const dispatch = useDispatch()
 
     const favoriteArticle = () => {
         console.log(slug)
@@ -55,7 +59,14 @@ const Article: FC<ArticlesProps> = ({username, createdAt, title, description,
                 </ListBasisLeft>
                 <ListBasisRight>
                     <TagsBox>
-                        { tagList.map((tag, index) => <Chip label={tag} size="small" key={tag + index}/>) }
+                        { tagList.map((tag, index) =>
+                            <Chip
+                                label={tag}
+                                size="small"
+                                key={tag + index}
+                                onClick={() => dispatch(getGlobalArticlesByTag(tag))}
+                            />
+                        )}
                     </TagsBox>
                 </ListBasisRight>
             </ListBasis>

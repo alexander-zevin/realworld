@@ -4,7 +4,7 @@ import {ArticlesRoot} from "./ArticlesStyles";
 import ArticleList from "./ArticleList/ArticleList";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../store/store";
-import Progress from "../../common/Progress";
+import Progress from "../Progress";
 import {ArticlesState} from "../../../store/types/articlesType";
 
 const Articles = () => {

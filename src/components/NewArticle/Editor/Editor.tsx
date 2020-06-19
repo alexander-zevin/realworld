@@ -1,13 +1,13 @@
 import React, {useReducer} from 'react'
 import {ButtonContainer, EditorForm, EditorRoot} from "./EdtorStyles";
-import {StyledButton} from "../common/styled/rest";
+import {StyledButton} from "../../common/styled/rest";
 import {editorReducer, initialState} from "./EditorReducer";
 import {setBody, setDescription, setEditTitle, setError, setTags} from "./EditorActions";
 import {TextField} from "@material-ui/core";
-import {articlesAPI} from "../../api/api";
-import {setArticle} from "../../store/actions/articlesActions";
+import {articlesAPI} from "../../../api/api";
+import {setArticle} from "../../../store/actions/articlesActions";
 import {useDispatch} from "react-redux";
-import {splitTags} from "../../lib/splitString";
+import {splitTags} from "../../../lib/splitString";
 import { useHistory } from "react-router-dom";
 
 const Editor = () => {

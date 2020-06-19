@@ -1,9 +1,9 @@
 import React from 'react'
 import {HeaderRoot, Navigation, Title} from "./HeaderStyles";
-import {StyledButton, StyledLink} from "../common/styled/rest";
+import {StyledButton, StyledLink} from "../styled/rest";
 import SignBlock from "./SignBlock/SignBlock";
 import {useSelector} from "react-redux";
-import {RootState} from "../../store/store";
+import {RootState} from "../../../store/store";
 import AuthBlock from "./AuthBlock/AuthBlock";
 import { useHistory } from "react-router-dom";
 
