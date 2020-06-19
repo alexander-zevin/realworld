@@ -1,4 +1,11 @@
-import {SET_ARTICLE, SET_ARTICLES, SET_PROGRESS, SHOW_TAB_TAGS} from "../constants/articlesContants";
+import {
+    SET_ACTIVE_TAB,
+    SET_ARTICLE,
+    SET_ARTICLES,
+    SET_PROGRESS,
+    SET_TAB_TAGS,
+    SET_TAG_NAME
+} from "../constants/articlesContants";
 
 export interface Article {
     slug: string
@@ -22,7 +29,9 @@ export interface ArticlesState {
     articles: Array<Article>
     articlesCount: number | null
     isProgress: boolean
-    showTabTags: boolean
+    tabTags: boolean
+    activeTab: number
+    tagName: string
 }
 
 export interface GetArticles {
@@ -40,9 +49,19 @@ export interface SetArticle {
     article: Article
 }
 
-export interface ShowTabTags {
-    type: typeof SHOW_TAB_TAGS
-    showTabTags: boolean
+export interface SetTabTags {
+    type: typeof SET_TAB_TAGS
+    tabTags: boolean
 }
 
-export type ArticlesActions = GetArticles | SetProgress | SetArticle | ShowTabTags
+export interface SetActiveTab {
+    type: typeof SET_ACTIVE_TAB
+    activeTab: number
+}
+
+export interface SetTagName {
+    type: typeof SET_TAG_NAME
+    tagName: string
+}
+
+export type ArticlesActions = GetArticles | SetProgress | SetArticle | SetTabTags | SetActiveTab | SetTagName

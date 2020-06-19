@@ -1,6 +1,6 @@
 import {Dispatch} from "redux";
 import {tagsAPI} from "../../api/api";
-import {GetTags, TagsState, TagsActions} from "../types/tagsTypes";
+import {GetTags, TagsActions, TagsState} from "../types/tagsTypes";
 import {SET_TAGS} from "../constants/tagsConstants";
 
 export const setTags = (tagsState: TagsState): GetTags => ({ type: SET_TAGS, tags: tagsState.tags });

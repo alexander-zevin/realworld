@@ -1,11 +1,17 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import Tabs from '@material-ui/core/Tabs';
 import {Tab} from "@material-ui/core";
 import Divider from '@material-ui/core/Divider';
 import {useDispatch, useSelector} from "react-redux";
-import {getGlobalArticles, getYourArticles} from "../../../../store/actions/articlesActions";
+import {
+    getGlobalArticles,
+    getGlobalArticlesByTag,
+    getYourArticles,
+    setActiveTab
+} from "../../../../store/actions/articlesActions";
 import {RootState} from "../../../../store/store";
 import {useHistory} from "react-router-dom";
+import {ArticlesState} from "../../../../store/types/articlesType";
 
 const TabArticles = () => {
 
@@ -13,8 +19,12 @@ const TabArticles = () => {
 
     const history = useHistory();
 
-    const [value, setValue] = React.useState<number>(1)
-    const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => setValue(newValue)
+    // const tabTags: boolean = useSelector((state: RootState) => state.tags.tabTags);
+
+    const articlesState: ArticlesState = useSelector((state: RootState) => state.articles);
+
+    // const [value, setValue] = React.useState<number>(1)
+    const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => dispatch(setActiveTab(newValue))
 
     const isAuth: boolean = useSelector((state: RootState) => state.auth.isAuth);
 
@@ -31,14 +41,19 @@ const TabArticles = () => {
     return (
         <>
             <Tabs
-                value={value}
+                value={articlesState.activeTab}
                 indicatorColor="primary"
                 textColor="primary"
                 onChange={handleChange}
             >
                 <Tab label="Your Feed" onClick={getYourFeed} />
                 <Tab label="Global Feed"  onClick={getGlobalFeed}/>
-                <Tab label="#" />
+                { articlesState.tabTags &&
+                    <Tab
+                        label={`#${articlesState.tagName}`}
+                        onClick={() => dispatch(getGlobalArticlesByTag(articlesState.tagName))}
+                    />
+                }
             </Tabs>
             <Divider/>
         </>

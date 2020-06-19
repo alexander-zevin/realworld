@@ -2,12 +2,7 @@ import React, {useReducer} from 'react'
 import {ButtonContainer, EditorForm, EditorRoot} from "./EdtorStyles";
 import {StyledButton} from "../common/styled/rest";
 import {editorReducer, initialState} from "./EditorReducer";
-import {
-    setBody,
-    setDescription,
-    setEditTitle, setError,
-    setTags
-} from "./EditorActions";
+import {setBody, setDescription, setEditTitle, setError, setTags} from "./EditorActions";
 import {TextField} from "@material-ui/core";
 import {articlesAPI} from "../../api/api";
 import {setArticle} from "../../store/actions/articlesActions";

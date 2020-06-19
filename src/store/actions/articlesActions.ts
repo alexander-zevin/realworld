@@ -1,12 +1,18 @@
-import {SET_ARTICLE, SET_ARTICLES, SET_PROGRESS, SHOW_TAB_TAGS} from "../constants/articlesContants";
+import {
+    SET_ACTIVE_TAB,
+    SET_ARTICLE,
+    SET_ARTICLES,
+    SET_PROGRESS,
+    SET_TAB_TAGS,
+    SET_TAG_NAME
+} from "../constants/articlesContants";
 import {
     ArticlesActions,
     Article,
     ArticlesState,
     GetArticles,
     SetArticle,
-    SetProgress,
-    ShowTabTags
+    SetProgress, SetTabTags, SetActiveTab, SetTagName,
 } from "../types/articlesType";
 import {articlesAPI} from "../../api/api";
 import {Dispatch} from "redux";
@@ -25,6 +31,7 @@ export const getGlobalArticles = () => async (dispatch: Dispatch<ArticlesActions
     dispatch(setProgress(true))
     const response = await articlesAPI.getGlobalArticles();
     dispatch(setArticles(response.data))
+    console.log(response.data)
     dispatch(setProgress(false))
 }
 
@@ -41,7 +48,30 @@ export const setArticle = (article: Article): SetArticle => ({
     article: article
 })
 
-export const showTabTags = (showTabTags: boolean): ShowTabTags => ({
-    type: SHOW_TAB_TAGS,
-    showTabTags: showTabTags
+export const setTabTags = (tabTags: boolean): SetTabTags => ({
+    type: SET_TAB_TAGS,
+    tabTags: tabTags
 })
+
+export const setActiveTab = (activeTab: number): SetActiveTab => ({
+    type: SET_ACTIVE_TAB,
+    activeTab: activeTab
+})
+
+export const setTagName = (tagName: string): SetTagName => ({
+    type: SET_TAG_NAME,
+    tagName: tagName
+})
+
+export const getGlobalArticlesByTag = (tag: string) => (dispatch: Dispatch<ArticlesActions>) => {
+    dispatch(setProgress(true))
+    articlesAPI.getGlobalArticlesByTag(tag)
+        .then(res => {
+            dispatch(setTabTags(true))
+            dispatch(setActiveTab(2))
+            dispatch(setTagName(tag))
+            dispatch(setArticles(res.data))
+            dispatch(setProgress(false))
+        })
+        .catch(err => console.log(err))
+}
