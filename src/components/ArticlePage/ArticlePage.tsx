@@ -12,36 +12,36 @@ import Footer from "../common/Footer/Footer";
 
 const ArticlePage = () => {
 
-		const {slug} = useParams();
+    const {slug} = useParams();
 
-		const [state, dispatch] = useReducer(articlePageReducer, initialState)
+    const [state, dispatch] = useReducer(articlePageReducer, initialState)
 
-		console.log(state)
+    console.log(state)
 
-		useEffect(() => {
-				articlesAPI.getArticle(slug)
-						.then(res => dispatch(setArticle(res.data.article)))
-						.catch(err => console.log(err))
-		}, [slug])
+    useEffect(() => {
+        articlesAPI.getArticle(slug)
+            .then(res => dispatch(setArticle(res.data.article)))
+            .catch(err => console.log(err))
+    }, [slug])
 
-		return (
-				<>
-						<Header/>
-						<ArticlePageRoot>
-								<ArticleHeader
-										title={state.title}
-										author={state.author}
-										createdAt={convertDate(state.createdAt)}
-										favorited={state.favorited}
-										favoritesCount={state.favoritesCount}
-										slug={slug}
-										dispatch={dispatch}
-								/>
-								<ArticleBody body={state.body}/>
-						</ArticlePageRoot>
-						<Footer/>
-				</>
-		)
+    return (
+        <>
+            <Header/>
+            <ArticlePageRoot>
+                <ArticleHeader
+                    title={state.title}
+                    author={state.author}
+                    createdAt={convertDate(state.createdAt)}
+                    favorited={state.favorited}
+                    favoritesCount={state.favoritesCount}
+                    slug={slug}
+                    dispatch={dispatch}
+                />
+                <ArticleBody body={state.body}/>
+            </ArticlePageRoot>
+            <Footer/>
+        </>
+    )
 }
 
 export default ArticlePage
