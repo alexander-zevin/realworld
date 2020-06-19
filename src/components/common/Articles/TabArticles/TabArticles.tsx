@@ -37,7 +37,21 @@ const TabArticles = () => {
         }
     }
 
+    const getMyPosts = () => {
+        if (isAuth) {
+            dispatch(getMyArticles(username))
+        } else {
+            history.push('/signin')
+        }
+    }
 
+    /*const getFavoritedPost = () => {
+        if (isAuth) {
+            dispatch(getMyArticles(username))
+        } else {
+            history.push('/signin')
+        }
+    }*/
 
     return (
         <>
@@ -48,7 +62,7 @@ const TabArticles = () => {
                 onChange={handleChange}
             >
 
-                <Tab label="My posts" onClick={() => dispatch(getMyArticles(username))} />
+                <Tab label="My posts" onClick={() => getMyPosts()} />
                 <Tab label="Favorited posts" />
 
                 <Tab label="Your Feed" onClick={getYourFeed} />
