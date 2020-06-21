@@ -1,4 +1,4 @@
-import {Button} from "@material-ui/core";
+import {Button, TextField} from "@material-ui/core";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 
@@ -28,4 +28,15 @@ export const FullScreenBox = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+`;
+
+export const MultilineTextField = styled(TextField).attrs(() => ({
+    fullWidth: true,
+    size: 'medium',
+    variant: "outlined",
+    margin: 'normal',
+    multiline: true,
+    rows: 6
+}))`
+    
 `;

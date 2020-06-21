@@ -1,5 +1,5 @@
 import {SettingsActions, SettingsState} from "./SettingsTypes";
-import {SET_BIO, SET_EMAIL, SET_IMAGE, SET_SETTINGS_STATE, SET_USERNAME} from "./SettingsConstants";
+import {SET_BIO, SET_EMAIL, SET_IMAGE, SET_PASSWORD, SET_SETTINGS_STATE, SET_USERNAME} from "./SettingsConstants";
 
 export const initialState: SettingsState = {
     image: '',
@@ -18,15 +18,14 @@ export const settingsReducer = (state: SettingsState, action: SettingsActions) =
         case SET_SETTINGS_STATE:
             return {
                 ...state,
-                image: action.image,
-                username: action.username,
-                bio: action.bio,
-                email: action.email
+                ...action.profile.user
             }
         case SET_BIO:
             return {...state, bio: action.bio}
         case SET_EMAIL:
             return {...state, email: action.email}
+        case SET_PASSWORD:
+            return {...state, password: action.password}
         default: return state
     }
 }

@@ -7,7 +7,6 @@ const initialState: ProfileState = {
         email: '',
         bio: '',
         image: '',
-        token: ''
     },
     error: {
         name: null,
@@ -20,15 +19,13 @@ export const profileReducer = (state = initialState, action: ProfileActionType):
         case SET_PROFILE:
             return {
                 ...state,
-                user: {
-                    ...state.user,
-                    username: action.user.username,
-                    email: action.user.email,
-                    token: action.user.token
-                }
+                user: action.user
             }
         case SET_PROFILE_ERROR:
-            return {...state, error: action.error}
+            return {
+                ...state,
+                error: action.error
+            }
         default: return state
     }
 }

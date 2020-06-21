@@ -1,13 +1,14 @@
 import {SET_PROFILE_ERROR, SET_PROFILE} from "../constants/profileConstants";
 
+export interface User {
+    username: string
+    email: string
+    bio: string
+    image: string
+}
+
 export interface ProfileState {
-    user: {
-        username: string
-        email: string
-        bio: string
-        image: string
-        token: string
-    }
+    user: User
     error: {
         name: string | null
         message: string | null
@@ -16,11 +17,7 @@ export interface ProfileState {
 
 export interface SetProfile {
     type: typeof SET_PROFILE
-    user: {
-        username: string
-        email: string
-        token: string
-    }
+    user: User
 }
 
 export interface SetError {

@@ -1,5 +1,5 @@
-import {SetBio, SetEmail, SetImage, SetSettingsState, SetUsername} from "./SettingsTypes";
-import {SET_BIO, SET_EMAIL, SET_IMAGE, SET_SETTINGS_STATE, SET_USERNAME} from "./SettingsConstants";
+import {SetBio, SetEmail, SetImage, SetPassword, SetSettingsState, SetUsername} from "./SettingsTypes";
+import {SET_BIO, SET_EMAIL, SET_IMAGE, SET_PASSWORD, SET_SETTINGS_STATE, SET_USERNAME} from "./SettingsConstants";
 import {ProfileState} from "../../store/types/profileTypes";
 
 export const setImage = (image: string): SetImage => ({
@@ -14,10 +14,7 @@ export const setUsername = (username: string): SetUsername => ({
 
 export const setSettingsState = (profileState: ProfileState): SetSettingsState => ({
     type: SET_SETTINGS_STATE,
-    image: profileState.user.image,
-    username: profileState.user.username,
-    bio: profileState.user.bio,
-    email: profileState.user.email
+    profile: profileState
 })
 
 export const setBio = (bio: string): SetBio => ({
@@ -28,4 +25,9 @@ export const setBio = (bio: string): SetBio => ({
 export const setEmail = (email: string): SetEmail => ({
     type: SET_EMAIL,
     email: email
+})
+
+export const setPassword = (password: string): SetPassword => ({
+    type: SET_PASSWORD,
+    password: password
 })

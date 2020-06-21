@@ -1,15 +1,23 @@
 import React, {useEffect, useReducer} from 'react'
 import Header from "../common/Header/Header";
 import Footer from "../common/Footer/Footer";
-import {SettingsMain, SettingsTitle} from "./SettingsStyles";
+import {SettingsButton, SettingsMain, SettingsTitle} from "./SettingsStyles";
 import {TextField} from "@material-ui/core";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/store";
 import {initialState, settingsReducer} from "./SettingsReducer";
 import {ProfileState} from "../../store/types/profileTypes";
-import {setBio, setEmail, setImage, setSettingsState, setUsername} from "./SettingsActions";
+import {setBio, setEmail, setImage, setPassword, setSettingsState, setUsername} from "./SettingsActions";
+import {MultilineTextField} from "../common/styled/rest";
+import {usersAPI} from "../../api/api";
+import {setProfile} from "../../store/actions/profileActions";
+import {useHistory} from "react-router-dom";
 
 const Settings = () => {
+
+    const dispatchRedux = useDispatch()
+
+    const history = useHistory();
 
     const profile: ProfileState = useSelector((state: RootState) => state.profile)
 
@@ -19,9 +27,15 @@ const Settings = () => {
         dispatch(setSettingsState(profile))
     }, [profile])
 
-    useEffect(() => {
-        console.log(state)
-    }, [state])
+    const updateUser = () => {
+        usersAPI.updateUser(state)
+            .then(res => {
+                dispatchRedux(setProfile(res.data.user))
+                history.push("/");
+            })
+            .catch(err => console.log(err))
+            .then(() => history.push("/"))
+    }
 
     return (
         <>
@@ -48,12 +62,8 @@ const Settings = () => {
                     value={state.username}
                     onChange={event => dispatch(setUsername(event.target.value))}
                 />
-                <TextField
+                <MultilineTextField
                     label='bio'
-                    fullWidth
-                    size='medium'
-                    variant="outlined"
-                    margin='normal'
                     value={state.bio}
                     onChange={event => dispatch(setBio(event.target.value))}
                 />
@@ -67,6 +77,19 @@ const Settings = () => {
                     value={state.email}
                     onChange={event => dispatch(setEmail(event.target.value))}
                 />
+                <TextField
+                    type='password'
+                    label='password'
+                    fullWidth
+                    size='medium'
+                    variant="outlined"
+                    margin='normal'
+                    value={state.password}
+                    onChange={event => dispatch(setPassword(event.target.value))}
+                />
+                <SettingsButton onClick={() => updateUser()}>
+                    Update Settings
+                </SettingsButton>
             </SettingsMain>
             <Footer/>
         </>

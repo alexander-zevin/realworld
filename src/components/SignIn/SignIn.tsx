@@ -13,60 +13,60 @@ import Footer from "../common/Footer/Footer";
 
 const SignIn = () => {
 
-		const dispatchRedux = useDispatch()
+    const dispatchRedux = useDispatch()
 
-		const [state, dispatch] = useReducer(signInReducer, initialState);
+    const [state, dispatch] = useReducer(signInReducer, initialState);
 
-		const history = useHistory();
+    const history = useHistory();
 
-		const signIn = async () => {
-				try {
-						const response = await usersAPI.signIn(state.email, state.password)
-						setToken(response.data.user.token)
-						setTokenLocalStorage(response.data.user.token)
-						dispatchRedux(setProfile(response.data.user))
-						dispatchRedux(setAuthError(null))
-						dispatchRedux(setAuth(true))
-						history.push("/");
-				} catch (err) {
-						dispatch(setError(err.response.data.errors['email or password']))
-				}
-		}
+    const signIn = async () => {
+        try {
+            const response = await usersAPI.signIn(state.email, state.password)
+            setToken(response.data.user.token)
+            setTokenLocalStorage(response.data.user.token)
+            dispatchRedux(setProfile(response.data.user))
+            dispatchRedux(setAuthError(null))
+            dispatchRedux(setAuth(true))
+            history.push("/");
+        } catch (err) {
+            dispatch(setError(err.response.data.errors['email or password']))
+        }
+    }
 
-		return (
-				<>
-						<Header/>
-						<SignRoot>
-								<SignForm>
-										<SignTitle>Sign In</SignTitle>
-										<SignDescription onClick={() => history.push('/signup')}>
-												Need an account?
-										</SignDescription>
-										<SignInput
-												id='textFieldEmail'
-												label='Email'
-												value={state.email}
-												onChange={event => dispatch(setEmail(event.target.value))}
-										/>
-										<SignInput
-												id='textFieldPassword'
-												label='Password'
-												type='password'
-												value={state.password}
-												onChange={event => dispatch(setPassword(event.target.value))}
-										/>
-										{
-												state.error &&
-												<Error>{state.error}</Error>
-										}
-										<SignButton onClick={signIn}>
-												Sign In
-										</SignButton>
-								</SignForm>
-						</SignRoot>
-						<Footer/>
-				</>
-		)
+    return (
+        <>
+            <Header/>
+            <SignRoot>
+                <SignForm>
+                    <SignTitle>Sign In</SignTitle>
+                    <SignDescription onClick={() => history.push('/signup')}>
+                        Need an account?
+                    </SignDescription>
+                    <SignInput
+                        id='textFieldEmail'
+                        label='Email'
+                        value={state.email}
+                        onChange={event => dispatch(setEmail(event.target.value))}
+                    />
+                    <SignInput
+                        id='textFieldPassword'
+                        label='Password'
+                        type='password'
+                        value={state.password}
+                        onChange={event => dispatch(setPassword(event.target.value))}
+                    />
+                    {
+                        state.error &&
+                        <Error>{state.error}</Error>
+                    }
+                    <SignButton onClick={signIn}>
+                        Sign In
+                    </SignButton>
+                </SignForm>
+            </SignRoot>
+            <Footer/>
+        </>
+    )
 }
 
 export default SignIn

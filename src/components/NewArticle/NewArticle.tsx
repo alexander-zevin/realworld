@@ -4,13 +4,13 @@ import Footer from "../common/Footer/Footer";
 import Editor from "./Editor/Editor";
 
 const NewArticle = () => {
-		return (
-				<>
-						<Header/>
-						<Editor/>
-						<Footer/>
-				</>
-		)
+    return (
+        <>
+            <Header/>
+            <Editor/>
+            <Footer/>
+        </>
+    )
 }
 
 export default NewArticle

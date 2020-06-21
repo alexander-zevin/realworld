@@ -1,4 +1,5 @@
-import {SET_BIO, SET_EMAIL, SET_IMAGE, SET_SETTINGS_STATE, SET_USERNAME} from "./SettingsConstants";
+import {SET_BIO, SET_EMAIL, SET_IMAGE, SET_PASSWORD, SET_SETTINGS_STATE, SET_USERNAME} from "./SettingsConstants";
+import {ProfileState} from "../../store/types/profileTypes";
 
 export interface SettingsState {
     image: string
@@ -20,10 +21,7 @@ export interface SetUsername {
 
 export interface SetSettingsState {
     type: typeof SET_SETTINGS_STATE
-    image: string
-    username: string
-    bio: string
-    email: string
+    profile: ProfileState
 }
 
 export interface SetBio {
@@ -36,4 +34,9 @@ export interface SetEmail {
     email: string
 }
 
-export type SettingsActions = SetImage | SetUsername | SetSettingsState | SetBio | SetEmail
+export interface SetPassword {
+    type: typeof SET_PASSWORD
+    password: string
+}
+
+export type SettingsActions = SetImage | SetUsername | SetSettingsState | SetBio | SetEmail | SetPassword
