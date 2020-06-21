@@ -17,6 +17,7 @@ import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
 import ArticlePage from "./components/ArticlePage/ArticlePage";
 import Profile from "./components/Profile/Profile";
+import Settings from "./components/Settings/Settings";
 
 const App = () => {
 
@@ -29,6 +30,7 @@ const App = () => {
         usersAPI.getUser()
             .then(res => {
                 dispatch(setProfile(res.data.user))
+                console.log(res.data.user)
                 dispatch(setAuth(true))
             })
             .catch(err => dispatch(setAuthError(err.response.data.errors.error.name)))
@@ -64,6 +66,9 @@ const App = () => {
                     </Route>
                     <Route path='/profiles/:username'>
                         <Profile/>
+                    </Route>
+                    <Route path='/settings'>
+                        <Settings/>
                     </Route>
                 </Switch>
             </Router>

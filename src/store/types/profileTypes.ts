@@ -4,8 +4,9 @@ export interface ProfileState {
     user: {
         username: string
         email: string
-        /*bio: string
-        image: string | null*/
+        bio: string
+        image: string
+        token: string
     }
     error: {
         name: string | null
@@ -18,6 +19,7 @@ export interface SetProfile {
     user: {
         username: string
         email: string
+        token: string
     }
 }
 

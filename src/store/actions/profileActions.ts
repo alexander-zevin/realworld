@@ -1,7 +1,7 @@
 import {SET_PROFILE_ERROR, SET_PROFILE} from "../constants/profileConstants";
 import {SetError, SetProfile} from "../types/profileTypes";
 
-export const setProfile = (user: {username: string, email: string}): SetProfile => ({
+export const setProfile = (user: {username: string, email: string, token: string}): SetProfile => ({
     type: SET_PROFILE,
     user: user
 })
