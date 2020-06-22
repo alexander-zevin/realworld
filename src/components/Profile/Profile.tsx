@@ -26,6 +26,7 @@ const Profile = () => {
             <ProfileHeader
                 username = {profileState.user.username}
                 bio={profileState.user.bio}
+                image={profileState.user.image}
             />
             <ProfileMain>
                 <Articles/>

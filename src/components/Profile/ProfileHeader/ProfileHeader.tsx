@@ -1,9 +1,9 @@
 import React, {FC} from 'react'
-import {AvatarCircle, Bio, EditButton, ProfileHeaderRoot, TitleName} from './ProfileHeaderStyles'
+import {Ava, Bio, EditButton, ProfileHeaderRoot, TitleName} from './ProfileHeaderStyles'
 import {ProfileHeaderProps} from "./ProfileHeaderTypes";
 import { useHistory } from "react-router-dom";
 
-const ProfileHeader: FC<ProfileHeaderProps> = ({username, bio}) => {
+const ProfileHeader: FC<ProfileHeaderProps> = ({username, bio, image}) => {
 
     const history = useHistory();
 
@@ -11,7 +11,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({username, bio}) => {
 
     return (
         <ProfileHeaderRoot>
-            <AvatarCircle>D</AvatarCircle>
+            <Ava src={image}>H</Ava>
             <TitleName>{username}</TitleName>
             <Bio>{bio}</Bio>
             <EditButton onClick={toSettings}>

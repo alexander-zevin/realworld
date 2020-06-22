@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 import {Typography} from "@material-ui/core";
+import Avatar from "@material-ui/core/Avatar";
 
 export const ProfileHeaderRoot = styled.div`
 	background-color: #e0e0e0;
@@ -39,4 +40,9 @@ export const Bio = styled(Typography).attrs(props => ({
 		component: "span"
 }))`
    
+`;
+
+export const Ava = styled(Avatar).attrs(() => ({}))`
+    height: 100px;
+    width: 100px;
 `;
