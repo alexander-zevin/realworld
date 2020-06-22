@@ -9,14 +9,13 @@ import {convertDate} from "../../lib/convertDate";
 import ArticleBody from "./ArticleBody/ArticleBody";
 import Header from "../common/Header/Header";
 import Footer from "../common/Footer/Footer";
+import Comments from "./Comments/Comments";
 
 const ArticlePage = () => {
 
     const {slug} = useParams();
 
     const [state, dispatch] = useReducer(articlePageReducer, initialState)
-
-    console.log(state)
 
     useEffect(() => {
         articlesAPI.getArticle(slug)
@@ -38,6 +37,7 @@ const ArticlePage = () => {
                     dispatch={dispatch}
                 />
                 <ArticleBody body={state.body}/>
+                <Comments slug={slug}/>
             </ArticlePageRoot>
             <Footer/>
         </>

@@ -79,3 +79,13 @@ export const profileAPI = {
     }
 }
 
+export const commentsAPI = {
+    postComment(slug: string, body: string) {
+        return instance.post(`articles/${slug}/comments`, {
+            comment: {
+                body: body
+            }
+        })
+    }
+}
+

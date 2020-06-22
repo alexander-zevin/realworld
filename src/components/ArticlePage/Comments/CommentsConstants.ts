@@ -1,0 +1,1 @@
+export const SET_INPUT_COMMENT = 'SET_INPUT_COMMENT'
