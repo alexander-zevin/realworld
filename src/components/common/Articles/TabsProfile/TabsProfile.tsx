@@ -3,12 +3,7 @@ import Tabs from '@material-ui/core/Tabs';
 import {Tab} from "@material-ui/core";
 import Divider from '@material-ui/core/Divider';
 import {useDispatch, useSelector} from "react-redux";
-import {
-    getGlobalArticles,
-    getGlobalArticlesByTag,
-    getFeedArticles,
-    setActiveTab, getMyArticles
-} from "../../../../store/actions/articlesActions";
+import {setActiveTab, getMyArticles} from "../../../../store/actions/articlesActions";
 import {RootState} from "../../../../store/store";
 import {useHistory, Route} from "react-router-dom";
 import {ArticlesState} from "../../../../store/types/articlesType";
@@ -33,14 +28,6 @@ const TabsProfile = () => {
             history.push('/signin')
         }
     }
-
-    /*const getFavoritedPost = () => {
-        if (isAuth) {
-            dispatch(getMyArticles(username))
-        } else {
-            history.push('/signin')
-        }
-    }*/
 
     return (
         <>

@@ -23,7 +23,10 @@ const Profile = () => {
     return (
         <>
             <Header/>
-            <ProfileHeader username = {profileState.user.username}/>
+            <ProfileHeader
+                username = {profileState.user.username}
+                bio={profileState.user.bio}
+            />
             <ProfileMain>
                 <Articles/>
             </ProfileMain>
