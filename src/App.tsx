@@ -30,13 +30,11 @@ const App = () => {
         usersAPI.getUser()
             .then(res => {
                 dispatch(setProfile(res.data.user))
-                console.log(res.data.user)
                 dispatch(setAuth(true))
             })
             .catch(err => dispatch(setAuthError(err.response.data.errors.error.name)))
             .then(() => {
                 dispatch(initializedSuccess(true))
-                dispatch(getGlobalArticles())
             })
     }, [dispatch])
 

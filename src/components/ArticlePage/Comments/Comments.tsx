@@ -1,4 +1,4 @@
-import React, {FC, useReducer, useState} from 'react'
+import React, {FC, useEffect, useReducer, useState} from 'react'
 import PostComment from "./PostComment/PostComment";
 import {CommentsRoot} from "./CommentsStyles";
 import {commentsReducer, initialState} from "./CommentsReducer";
@@ -14,6 +14,16 @@ const Comments: FC<CommentsProps> = ({slug}) => {
             .then(res => console.log(res))
             .catch(err => console.log(err))
     }
+
+    const getComment = () => {
+        commentsAPI.getComment(slug)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        getComment()
+    }, [])
 
     return (
         <CommentsRoot>

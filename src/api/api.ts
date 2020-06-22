@@ -86,6 +86,9 @@ export const commentsAPI = {
                 body: body
             }
         })
+    },
+    getComment(slug: string) {
+        return instance.get(`articles/${slug}/comments`)
     }
 }
 
