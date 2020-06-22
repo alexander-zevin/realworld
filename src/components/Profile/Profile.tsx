@@ -8,15 +8,18 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/store";
 import {ProfileState} from "../../store/types/profileTypes";
 import {getMyArticles, setActiveTab} from "../../store/actions/articlesActions";
+import {ArticlesState} from "../../store/types/articlesType";
 
 const Profile = () => {
+
+    const articlesState: ArticlesState = useSelector((state: RootState) => state.articles);
 
     const profileState: ProfileState = useSelector((state: RootState) => state.profile)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getMyArticles(profileState.user.username))
+        dispatch(getMyArticles(profileState.user.username, articlesState.offset, articlesState.limit))
         dispatch(setActiveTab(0))
     }, [])
 

@@ -3,15 +3,15 @@ import MuiPagination from '@material-ui/lab/Pagination';
 import {PaginationRoot} from "./PaginationStyles";
 import {PaginationProps} from "./PaginationTypes";
 import {useDispatch, useSelector} from "react-redux";
-import {getGlobalArticles, setPagination} from "../../../../store/actions/articlesActions";
-import {ArticlesState} from "../../../../store/types/articlesType";
+import {getMyArticles} from "../../../../store/actions/articlesActions";
 import {RootState} from "../../../../store/store";
+import {ProfileState} from "../../../../store/types/profileTypes";
 
-const Pagination: FC<PaginationProps> = ({articlesCount}) => {
+const PaginationProfile: FC<PaginationProps> = ({articlesCount}) => {
 
     const dispatch = useDispatch()
 
-    // const articlesState: ArticlesState = useSelector((state: RootState) => state.articles);
+    const profileState: ProfileState = useSelector((state: RootState) => state.profile);
 
     const pageCount = articlesCount ? Math.ceil(articlesCount / 2) : 0
 
@@ -19,13 +19,10 @@ const Pagination: FC<PaginationProps> = ({articlesCount}) => {
 
     const [portionNumber, setPortionNumber] = useState(1);
 
-    // let offset = (portionNumber - 1) * limit
-
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-        // setPortionNumber(value);
+        setPortionNumber(value)
         let offset = (value - 1) * limit
-        // dispatch(setPagination(offset - 1, limit))
-        dispatch(getGlobalArticles(offset, limit))
+        dispatch(getMyArticles(profileState.user.username, offset, limit))
     };
 
     return (
@@ -35,4 +32,4 @@ const Pagination: FC<PaginationProps> = ({articlesCount}) => {
     )
 }
 
-export default Pagination
+export default PaginationProfile

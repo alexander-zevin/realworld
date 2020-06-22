@@ -23,7 +23,7 @@ const TabsProfile = () => {
 
     const getMyPosts = () => {
         if (isAuth) {
-            dispatch(getMyArticles(username))
+            dispatch(getMyArticles(username, articlesState.offset, articlesState.limit))
         } else {
             history.push('/signin')
         }

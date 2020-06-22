@@ -75,9 +75,9 @@ export const getGlobalArticlesByTag = (tag: string) => (dispatch: Dispatch<Artic
         .then(() => dispatch(setProgress(false)))
 }
 
-export const getMyArticles = (author: string) => (dispatch: Dispatch<ArticlesActions>) => {
+export const getMyArticles = (author: string, offset: number, limit: number) => (dispatch: Dispatch<ArticlesActions>) => {
     dispatch(setProgress(true))
-    articlesAPI.getMyArticles(author)
+    articlesAPI.getMyArticles(author, offset, limit)
         .then(res => dispatch(setArticles(res.data)))
         .catch(err => console.log(err))
         .then(() => dispatch(setProgress(false)))

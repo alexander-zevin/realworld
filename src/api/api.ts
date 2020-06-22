@@ -15,8 +15,8 @@ export const articlesAPI = {
         console.log(offset + ' ' + limit)
         return instance.get(`articles?offset=${offset}&limit=${limit}`);
     },
-    getMyArticles(author: string) {
-        return instance.get(`articles?author=${author}`);
+    getMyArticles(author: string, offset: number, limit: number) {
+        return instance.get(`articles?author=${author}&offset=${offset}&limit=${limit}`);
     },
     postArticle(article: ModifiedEditState) {
         return instance.post(`articles`, article)

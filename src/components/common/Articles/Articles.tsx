@@ -8,9 +8,13 @@ import Progress from "../Progress";
 import {ArticlesState} from "../../../store/types/articlesType";
 import {Switch, Route} from "react-router-dom";
 import TabsProfile from "./TabsProfile/TabsProfile";
-import Pagination from "./Pagination/Pagination";
+import PaginationHome from "./Pagination/PaginationHome";
+import PaginationProfile from "./Pagination/PaginationProfile";
+import { useRouteMatch } from "react-router-dom";
 
 const Articles = () => {
+
+    let match = useRouteMatch('/');
 
     const articlesState: ArticlesState = useSelector((state: RootState) => state.articles);
 
@@ -21,7 +25,12 @@ const Articles = () => {
                 <Route path="/" component={TabsHome}/>
             </Switch>
             <ArticleList articlesState={articlesState} />
-            <Pagination articlesCount={articlesState.articlesCount}/>
+            {
+                match?.isExact ?  <PaginationHome articlesCount={articlesState.articlesCount}/> :
+                    <PaginationProfile articlesCount={articlesState.articlesCount}/>
+            }
+
+
         </ArticlesRoot>
     )
 }
