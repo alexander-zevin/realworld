@@ -10,7 +10,6 @@ import {RootState} from "./store/store";
 import Progress from "./components/common/Progress";
 import {initializedSuccess} from "./store/actions/appActions";
 import {FullScreenBox} from "./components/common/styled/rest";
-import {getGlobalArticles} from "./store/actions/articlesActions";
 import Home from "./components/Home/Home";
 import NewArticle from "./components/NewArticle/NewArticle";
 import SignIn from "./components/SignIn/SignIn";

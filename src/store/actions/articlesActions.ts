@@ -1,7 +1,7 @@
 import {
     SET_ACTIVE_TAB,
     SET_ARTICLE,
-    SET_ARTICLES,
+    SET_ARTICLES, SET_PAGINATION,
     SET_PROGRESS,
     SET_TAB_TAGS,
     SET_TAG_NAME
@@ -12,7 +12,7 @@ import {
     ArticlesState,
     GetArticles,
     SetArticle,
-    SetProgress, SetTabTags, SetActiveTab, SetTagName,
+    SetProgress, SetTabTags, SetActiveTab, SetTagName, SetPagination,
 } from "../types/articlesType";
 import {articlesAPI} from "../../api/api";
 import {Dispatch} from "redux";
@@ -27,9 +27,9 @@ export const setProgress = (isProgress: boolean): SetProgress => ({
     isProgress: isProgress
 })
 
-export const getGlobalArticles = () => async (dispatch: Dispatch<ArticlesActions>) => {
+export const getGlobalArticles = (offset: number, limit: number) => async (dispatch: Dispatch<ArticlesActions>) => {
     dispatch(setProgress(true))
-    const response = await articlesAPI.getGlobalArticles();
+    const response = await articlesAPI.getGlobalArticles(offset, limit);
     dispatch(setArticles(response.data))
     dispatch(setProgress(false))
 }
@@ -82,3 +82,9 @@ export const getMyArticles = (author: string) => (dispatch: Dispatch<ArticlesAct
         .catch(err => console.log(err))
         .then(() => dispatch(setProgress(false)))
 }
+
+export const setPagination = (offset: number, limit: number): SetPagination => ({
+    type: SET_PAGINATION,
+    limit: limit,
+    offset: offset
+})

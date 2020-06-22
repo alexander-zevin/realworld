@@ -8,6 +8,7 @@ import Progress from "../Progress";
 import {ArticlesState} from "../../../store/types/articlesType";
 import {Switch, Route} from "react-router-dom";
 import TabsProfile from "./TabsProfile/TabsProfile";
+import Pagination from "./Pagination/Pagination";
 
 const Articles = () => {
 
@@ -19,7 +20,8 @@ const Articles = () => {
                 <Route path="/profiles" component={TabsProfile}/>
                 <Route path="/" component={TabsHome}/>
             </Switch>
-            { articlesState.isProgress ? <Progress/> : <ArticleList articlesState={articlesState} /> }
+            <ArticleList articlesState={articlesState} />
+            <Pagination articlesCount={articlesState.articlesCount}/>
         </ArticlesRoot>
     )
 }

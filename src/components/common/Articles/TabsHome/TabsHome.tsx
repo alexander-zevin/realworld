@@ -25,7 +25,7 @@ const TabsHome = () => {
 
     const isAuth: boolean = useSelector((state: RootState) => state.auth.isAuth);
 
-    const getGlobalFeed = () => dispatch(getGlobalArticles())
+    const getGlobalFeed = () => dispatch(getGlobalArticles(articlesState.offset, articlesState.limit))
 
     const getYourFeed = () => {
         if (isAuth) {

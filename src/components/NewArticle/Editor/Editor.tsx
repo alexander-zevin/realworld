@@ -1,6 +1,6 @@
 import React, {useReducer} from 'react'
-import {ButtonContainer, EditorForm, EditorRoot} from "./EdtorStyles";
-import {StyledButton} from "../../common/styled/rest";
+import {ButtonContainer, EditorForm, EditorRoot, EditorTitle} from "./EdtorStyles";
+import {MultilineTextField, StyledButton} from "../../common/styled/rest";
 import {editorReducer, initialState} from "./EditorReducer";
 import {setBody, setDescription, setEditTitle, setError, setTags} from "./EditorActions";
 import {TextField} from "@material-ui/core";
@@ -38,6 +38,7 @@ const Editor = () => {
 
     return (
         <EditorRoot>
+            <EditorTitle>New Article</EditorTitle>
             <EditorForm>
                 <TextField
                     label='Article Title'
@@ -57,14 +58,9 @@ const Editor = () => {
                     margin='normal'
                     onChange={event => dispatch(setDescription(event.target.value))}
                 />
-                <TextField
+                <MultilineTextField
                     label='Write your article (in markdown)'
-                    multiline
                     value={state.article.body}
-                    fullWidth
-                    size='medium'
-                    variant="outlined"
-                    margin='normal'
                     onChange={event => dispatch(setBody(event.target.value))}
                 />
                 <TextField

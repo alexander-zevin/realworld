@@ -1,7 +1,7 @@
 import {
     SET_ACTIVE_TAB,
     SET_ARTICLE,
-    SET_ARTICLES,
+    SET_ARTICLES, SET_PAGINATION,
     SET_PROGRESS,
     SET_TAB_TAGS,
     SET_TAG_NAME
@@ -14,7 +14,9 @@ const initialState: ArticlesState = {
     isProgress: false,
     tabTags: false,
     activeTab: 1,
-    tagName: ''
+    tagName: '',
+    limit: 2,
+    offset: 0
 };
 
 export const articlesReducer = (state = initialState, action: ArticlesActions): ArticlesState => {
@@ -31,6 +33,8 @@ export const articlesReducer = (state = initialState, action: ArticlesActions): 
             return  {...state, activeTab: action.activeTab}
         case SET_TAG_NAME:
             return {...state, tagName: action.tagName }
+        case SET_PAGINATION:
+            return {...state, limit: action.limit, offset: action.offset}
     }
     return state
 }

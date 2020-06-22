@@ -11,8 +11,9 @@ export const setToken = (token: string) => {
 }
 
 export const articlesAPI = {
-    getGlobalArticles() {
-        return instance.get(`articles`);
+    getGlobalArticles(offset: number, limit: number) {
+        console.log(offset + ' ' + limit)
+        return instance.get(`articles?offset=${offset}&limit=${limit}`);
     },
     getMyArticles(author: string) {
         return instance.get(`articles?author=${author}`);
