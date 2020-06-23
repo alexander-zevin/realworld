@@ -5,7 +5,7 @@ import Divider from '@material-ui/core/Divider';
 import {useDispatch, useSelector} from "react-redux";
 import {setActiveTab, getMyArticles} from "../../../../store/actions/articlesActions";
 import {RootState} from "../../../../store/store";
-import {useHistory, Route} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import {ArticlesState} from "../../../../store/types/articlesType";
 
 const TabsProfile = () => {

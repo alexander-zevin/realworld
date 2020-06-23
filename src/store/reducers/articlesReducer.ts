@@ -15,7 +15,7 @@ const initialState: ArticlesState = {
     tabTags: false,
     activeTab: 1,
     tagName: '',
-    limit: 2,
+    limit: 4,
     offset: 0
 };
 

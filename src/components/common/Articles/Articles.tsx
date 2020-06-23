@@ -4,17 +4,14 @@ import {ArticlesRoot} from "./ArticlesStyles";
 import ArticleList from "./ArticleList/ArticleList";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../store/store";
-import Progress from "../Progress";
 import {ArticlesState} from "../../../store/types/articlesType";
 import {Switch, Route} from "react-router-dom";
 import TabsProfile from "./TabsProfile/TabsProfile";
-import PaginationHome from "./Pagination/PaginationHome";
+import PaginationHome from "./Pagination/Pagination";
 import PaginationProfile from "./Pagination/PaginationProfile";
-import { useRouteMatch } from "react-router-dom";
+import Pagination from "./Pagination/Pagination";
 
 const Articles = () => {
-
-    let match = useRouteMatch('/');
 
     const articlesState: ArticlesState = useSelector((state: RootState) => state.articles);
 
@@ -25,10 +22,10 @@ const Articles = () => {
                 <Route path="/" component={TabsHome}/>
             </Switch>
             <ArticleList articlesState={articlesState} />
-            {
-                match?.isExact ?  <PaginationHome articlesCount={articlesState.articlesCount}/> :
-                    <PaginationProfile articlesCount={articlesState.articlesCount}/>
-            }
+
+            <Pagination articlesCount={articlesState.articlesCount}/>
+
+
 
 
         </ArticlesRoot>
