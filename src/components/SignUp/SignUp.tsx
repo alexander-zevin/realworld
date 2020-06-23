@@ -3,7 +3,7 @@ import {initialState, signUpReducer} from "./SignUpReducer";
 import {
     setEmail,
     setError,
-    setPassword,
+    setPassword, setProgress,
     setUsername
 } from "./SignUpActions";
 import {setToken, usersAPI} from "../../api/api";
@@ -15,6 +15,7 @@ import {setTokenLocalStorage} from "../../lib/localStorage";
 import {SignDescription, SignForm, SignInput, SignRoot, SignTitle, Error, SignButton} from "../common/styled/sign";
 import Footer from "../common/Footer/Footer";
 import Header from "../common/Header/Header";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const SignUp = () => {
 
@@ -24,7 +25,8 @@ const SignUp = () => {
 
     const history = useHistory();
 
-    const signUp = async () => {
+    const signUp = () => {
+        dispatch(setProgress(true))
         usersAPI.signUp(state.username, state.email, state.password)
             .then(res => {
                 setToken(res.data.user.token)
@@ -37,6 +39,7 @@ const SignUp = () => {
                 console.log(err.response.data.errors)
                 dispatch(setError(err.response.data.errors.email))
             })
+            .then(() => dispatch(setProgress(false)))
     }
 
     return (
@@ -73,7 +76,9 @@ const SignUp = () => {
                         <Error>Email {state.error}</Error>
                     }
                     <SignButton onClick={() => signUp()}>
-                        Sign Up
+                        {
+                            !state.isProgress ? 'Sign Un' : <CircularProgress size={25} color='inherit'/>
+                        }
                     </SignButton>
                 </SignForm>
             </SignRoot>

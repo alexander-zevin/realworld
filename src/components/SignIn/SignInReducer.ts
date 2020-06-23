@@ -1,10 +1,11 @@
 import {SignInState, SignInActionType} from "./SignInTypes";
-import {SET_EMAIL, SET_ERROR, SET_PASSWORD} from "./SignInConstants";
+import {SET_EMAIL, SET_ERROR, SET_PASSWORD, SET_PROGRESS} from "./SignInConstants";
 
 export const initialState: SignInState = {
     email: '',
     password: '',
-    error: null
+    error: null,
+    isProgress: false
 };
 
 export const signInReducer = (state: SignInState, action: SignInActionType): SignInState => {
@@ -15,6 +16,8 @@ export const signInReducer = (state: SignInState, action: SignInActionType): Sig
             return {...state, password: action.password};
         case SET_ERROR:
             return {...state, error: action.error}
+        case SET_PROGRESS:
+            return {...state, isProgress: action.isProgress}
         default: return state
     }
 }

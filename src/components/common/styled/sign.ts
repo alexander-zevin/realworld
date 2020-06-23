@@ -3,6 +3,7 @@ import {green} from "@material-ui/core/colors";
 import {TextField} from "@material-ui/core";
 import {Alert} from "@material-ui/lab";
 import {StyledButton} from "./rest";
+import Progress from "../Progress/Progress";
 
 export const SignRoot = styled.div`
     flex-grow: 1;
@@ -52,4 +53,5 @@ export const SignButton = styled(StyledButton).attrs(() => ({
 }))`
     margin-top: 16px;
 `;
+
 
