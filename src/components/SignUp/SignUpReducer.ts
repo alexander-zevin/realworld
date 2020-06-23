@@ -6,7 +6,7 @@ export const initialState: SignUpState = {
     username: '',
     email: '',
     password: '',
-    error: null
+    error: ''
 };
 
 export const signUpReducer = (state: SignUpState, action: SignUpActions): SignUpState => {

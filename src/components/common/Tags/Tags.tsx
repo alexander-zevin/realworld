@@ -6,6 +6,8 @@ import {getTags} from "../../../store/actions/tagsActions";
 import {RootState} from "../../../store/store";
 import {TagsState} from "../../../store/types/tagsTypes";
 import {getGlobalArticlesByTag} from "../../../store/actions/articlesActions";
+import Progress from "../Progress/Progress";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Tags = () => {
 
@@ -19,17 +21,27 @@ const Tags = () => {
 
     return (
         <TagsRoot>
-            <TagsTitle>Popular Tags</TagsTitle>
-            <TagsBox>
-                { tagsState.tags.map((tag, index) =>
-                    <Chip
-                        label={tag}
-                        size="small"
-                        key={tag + index}
-                        onClick={() => dispatch(getGlobalArticlesByTag(tag))}
-                    />
-                )}
-            </TagsBox>
+            {
+                !tagsState.isProgress ?
+                    <>
+                        {
+                            !tagsState.error ?
+                                <>
+                                    <TagsTitle>Popular Tags</TagsTitle>
+                                    <TagsBox>
+                                        { tagsState.tags.map((tag, index) =>
+                                            <Chip
+                                                label={tag}
+                                                size="small"
+                                                key={tag + index}
+                                                onClick={() => dispatch(getGlobalArticlesByTag(tag))}
+                                            />
+                                        )}
+                                    </TagsBox>
+                                </> : 'error'
+                        }
+                    </> : <Progress size={20} />
+            }
         </TagsRoot>
     )
 }

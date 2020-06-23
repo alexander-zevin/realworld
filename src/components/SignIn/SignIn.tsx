@@ -5,7 +5,7 @@ import {useHistory} from "react-router-dom";
 import {setEmail, setError, setPassword} from "./SignInActions";
 import {setToken, usersAPI} from "../../api/api";
 import {setProfile} from "../../store/actions/profileActions";
-import {setAuth, setAuthError} from "../../store/actions/authActions";
+import {setAuth} from "../../store/actions/authActions";
 import {setTokenLocalStorage} from "../../lib/localStorage";
 import {SignDescription, SignForm, SignInput, SignRoot, SignTitle, Error, SignButton} from "../common/styled/sign";
 import Header from "../common/Header/Header";
@@ -19,18 +19,19 @@ const SignIn = () => {
 
     const history = useHistory();
 
-    const signIn = async () => {
-        try {
-            const response = await usersAPI.signIn(state.email, state.password)
-            setToken(response.data.user.token)
-            setTokenLocalStorage(response.data.user.token)
-            dispatchRedux(setProfile(response.data.user))
-            dispatchRedux(setAuthError(null))
-            dispatchRedux(setAuth(true))
-            history.push("/");
-        } catch (err) {
-            dispatch(setError(err.response.data.errors['email or password']))
-        }
+    const signIn = () => {
+
+        usersAPI.signIn(state.email, state.password)
+            .then(response => {
+                setToken(response.data.user.token)
+                setTokenLocalStorage(response.data.user.token)
+                dispatchRedux(setProfile(response.data.user))
+                dispatchRedux(setAuth(true))
+                history.push("/");
+            })
+            .catch(error => {
+                dispatch(setError(error.response.data.errors['email or password']))
+            })
     }
 
     return (
@@ -57,7 +58,7 @@ const SignIn = () => {
                     />
                     {
                         state.error &&
-                        <Error>{state.error}</Error>
+                        <Error>Email or password {state.error}</Error>
                     }
                     <SignButton onClick={signIn}>
                         Sign In

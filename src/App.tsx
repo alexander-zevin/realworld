@@ -7,7 +7,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {setProfile} from "./store/actions/profileActions";
 import {setAuth, setAuthError} from "./store/actions/authActions";
 import {RootState} from "./store/store";
-import Progress from "./components/common/Progress";
 import {initializedSuccess} from "./store/actions/appActions";
 import {FullScreenBox} from "./components/common/styled/rest";
 import Home from "./components/Home/Home";
@@ -17,6 +16,7 @@ import SignUp from "./components/SignUp/SignUp";
 import ArticlePage from "./components/ArticlePage/ArticlePage";
 import Profile from "./components/Profile/Profile";
 import Settings from "./components/Settings/Settings";
+import Progress from "./components/common/Progress/Progress";
 
 const App = () => {
 

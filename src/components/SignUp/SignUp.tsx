@@ -7,10 +7,10 @@ import {
     setUsername
 } from "./SignUpActions";
 import {setToken, usersAPI} from "../../api/api";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setProfile} from "../../store/actions/profileActions";
 import {useHistory} from "react-router-dom";
-import {setAuth, setAuthError} from "../../store/actions/authActions";
+import {setAuth} from "../../store/actions/authActions";
 import {setTokenLocalStorage} from "../../lib/localStorage";
 import {SignDescription, SignForm, SignInput, SignRoot, SignTitle, Error, SignButton} from "../common/styled/sign";
 import Footer from "../common/Footer/Footer";
@@ -25,18 +25,18 @@ const SignUp = () => {
     const history = useHistory();
 
     const signUp = async () => {
-        try {
-            const response = await usersAPI.signUp(state.username, state.email, state.password);
-            setToken(response.data.user.token)
-            setTokenLocalStorage(response.data.user.token)
-            dispatchRedux(setProfile(response.data.user))
-            dispatchRedux(setAuthError(null))
-            dispatchRedux(setAuth(true))
-            history.push("/");
-            console.log(response.data)
-        } catch (err) {
-            dispatch(setError(err.response.data.errors.email))
-        }
+        usersAPI.signUp(state.username, state.email, state.password)
+            .then(res => {
+                setToken(res.data.user.token)
+                setTokenLocalStorage(res.data.user.token)
+                dispatchRedux(setProfile(res.data.user))
+                dispatchRedux(setAuth(true))
+                history.push("/");
+            })
+            .catch(err => {
+                console.log(err.response.data.errors)
+                dispatch(setError(err.response.data.errors.email))
+            })
     }
 
     return (
@@ -55,6 +55,7 @@ const SignUp = () => {
                         onChange={(event => dispatch(setUsername(event.target.value)))}
                     />
                     <SignInput
+                        error={!!state.error}
                         id='textFieldEmail'
                         label='Email'
                         value={state.email}
@@ -69,7 +70,7 @@ const SignUp = () => {
                     />
                     {
                         state.error &&
-                        <Error>{state.error}</Error>
+                        <Error>Email {state.error}</Error>
                     }
                     <SignButton onClick={() => signUp()}>
                         Sign Up

@@ -22,12 +22,7 @@ const Articles = () => {
                 <Route path="/" component={TabsHome}/>
             </Switch>
             <ArticleList articlesState={articlesState} />
-
             <Pagination articlesCount={articlesState.articlesCount}/>
-
-
-
-
         </ArticlesRoot>
     )
 }

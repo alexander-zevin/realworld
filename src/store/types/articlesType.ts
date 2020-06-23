@@ -1,7 +1,7 @@
 import {
     SET_ACTIVE_TAB,
     SET_ARTICLE,
-    SET_ARTICLES, SET_PAGINATION,
+    SET_ARTICLES, SET_ERROR, SET_PAGINATION,
     SET_PROGRESS,
     SET_TAB_TAGS,
     SET_TAG_NAME
@@ -34,6 +34,7 @@ export interface ArticlesState {
     tagName: string
     limit: number
     offset: number
+    error: boolean
 }
 
 export interface GetArticles {
@@ -72,4 +73,10 @@ export interface SetPagination {
     offset: number
 }
 
-export type ArticlesActions = GetArticles | SetProgress | SetArticle | SetTabTags | SetActiveTab | SetTagName | SetPagination
+export interface SetError {
+    type: typeof SET_ERROR
+    error: boolean
+}
+
+export type ArticlesActions = GetArticles | SetProgress | SetArticle | SetTabTags | SetActiveTab
+    | SetTagName | SetPagination | SetError

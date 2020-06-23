@@ -4,7 +4,7 @@ import {SET_ERROR} from "../SignIn/SignInConstants";
 
 export const setUsername = (username: string): SetUsername => ({
     type: SET_USERNAME,
-    username: username,
+    username: username
 })
 
 export const setEmail = (email: string): SetEmail => ({

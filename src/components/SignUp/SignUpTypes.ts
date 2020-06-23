@@ -5,7 +5,7 @@ export interface SignUpState{
     username: string
     email: string
     password: string
-    error: null | string
+    error: string
 }
 
 export interface SignUp {

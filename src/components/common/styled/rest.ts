@@ -15,13 +15,6 @@ export const StyledLink = styled(Link)`
     text-decoration: none;
 `;
 
-export const ProgressRoot = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 32px;
-`;
-
 export const FullScreenBox = styled.div`
     height: 100vh;
     width: 100vw;

@@ -1,11 +1,11 @@
 import CircularProgress from "@material-ui/core/CircularProgress";
-import React from "react";
-import {ProgressRoot} from "./styled/rest";
+import React, {FC} from "react";
+import {ProgressRoot} from "./ProgressStyles";
 
-const Progress = () => {
+const Progress: FC<any> = props => {
     return (
         <ProgressRoot>
-            <CircularProgress/>
+            <CircularProgress {...props}/>
         </ProgressRoot>
     )
 }
