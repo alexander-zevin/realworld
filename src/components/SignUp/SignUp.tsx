@@ -2,7 +2,7 @@ import React, {useReducer} from 'react'
 import {initialState, signUpReducer} from "./SignUpReducer";
 import {
     setEmail,
-    setError,
+    setSignError,
     setPassword, setProgress,
     setUsername
 } from "./SignUpActions";
@@ -36,8 +36,7 @@ const SignUp = () => {
                 history.push("/");
             })
             .catch(err => {
-                console.log(err.response.data.errors)
-                dispatch(setError(err.response.data.errors.email))
+                dispatch(setSignError(err.response.data.errors.username, err.response.data.errors.email))
             })
             .then(() => dispatch(setProgress(false)))
     }
@@ -52,15 +51,18 @@ const SignUp = () => {
                         Have an account?
                     </SignDescription>
                     <SignInput
+                        error={!!state.error.username}
                         id='textFieldUsername'
                         label='Username'
+                        helperText={!!state.error.username ? state.error.username : null}
                         value={state.username}
                         onChange={(event => dispatch(setUsername(event.target.value)))}
                     />
                     <SignInput
-                        error={!!state.error}
+                        error={!!state.error.email}
                         id='textFieldEmail'
                         label='Email'
+                        helperText={!!state.error.email ? state.error.email : null}
                         value={state.email}
                         onChange={(event => dispatch(setEmail(event.target.value)))}
                     />
@@ -71,10 +73,10 @@ const SignUp = () => {
                         value={state.password}
                         onChange={(event => dispatch(setPassword(event.target.value)))}
                     />
-                    {
+                    {/*{
                         state.error &&
                         <Error>Email {state.error}</Error>
-                    }
+                    }*/}
                     <SignButton onClick={() => signUp()}>
                         {
                             !state.isProgress ? 'Sign Un' : <CircularProgress size={25} color='inherit'/>

@@ -1,11 +1,14 @@
-import {SET_EMAIL, SET_PASSWORD, SET_USERNAME, SIGN_UP} from "./SignUpConstants";
-import {SET_ERROR, SET_PROGRESS} from "../SignIn/SignInConstants";
+import {SET_EMAIL, SET_PASSWORD, SET_SIGN_ERROR, SET_USERNAME, SIGN_UP} from "./SignUpConstants";
+import {SET_PROGRESS} from "../SignIn/SignInConstants";
 
 export interface SignUpState{
     username: string
     email: string
     password: string
-    error: string
+    error: {
+        username: string
+        email: string
+    }
     isProgress: boolean
 }
 
@@ -31,9 +34,12 @@ export interface SetPassword {
     password: string
 }
 
-export interface SetError {
-    type: typeof SET_ERROR
-    error: string
+export interface SetSignError {
+    type: typeof SET_SIGN_ERROR
+    error: {
+        username: string
+        email: string
+    }
 }
 
 export interface SetProgress {
@@ -41,4 +47,4 @@ export interface SetProgress {
     isProgress: boolean
 }
 
-export type SignUpActions = SignUp | SetUsername | SetEmail | SetPassword | SetError | SetProgress
+export type SignUpActions = SignUp | SetUsername | SetEmail | SetPassword | SetSignError | SetProgress

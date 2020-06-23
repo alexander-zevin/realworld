@@ -1,3 +1,3 @@
 export const SET_TAGS = 'SET_TAGS'
-export const SET_ERROR = 'SET_ERROR'
-export const SET_PROGRESS = 'SET_PROGRESS'
+export const SET_TAGS_ERROR = 'SET_TAGS_ERROR'
+export const SET_TAGS_PROGRESS = 'SET_TAGS_PROGRESS'

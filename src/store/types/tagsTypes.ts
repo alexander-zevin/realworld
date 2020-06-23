@@ -1,4 +1,4 @@
-import {SET_ERROR, SET_PROGRESS, SET_TAGS} from "../constants/tagsConstants";
+import {SET_TAGS_ERROR, SET_TAGS_PROGRESS, SET_TAGS} from "../constants/tagsConstants";
 
 export interface TagsState {
     tags: Array<string>
@@ -12,12 +12,12 @@ export interface GetTags {
 }
 
 export interface SetError {
-    type: typeof SET_ERROR
+    type: typeof SET_TAGS_ERROR
     error: boolean
 }
 
 export interface SetProgress {
-    type: typeof SET_PROGRESS
+    type: typeof SET_TAGS_PROGRESS
     isProgress: boolean
 }
 

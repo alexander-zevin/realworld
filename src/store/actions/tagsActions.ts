@@ -1,7 +1,7 @@
 import {Dispatch} from "redux";
 import {tagsAPI} from "../../api/api";
 import {GetTags, SetError, SetProgress, TagsActions, TagsState} from "../types/tagsTypes";
-import {SET_ERROR, SET_PROGRESS, SET_TAGS} from "../constants/tagsConstants";
+import {SET_TAGS_ERROR, SET_TAGS_PROGRESS, SET_TAGS} from "../constants/tagsConstants";
 
 export const setTags = (tagsState: TagsState): GetTags => ({
     type: SET_TAGS,
@@ -17,11 +17,11 @@ export const getTags = () => (dispatch: Dispatch<TagsActions>) => {
 }
 
 export const setError = (error: boolean): SetError => ({
-    type: SET_ERROR,
+    type: SET_TAGS_ERROR,
     error: error
 })
 
 export const setProgress = (isProgress: boolean): SetProgress => ({
-    type: SET_PROGRESS,
+    type: SET_TAGS_PROGRESS,
     isProgress: isProgress
 })

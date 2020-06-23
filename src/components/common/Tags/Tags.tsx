@@ -7,7 +7,6 @@ import {RootState} from "../../../store/store";
 import {TagsState} from "../../../store/types/tagsTypes";
 import {getGlobalArticlesByTag} from "../../../store/actions/articlesActions";
 import Progress from "../Progress/Progress";
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Tags = () => {
 

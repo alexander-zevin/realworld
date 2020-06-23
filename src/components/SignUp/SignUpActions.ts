@@ -1,6 +1,6 @@
-import {SetEmail, SetError, SetPassword, SetUsername} from "./SignUpTypes";
-import {SET_EMAIL, SET_PASSWORD, SET_USERNAME} from "./SignUpConstants";
-import {SET_ERROR, SET_PROGRESS} from "../SignIn/SignInConstants";
+import {SetEmail, SetSignError, SetPassword, SetUsername} from "./SignUpTypes";
+import {SET_EMAIL, SET_PASSWORD, SET_SIGN_ERROR, SET_USERNAME} from "./SignUpConstants";
+import {SET_PROGRESS} from "../SignIn/SignInConstants";
 import {SetProgress} from "../SignIn/SignInTypes";
 
 export const setUsername = (username: string): SetUsername => ({
@@ -18,9 +18,12 @@ export const setPassword = (password: string): SetPassword => ({
     password: password
 })
 
-export const setError = (error: string): SetError => ({
-    type: SET_ERROR,
-    error: error
+export const setSignError = (username: string, email: string): SetSignError => ({
+    type: SET_SIGN_ERROR,
+    error: {
+        username: username,
+        email: email
+    }
 })
 
 export const setProgress = (isProgress: boolean): SetProgress => ({
