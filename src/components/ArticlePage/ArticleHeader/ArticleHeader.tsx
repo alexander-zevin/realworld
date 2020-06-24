@@ -13,7 +13,7 @@ import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutline
 import {useDispatch} from "react-redux";
 
 const ArticleHeader: FC<IArticleHeaderProps> = ({title, author, createdAt, favoritesCount,
-                    favorited, slug, dispatch}) => {
+                    favorited, slug, image, dispatch}) => {
 
     const dispatchRedux = useDispatch()
 
@@ -52,7 +52,7 @@ const ArticleHeader: FC<IArticleHeaderProps> = ({title, author, createdAt, favor
             <AuthorBlock>
                 <ListItem disableGutters>
                     <ListItemAvatar>
-                        <Avatar>
+                        <Avatar src={image}>
                             <AccountCircleIcon/>
                         </Avatar>
                     </ListItemAvatar>

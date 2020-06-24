@@ -30,12 +30,15 @@ export const articlesAPI = {
     getArticle(slug: string) {
         return instance.get(`articles/${slug}`)
     },
-    feedArticles() {
-        return instance.get(`articles/feed`)
+    feedArticles(offset: number, limit: number) {
+        return instance.get(`articles/feed?offset=${offset}&limit=${limit}`)
     },
-    getGlobalArticlesByTag(tag: string) {
-        return instance.get(`articles?tag=${tag}`);
+    getGlobalArticlesByTag(tag: string, offset: number, limit: number) {
+        return instance.get(`articles?tag=${tag}&offset=${offset}&limit=${limit}`);
     },
+    getFavoritedArticles(favorited: string, offset: number, limit: number){
+        return instance.get(`articles?favorited=${favorited}&offset=${offset}&limit=${limit}`);
+    }
 };
 
 export const tagsAPI = {

@@ -1,3 +1,4 @@
 export interface PaginationProps {
-		articlesCount: number | null
+    articlesCount: number | null
+    activeTab: number
 }

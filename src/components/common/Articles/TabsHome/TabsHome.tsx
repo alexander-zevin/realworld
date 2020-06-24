@@ -29,7 +29,7 @@ const TabsHome = () => {
 
     const getYourFeed = () => {
         if (isAuth) {
-            dispatch(getFeedArticles())
+            dispatch(getFeedArticles(articlesState.offset, articlesState.limit))
         } else {
             history.push('/signin')
         }
@@ -47,10 +47,10 @@ const TabsHome = () => {
                 <Tab label="Global Feed" onClick={getGlobalFeed}/>
 
                 {articlesState.tabTags &&
-                <Tab
-                    label={`#${articlesState.tagName}`}
-                    onClick={() => dispatch(getGlobalArticlesByTag(articlesState.tagName))}
-                />
+                    <Tab
+                        label={`#${articlesState.tagName}`}
+                        onClick={() => dispatch(getGlobalArticlesByTag(articlesState.tagName, articlesState.offset, articlesState.limit))}
+                    />
                 }
             </Tabs>
             <Divider/>

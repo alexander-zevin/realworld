@@ -12,6 +12,7 @@ export interface IArticleHeaderProps {
     favorited: boolean
     favoritesCount: number
     slug: string
+    image: string
     dispatch: Dispatch<ArticlePageActions>
 }
 

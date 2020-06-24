@@ -34,6 +34,7 @@ const ArticlePage = () => {
                     favorited={state.favorited}
                     favoritesCount={state.favoritesCount}
                     slug={slug}
+                    image={state.author.image}
                     dispatch={dispatch}
                 />
                 <ArticleBody body={state.body}/>

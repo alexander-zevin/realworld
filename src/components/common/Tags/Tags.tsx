@@ -14,6 +14,8 @@ const Tags = () => {
 
     const tagsState: TagsState = useSelector((state: RootState) => state.tags);
 
+    let {limit, offset, tabTags} = useSelector((state: RootState) => state.articles);
+
     useEffect(() => {
         dispatch(getTags())
     }, [dispatch])
@@ -33,7 +35,7 @@ const Tags = () => {
                                                 label={tag}
                                                 size="small"
                                                 key={tag + index}
-                                                onClick={() => dispatch(getGlobalArticlesByTag(tag))}
+                                                onClick={() => dispatch(getGlobalArticlesByTag(tag, offset, limit))}
                                             />
                                         )}
                                     </TagsBox>

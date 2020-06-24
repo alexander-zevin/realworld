@@ -7,4 +7,5 @@ export interface ArticlesProps {
     favoritesCount: number
     tagList: Array<string>
     slug: string
+    image: string
 }

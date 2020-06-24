@@ -13,7 +13,7 @@ const ArticleList: FC<ArticlesListProps> = ({articlesState}) => {
                 <>
                     { !articlesState.error ?
                         <List dense>
-                            {articlesState.articles.map((item, index, array) =>
+                            {articlesState.articles.map((item, index) =>
                                 <Fragment key={item.slug}>
                                     <Article
                                         username={item.author.username}
@@ -24,6 +24,7 @@ const ArticleList: FC<ArticlesListProps> = ({articlesState}) => {
                                         favoritesCount={item.favoritesCount}
                                         tagList={item.tagList}
                                         slug={item.slug}
+                                        image={item.author.image}
 
                                     />
                                     {articlesState.articles.length - 1 !== index && <Divider/>}

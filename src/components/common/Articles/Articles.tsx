@@ -7,8 +7,6 @@ import {RootState} from "../../../store/store";
 import {ArticlesState} from "../../../store/types/articlesType";
 import {Switch, Route} from "react-router-dom";
 import TabsProfile from "./TabsProfile/TabsProfile";
-import PaginationHome from "./Pagination/Pagination";
-import PaginationProfile from "./Pagination/PaginationProfile";
 import Pagination from "./Pagination/Pagination";
 
 const Articles = () => {
@@ -22,7 +20,7 @@ const Articles = () => {
                 <Route path="/" component={TabsHome}/>
             </Switch>
             <ArticleList articlesState={articlesState} />
-            <Pagination articlesCount={articlesState.articlesCount}/>
+            <Pagination articlesCount={articlesState.articlesCount} activeTab={articlesState.activeTab}/>
         </ArticlesRoot>
     )
 }

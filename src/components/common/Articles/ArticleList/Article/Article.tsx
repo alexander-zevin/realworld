@@ -16,14 +16,15 @@ import {
 import Chip from "@material-ui/core/Chip";
 import {TagsBox} from "../../../Tags/TagsStyles";
 import {articlesAPI} from "../../../../../api/api";
-import { useHistory } from "react-router-dom";
+import {useHistory, useRouteMatch} from "react-router-dom";
 import {getGlobalArticlesByTag, setFavorited} from "../../../../../store/actions/articlesActions";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import FavoriteOutlinedIcon from '@material-ui/icons/FavoriteOutlined';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
+import {RootState} from "../../../../../store/store";
 
 const Article: FC<ArticlesProps> = ({username, createdAt, title, description,
-                                         favorited, favoritesCount, tagList, slug}) => {
+                                         favorited, favoritesCount, tagList, slug, image}) => {
 
     const history = useHistory()
 
@@ -41,13 +42,15 @@ const Article: FC<ArticlesProps> = ({username, createdAt, title, description,
             .catch(err => console.log(err))
     }
 
+    let {limit, offset} = useSelector((state: RootState) => state.articles);
+
+    const match = useRouteMatch("/");
+
     return (
         <ArticleRoot>
             <ListItem disableGutters>
                 <ListItemAvatar>
-                    <Avatar>
-                        <AccountCircleIcon/>
-                    </Avatar>
+                    <Avatar src={image}/>
                 </ListItemAvatar>
                 <ListItemText primary={username} secondary={createdAt}/>
                 <FavoriteButton
@@ -70,7 +73,7 @@ const Article: FC<ArticlesProps> = ({username, createdAt, title, description,
                                 label={tag}
                                 size="small"
                                 key={tag + index}
-                                onClick={() => dispatch(getGlobalArticlesByTag(tag))}
+                                onClick={() => match?.isExact && dispatch(getGlobalArticlesByTag(tag, offset, limit))}
                             />
                         )}
                     </TagsBox>
