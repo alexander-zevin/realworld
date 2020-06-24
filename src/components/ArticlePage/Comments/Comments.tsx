@@ -4,6 +4,7 @@ import {CommentsRoot} from "./CommentsStyles";
 import {commentsReducer, initialState} from "./CommentsReducer";
 import {commentsAPI} from "../../../api/api";
 import {CommentsProps} from "./CommentsTypes";
+import {setComment} from "./CommentsActions";
 
 const Comments: FC<CommentsProps> = ({slug}) => {
 
@@ -11,7 +12,10 @@ const Comments: FC<CommentsProps> = ({slug}) => {
 
     const postComment = () => {
         commentsAPI.postComment(slug, state.commentInput)
-            .then(res => console.log(res))
+            .then(res => {
+                console.log(res)
+                dispatch(setComment(res.data.comment))
+            })
             .catch(err => console.log(err))
     }
 

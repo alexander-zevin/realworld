@@ -1,4 +1,4 @@
-import {SET_INPUT_COMMENT} from "./CommentsConstants";
+import {SET_COMMENT, SET_INPUT_COMMENT} from "./CommentsConstants";
 
 export interface CommentsProps {
 		slug: string
@@ -27,4 +27,9 @@ export interface SetInputComment {
 		text: string
 }
 
-export type CommentsActions = SetInputComment
+export interface SetComment {
+		type: typeof SET_COMMENT
+		comment: Comment
+}
+
+export type CommentsActions = SetInputComment | SetComment

@@ -30,7 +30,9 @@ export const articlePageReducer = (state: Article, action: ArticlePageActions) =
             return {
                 ...state,
                 favorited: action.favorited,
-                favoritesCount: action.favorited ? ++state.favoritesCount : --state.favoritesCount
+                favoritesCount: action.favorited
+                    ? ++state.favoritesCount
+                    : --state.favoritesCount
             }
         default:
             return state
