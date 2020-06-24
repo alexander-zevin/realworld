@@ -31,7 +31,8 @@ const App = () => {
                 dispatch(setProfile(res.data.user))
                 dispatch(setAuth(true))
             })
-            .catch(err => dispatch(setAuthError(err.response.data.errors.error.name)))
+            // .catch(err => dispatch(setAuthError(err.response.data.errors.error.name)))
+            .catch(err => console.log(err))
             .then(() => {
                 dispatch(initializedSuccess(true))
             })

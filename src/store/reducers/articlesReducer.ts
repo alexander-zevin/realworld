@@ -1,7 +1,7 @@
 import {
     SET_ACTIVE_TAB,
     SET_ARTICLE,
-    SET_ARTICLES, SET_ERROR, SET_PAGINATION,
+    SET_ARTICLES, SET_ERROR, SET_FAVORITED,
     SET_PROGRESS,
     SET_TAB_TAGS,
     SET_TAG_NAME
@@ -34,10 +34,17 @@ export const articlesReducer = (state = initialState, action: ArticlesActions): 
             return  {...state, activeTab: action.activeTab}
         case SET_TAG_NAME:
             return {...state, tagName: action.tagName }
-        case SET_PAGINATION:
-            return {...state, limit: action.limit, offset: action.offset}
         case SET_ERROR:
             return {...state, error: action.error}
+        case SET_FAVORITED:
+            return {
+                ...state,
+                articles: state.articles.map(i => i.slug === action.slug
+                    ? {...i, favorited: action.favorited}
+                    : {...i}
+                )
+
+            }
     }
     return state
 }

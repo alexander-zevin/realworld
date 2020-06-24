@@ -8,7 +8,6 @@ import {ArticlesProps} from "./ArticleTypes";
 import {
     ArticleRoot,
     FavoriteButton,
-    FavoriteIcon,
     ListBasis,
     ListBasisLeft, ListBasisRight,
     ListDescription,
@@ -18,8 +17,10 @@ import Chip from "@material-ui/core/Chip";
 import {TagsBox} from "../../../Tags/TagsStyles";
 import {articlesAPI} from "../../../../../api/api";
 import { useHistory } from "react-router-dom";
-import {getGlobalArticlesByTag} from "../../../../../store/actions/articlesActions";
+import {getGlobalArticlesByTag, setFavorited} from "../../../../../store/actions/articlesActions";
 import {useDispatch} from "react-redux";
+import FavoriteOutlinedIcon from '@material-ui/icons/FavoriteOutlined';
+import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 
 const Article: FC<ArticlesProps> = ({username, createdAt, title, description,
                                          favorited, favoritesCount, tagList, slug}) => {
@@ -29,9 +30,9 @@ const Article: FC<ArticlesProps> = ({username, createdAt, title, description,
     const dispatch = useDispatch()
 
     const favoriteArticle = () => {
-        console.log(slug)
         articlesAPI.favoriteArticle(slug)
-            .then(res => console.log(res))
+            .then(res => dispatch(setFavorited(res.data.article.favorited, slug)))
+            // .then(res => console.log(res))
             .catch(err => console.log(err))
     }
 
@@ -45,7 +46,7 @@ const Article: FC<ArticlesProps> = ({username, createdAt, title, description,
                 </ListItemAvatar>
                 <ListItemText primary={username} secondary={createdAt}/>
                 <FavoriteButton
-                    startIcon={<FavoriteIcon />}
+                    startIcon={favorited ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon/>}
                     onClick={favoriteArticle}
                 >
                     {favoritesCount}

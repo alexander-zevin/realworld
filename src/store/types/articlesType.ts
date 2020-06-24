@@ -1,7 +1,7 @@
 import {
     SET_ACTIVE_TAB,
     SET_ARTICLE,
-    SET_ARTICLES, SET_ERROR, SET_PAGINATION,
+    SET_ARTICLES, SET_ERROR, SET_FAVORITED,
     SET_PROGRESS,
     SET_TAB_TAGS,
     SET_TAG_NAME
@@ -67,16 +67,16 @@ export interface SetTagName {
     tagName: string
 }
 
-export interface SetPagination {
-    type: typeof SET_PAGINATION
-    limit: number,
-    offset: number
-}
-
 export interface SetError {
     type: typeof SET_ERROR
     error: boolean
 }
 
+export interface SetFavorited {
+    type: typeof SET_FAVORITED
+    favorited: boolean
+    slug: string
+}
+
 export type ArticlesActions = GetArticles | SetProgress | SetArticle | SetTabTags | SetActiveTab
-    | SetTagName | SetPagination | SetError
+    | SetTagName | SetError | SetFavorited

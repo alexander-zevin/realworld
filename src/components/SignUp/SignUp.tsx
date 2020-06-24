@@ -73,10 +73,6 @@ const SignUp = () => {
                         value={state.password}
                         onChange={(event => dispatch(setPassword(event.target.value)))}
                     />
-                    {/*{
-                        state.error &&
-                        <Error>Email {state.error}</Error>
-                    }*/}
                     <SignButton onClick={() => signUp()}>
                         {
                             !state.isProgress ? 'Sign Un' : <CircularProgress size={25} color='inherit'/>

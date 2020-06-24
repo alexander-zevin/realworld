@@ -1,18 +1,25 @@
 import {
 		SET_ACTIVE_TAB,
 		SET_ARTICLE,
-		SET_ARTICLES, SET_ERROR, SET_PAGINATION,
+		SET_ARTICLES,
+		SET_ERROR,
+		SET_FAVORITED,
 		SET_PROGRESS,
 		SET_TAB_TAGS,
 		SET_TAG_NAME
 } from "../constants/articlesContants";
 import {
-		ArticlesActions,
 		Article,
+		ArticlesActions,
 		ArticlesState,
 		GetArticles,
+		SetActiveTab,
 		SetArticle,
-		SetProgress, SetTabTags, SetActiveTab, SetTagName, SetPagination, SetError,
+		SetError,
+		SetFavorited,
+		SetProgress,
+		SetTabTags,
+		SetTagName,
 } from "../types/articlesType";
 import {articlesAPI} from "../../api/api";
 import {Dispatch} from "redux";
@@ -84,13 +91,13 @@ export const getMyArticles = (author: string, offset: number, limit: number) => 
 				.then(() => dispatch(setProgress(false)))
 }
 
-export const setPagination = (offset: number, limit: number): SetPagination => ({
-		type: SET_PAGINATION,
-		limit: limit,
-		offset: offset
-})
-
 export const setError = (error: boolean): SetError => ({
 		type: SET_ERROR,
 		error: error
+})
+
+export const setFavorited = (favorited: boolean, slug: string): SetFavorited => ({
+		type: SET_FAVORITED,
+		favorited: favorited,
+		slug: slug
 })
