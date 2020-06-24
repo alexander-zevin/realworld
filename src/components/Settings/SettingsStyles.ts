@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {Typography} from "@material-ui/core";
 import {StyledButton} from "../common/styled/rest";
+import red from '@material-ui/core/colors/red';
 
 export const SettingsMain = styled.main`
 	width: 30vw;
@@ -24,6 +25,18 @@ export const SettingsButton = styled(StyledButton).attrs(() => ({
     color: 'primary',
     size: 'large'
 }))`
-    margin-top: 16px;
+    margin: 16px 0;
     align-self: flex-end;
+`;
+
+export const LogoutButton = styled(StyledButton).attrs(() => ({
+    variant: 'contained',
+    size: 'large'
+}))`
+    margin-top: 16px;
+    align-self: flex-start;
+    background-color: ${red[500]};
+    &:hover {
+        background-color: ${red[800]};
+    }
 `;

@@ -1,6 +1,6 @@
 import {Article} from "../../store/types/articlesType";
 import {ArticlePageActions} from "./ArticlePageTypes";
-import {SET_ARTICLE, SET_FOLLOWING} from "./ArticlePageConstants";
+import {SET_ARTICLE, SET_FAVORITED, SET_FOLLOWING} from "./ArticlePageConstants";
 
 export const initialState: Article = {
     slug: '',
@@ -26,6 +26,12 @@ export const articlePageReducer = (state: Article, action: ArticlePageActions) =
             return action.article
         case SET_FOLLOWING:
             return {...state, author: {...state.author, following: action.following}}
+        case SET_FAVORITED:
+            return {
+                ...state,
+                favorited: action.favorited,
+                favoritesCount: action.favorited ? ++state.favoritesCount : --state.favoritesCount
+            }
         default:
             return state
     }

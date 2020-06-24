@@ -23,7 +23,7 @@ const Editor = () => {
 
             let modifiedState
 
-            if(state.article.tagList) {
+            if (state.article.tagList) {
                 modifiedState = {...state, article: {...state.article, tagList: splitTags(state.article.tagList)}}
             } else modifiedState = {...state, article: {...state.article, tagList: []}}
 

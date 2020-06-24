@@ -1,5 +1,5 @@
 import {Article} from "../../store/types/articlesType";
-import {SET_ARTICLE, SET_FOLLOWING} from "./ArticlePageConstants";
+import {SET_ARTICLE, SET_FAVORITED, SET_FOLLOWING} from "./ArticlePageConstants";
 
 export interface SetArticle {
     type: typeof SET_ARTICLE
@@ -11,4 +11,10 @@ export interface SetFollowing {
     following: boolean
 }
 
-export type ArticlePageActions = SetArticle | SetFollowing
+export interface SetFavorited {
+    type: typeof SET_FAVORITED
+    favorited: boolean
+    slug: string
+}
+
+export type ArticlePageActions = SetArticle | SetFollowing | SetFavorited

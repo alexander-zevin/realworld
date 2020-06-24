@@ -1,7 +1,7 @@
 import React, {useEffect, useReducer} from 'react'
 import Header from "../common/Header/Header";
 import Footer from "../common/Footer/Footer";
-import {SettingsButton, SettingsMain, SettingsTitle} from "./SettingsStyles";
+import {LogoutButton, SettingsButton, SettingsMain, SettingsTitle} from "./SettingsStyles";
 import {TextField} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/store";
@@ -12,6 +12,7 @@ import {MultilineTextField} from "../common/styled/rest";
 import {usersAPI} from "../../api/api";
 import {setProfile} from "../../store/actions/profileActions";
 import {useHistory} from "react-router-dom";
+import Divider from "@material-ui/core/Divider";
 
 const Settings = () => {
 
@@ -35,6 +36,12 @@ const Settings = () => {
             })
             .catch(err => console.log(err))
             .then(() => history.push("/"))
+    }
+
+    const logout = () => {
+        localStorage.clear()
+        history.push("/")
+        window.location.reload();
     }
 
     return (
@@ -90,6 +97,10 @@ const Settings = () => {
                 <SettingsButton onClick={() => updateUser()}>
                     Update Settings
                 </SettingsButton>
+                <Divider/>
+                <LogoutButton onClick={logout}>
+                    Or click here to logout
+                </LogoutButton>
             </SettingsMain>
             <Footer/>
         </>

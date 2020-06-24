@@ -32,7 +32,12 @@ const Article: FC<ArticlesProps> = ({username, createdAt, title, description,
     const favoriteArticle = () => {
         articlesAPI.favoriteArticle(slug)
             .then(res => dispatch(setFavorited(res.data.article.favorited, slug)))
-            // .then(res => console.log(res))
+            .catch(err => console.log(err))
+    }
+
+    const unFavoriteArticle = () => {
+        articlesAPI.unFavoriteArticle(slug)
+            .then(res => dispatch(setFavorited(res.data.article.favorited, slug)))
             .catch(err => console.log(err))
     }
 
@@ -47,7 +52,7 @@ const Article: FC<ArticlesProps> = ({username, createdAt, title, description,
                 <ListItemText primary={username} secondary={createdAt}/>
                 <FavoriteButton
                     startIcon={favorited ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon/>}
-                    onClick={favoriteArticle}
+                    onClick={favorited ? unFavoriteArticle : favoriteArticle}
                 >
                     {favoritesCount}
                 </FavoriteButton>

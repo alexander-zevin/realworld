@@ -6,12 +6,16 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ListItem from "@material-ui/core/ListItem";
 import {IArticleHeaderProps} from "./ArticleHeaderTypes";
 import AddIcon from '@material-ui/icons/Add';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import {articlesAPI, profileAPI} from "../../../api/api";
-import {setFollowing} from "../ArticlePageAction";
+import {setFavorited, setFollowing} from "../ArticlePageAction";
+import FavoriteOutlinedIcon from "@material-ui/icons/FavoriteOutlined";
+import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
+import {useDispatch} from "react-redux";
 
 const ArticleHeader: FC<IArticleHeaderProps> = ({title, author, createdAt, favoritesCount,
                     favorited, slug, dispatch}) => {
+
+    const dispatchRedux = useDispatch()
 
     const follow = () => {
         if (author.following) {
@@ -25,16 +29,21 @@ const ArticleHeader: FC<IArticleHeaderProps> = ({title, author, createdAt, favor
         }
     }
 
-    const favorite = () => {
-        if (favorited) {
-            articlesAPI.unFavoriteArticle(slug)
-                .then(res => console.log(res))
-                .catch(err => console.log(err))
-        } else {
-            articlesAPI.favoriteArticle(slug)
-                .then(res => console.log(res))
-                .catch(err => console.log(err))
-        }
+    const favoriteArticle = () => {
+        articlesAPI.favoriteArticle(slug)
+            .then(res => {
+                dispatch(setFavorited(res.data.article.favorited, slug))
+            })
+            .catch(err => console.log(err))
+
+    }
+
+    const unFavoriteArticle = () => {
+        articlesAPI.unFavoriteArticle(slug)
+            .then(res => {
+                dispatch(setFavorited(res.data.article.favorited, slug))
+            })
+            .catch(err => console.log(err))
     }
 
     return (
@@ -51,7 +60,10 @@ const ArticleHeader: FC<IArticleHeaderProps> = ({title, author, createdAt, favor
                     <FollowButton startIcon={<AddIcon />} onClick={follow}>
                         { author.following ? `Unfollow ` : `Follow ` } {author.username}
                     </FollowButton>
-                    <FavoriteButton startIcon={<FavoriteIcon />} onClick={favorite}>
+                    <FavoriteButton
+                        startIcon={favorited ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon/>}
+                        onClick={favorited ? unFavoriteArticle : favoriteArticle}
+                    >
                         Favorite Article ({favoritesCount})
                     </FavoriteButton>
                 </ListItem>

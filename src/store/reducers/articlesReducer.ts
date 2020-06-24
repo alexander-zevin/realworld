@@ -39,11 +39,13 @@ export const articlesReducer = (state = initialState, action: ArticlesActions): 
         case SET_FAVORITED:
             return {
                 ...state,
-                articles: state.articles.map(i => i.slug === action.slug
-                    ? {...i, favorited: action.favorited}
-                    : {...i}
+                articles: state.articles.map(i =>
+                    i.slug === action.slug ? {
+                        ...i,
+                        favorited: action.favorited,
+                        favoritesCount: action.favorited ? ++i.favoritesCount : --i.favoritesCount
+                    } : i
                 )
-
             }
     }
     return state
