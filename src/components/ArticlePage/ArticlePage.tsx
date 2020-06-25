@@ -37,7 +37,7 @@ const ArticlePage = () => {
                     image={state.author.image}
                     dispatch={dispatch}
                 />
-                <ArticleBody body={state.body}/>
+                <ArticleBody body={state.body} tagList={state.tagList}/>
                 <Comments slug={slug}/>
             </ArticlePageRoot>
             <Footer/>

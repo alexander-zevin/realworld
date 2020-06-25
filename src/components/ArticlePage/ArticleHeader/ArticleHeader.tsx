@@ -56,7 +56,7 @@ const ArticleHeader: FC<IArticleHeaderProps> = ({title, author, createdAt, favor
                     </ListItemAvatar>
                     <ListItemTextStyled primary={author.username} secondary={createdAt}/>
                     <FollowButton startIcon={<AddIcon />} onClick={follow}>
-                        { author.following ? `Unfollow ` : `Follow ` } {author.username}
+                        { author.following ? `Unfollow ` : `Follow ` }
                     </FollowButton>
                     <FavoriteButton
                         startIcon={favorited ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon/>}

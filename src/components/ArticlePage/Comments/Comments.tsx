@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useReducer, useState} from 'react'
+import React, {FC, useEffect, useReducer} from 'react'
 import PostComment from "./PostComment/PostComment";
 import {CommentsRoot} from "./CommentsStyles";
 import {commentsReducer, initialState} from "./CommentsReducer";

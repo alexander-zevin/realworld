@@ -5,10 +5,18 @@ export const Body = styled(Typography).attrs(() => ({
 		variant: "body1",
 		component: "p"
 }))`
-		margin: 32px 0
+		margin: 16px 0
 `;
 
 export const ArticleBodyRoot = styled.div`
 		padding: 0 20%;
 		box-sizing: border-box;
+`;
+
+export const TagsBox = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+	& > div {
+		margin: 4px;
+	}	
 `;
