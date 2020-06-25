@@ -6,10 +6,14 @@ import {commentsAPI} from "../../../api/api";
 import {CommentsProps} from "./CommentsTypes";
 import {deleteComment, setComment, setComments} from "./CommentsActions";
 import Comment from "./Comment/Comment";
+import {useSelector} from "react-redux";
+import {RootState} from "../../../store/store";
 
 const Comments: FC<CommentsProps> = ({slug}) => {
 
 		const [state, dispatch] = useReducer(commentsReducer, initialState)
+
+		const username: string = useSelector((state: RootState) => state.profile.user.username)
 
 		const postComment = () => {
 				commentsAPI.postComment(slug, state.commentInput)
@@ -47,8 +51,8 @@ const Comments: FC<CommentsProps> = ({slug}) => {
 										<Comment
 												key={comment.body + comment.id}
 												comment={comment}
-												slug={slug}
 												deleteComment={delComment}
+												username={username}
 										/>
 								)
 						}

@@ -15,8 +15,6 @@ import {useDispatch} from "react-redux";
 const ArticleHeader: FC<IArticleHeaderProps> = ({title, author, createdAt, favoritesCount,
                     favorited, slug, image, dispatch}) => {
 
-    const dispatchRedux = useDispatch()
-
     const follow = () => {
         if (author.following) {
             profileAPI.unfollow(author.username)

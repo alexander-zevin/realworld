@@ -5,9 +5,8 @@ import {convertDate} from "../../../../lib/convertDate";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from '@material-ui/icons/Delete';
-import {commentsAPI} from "../../../../api/api";
 
-const Comment: FC<CommentProps> = ({comment, slug, deleteComment}) => {
+const Comment: FC<CommentProps> = ({comment, deleteComment, username}) => {
     return (
         <CommentRoot>
             <CommentBody>{comment.body}</CommentBody>
@@ -16,9 +15,12 @@ const Comment: FC<CommentProps> = ({comment, slug, deleteComment}) => {
                 <CommentAvatar src={comment.author.image}/>
                 <Author>{comment.author.username}</Author>
                 <CreatedAt>{convertDate(comment.createdAt)}</CreatedAt>
-                <IconButton aria-label="delete" edge='end' onClick={() => deleteComment(comment.id)}>
-                    <DeleteIcon fontSize="small" />
-                </IconButton>
+                {
+                    username === comment.author.username &&
+                        <IconButton aria-label="delete" edge='end' onClick={() => deleteComment(comment.id)}>
+                            <DeleteIcon fontSize="small" />
+                        </IconButton>
+                }
             </AuthorBlock>
         </CommentRoot>
     )
