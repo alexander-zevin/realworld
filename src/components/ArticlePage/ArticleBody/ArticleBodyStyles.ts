@@ -10,4 +10,5 @@ export const Body = styled(Typography).attrs(() => ({
 
 export const ArticleBodyRoot = styled.div`
 		padding: 0 20%;
+		box-sizing: border-box;
 `;
