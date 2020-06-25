@@ -1,26 +1,33 @@
-import React from 'react'
+import React, {FC} from 'react'
 import TabsHome from "./TabsHome/TabsHome";
 import {ArticlesRoot} from "./ArticlesStyles";
 import ArticleList from "./ArticleList/ArticleList";
-import {useSelector} from "react-redux";
-import {RootState} from "../../../store/store";
-import {ArticlesState} from "../../../store/types/articlesType";
 import {Switch, Route} from "react-router-dom";
 import TabsProfile from "./TabsProfile/TabsProfile";
 import Pagination from "./Pagination/Pagination";
+import {ArticlesProps} from "./ArticlesTypes";
+import {useSelector} from "react-redux";
+import {RootState} from "../../../store/store";
 
-const Articles = () => {
+const Articles: FC<ArticlesProps> = ({articlesState, profileState}) => {
 
-    const articlesState: ArticlesState = useSelector((state: RootState) => state.articles);
+    const isAuth: boolean = useSelector((state: RootState) => state.auth.isAuth);
 
     return (
         <ArticlesRoot>
             <Switch>
-                <Route path="/profiles" component={TabsProfile}/>
-                <Route path="/" component={TabsHome}/>
+                <Route path="/profiles" component={() => <TabsProfile articlesState={articlesState} isAuth={isAuth}/>}/>
+                <Route path="/" component={() => <TabsHome articlesState={articlesState} isAuth={isAuth}/>} />
             </Switch>
             <ArticleList articlesState={articlesState} />
-            <Pagination articlesCount={articlesState.articlesCount} activeTab={articlesState.activeTab}/>
+            <Pagination
+                articlesCount={articlesState.articlesCount}
+                activeTab={articlesState.activeTab}
+                profileState={profileState}
+                tagName={articlesState.tagName}
+                limit={articlesState.limit}
+                offset={articlesState.offset}
+            />
         </ArticlesRoot>
     )
 }

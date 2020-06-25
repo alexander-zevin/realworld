@@ -7,12 +7,12 @@ import {
     setUsername
 } from "./SignUpActions";
 import {setToken, usersAPI} from "../../api/api";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {setProfile} from "../../store/actions/profileActions";
 import {useHistory} from "react-router-dom";
 import {setAuth} from "../../store/actions/authActions";
 import {setTokenLocalStorage} from "../../lib/localStorage";
-import {SignDescription, SignForm, SignInput, SignRoot, SignTitle, Error, SignButton} from "../common/styled/sign";
+import {SignDescription, SignForm, SignInput, SignRoot, SignTitle, SignButton} from "../common/styled/sign";
 import Footer from "../common/Footer/Footer";
 import Header from "../common/Header/Header";
 import CircularProgress from "@material-ui/core/CircularProgress";

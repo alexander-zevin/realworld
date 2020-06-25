@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {TextField, Typography} from "@material-ui/core";
+import {Typography} from "@material-ui/core";
 
 export const EditorRoot = styled.main`
 		flex-grow: 1;

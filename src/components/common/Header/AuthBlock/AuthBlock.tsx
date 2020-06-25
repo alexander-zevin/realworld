@@ -1,6 +1,5 @@
 import React from 'react'
-import {StyledButton, StyledLink} from "../../styled/rest";
-import {ProfileState} from "../../../../store/types/profileTypes";
+import {StyledButton} from "../../styled/rest";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../../store/store";
 import {useHistory} from "react-router-dom";

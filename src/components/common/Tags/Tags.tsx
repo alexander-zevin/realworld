@@ -14,7 +14,7 @@ const Tags = () => {
 
     const tagsState: TagsState = useSelector((state: RootState) => state.tags);
 
-    let {limit, offset, tabTags} = useSelector((state: RootState) => state.articles);
+    let {limit, offset} = useSelector((state: RootState) => state.articles);
 
     useEffect(() => {
         dispatch(getTags())

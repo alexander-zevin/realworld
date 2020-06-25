@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import grey from '@material-ui/core/colors/grey';
 import {Typography} from "@material-ui/core";
 
 export const FooterRoot = styled.footer`

@@ -6,18 +6,20 @@ import Articles from "../common/Articles/Articles";
 import Tags from "../common/Tags/Tags";
 import {useDispatch, useSelector} from "react-redux";
 import {getGlobalArticles, setActiveTab} from "../../store/actions/articlesActions";
-import {ProfileState} from "../../store/types/profileTypes";
 import {RootState} from "../../store/store";
 import {ArticlesState} from "../../store/types/articlesType";
+import {ProfileState} from "../../store/types/profileTypes";
 
 const Home = () => {
 
-		const articleState: ArticlesState = useSelector((state: RootState) => state.articles)
-
 		const dispatch = useDispatch()
 
+		const articlesState: ArticlesState = useSelector((state: RootState) => state.articles)
+
+		const profileState: ProfileState = useSelector((state: RootState) => state.profile)
+
 		useEffect(() => {
-				dispatch(getGlobalArticles(articleState.offset, articleState.limit))
+				dispatch(getGlobalArticles(articlesState.offset, articlesState.limit))
 				dispatch(setActiveTab(1))
 		}, [])
 
@@ -25,7 +27,7 @@ const Home = () => {
 				<>
 						<Header/>
 						<HomeMain>
-								<Articles/>
+								<Articles articlesState={articlesState} profileState={profileState}/>
 								<Tags/>
 						</HomeMain>
 						<Footer/>

@@ -5,7 +5,7 @@ import {getTokenLocalStorage} from "./lib/localStorage";
 import {setToken, usersAPI} from "./api/api";
 import {useDispatch, useSelector} from "react-redux";
 import {setProfile} from "./store/actions/profileActions";
-import {setAuth, setAuthError} from "./store/actions/authActions";
+import {setAuth} from "./store/actions/authActions";
 import {RootState} from "./store/store";
 import {initializedSuccess} from "./store/actions/appActions";
 import {FullScreenBox} from "./components/common/styled/rest";

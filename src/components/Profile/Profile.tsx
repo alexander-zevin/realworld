@@ -32,7 +32,7 @@ const Profile = () => {
                 image={profileState.user.image}
             />
             <ProfileMain>
-                <Articles/>
+                <Articles articlesState={articlesState} profileState={profileState}/>
             </ProfileMain>
             <Footer/>
         </>

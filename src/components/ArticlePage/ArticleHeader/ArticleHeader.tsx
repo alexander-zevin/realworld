@@ -10,7 +10,6 @@ import {articlesAPI, profileAPI} from "../../../api/api";
 import {setFavorited, setFollowing} from "../ArticlePageAction";
 import FavoriteOutlinedIcon from "@material-ui/icons/FavoriteOutlined";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
-import {useDispatch} from "react-redux";
 
 const ArticleHeader: FC<IArticleHeaderProps> = ({title, author, createdAt, favoritesCount,
                     favorited, slug, image, dispatch}) => {
