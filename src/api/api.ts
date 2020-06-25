@@ -91,7 +91,7 @@ export const commentsAPI = {
             }
         })
     },
-    getComment(slug: string) {
+    getComments(slug: string) {
         return instance.get(`articles/${slug}/comments`)
     },
     deleteComment(slug: string, id: number){

@@ -2,7 +2,7 @@ import React, {useEffect, useReducer} from 'react'
 import {useParams} from "react-router-dom";
 import {articlesAPI} from "../../api/api";
 import {articlePageReducer, initialState} from "./ArticlePageReducer";
-import {setArticle, setFollowing} from "./ArticlePageAction";
+import {setArticle} from "./ArticlePageAction";
 import {ArticlePageRoot} from "./ArticlePageStyles";
 import ArticleHeader from "./ArticleHeader/ArticleHeader";
 import {convertDate} from "../../lib/convertDate";

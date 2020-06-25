@@ -4,40 +4,56 @@ import {CommentsRoot} from "./CommentsStyles";
 import {commentsReducer, initialState} from "./CommentsReducer";
 import {commentsAPI} from "../../../api/api";
 import {CommentsProps} from "./CommentsTypes";
-import {setComment} from "./CommentsActions";
+import {deleteComment, setComment, setComments} from "./CommentsActions";
+import Comment from "./Comment/Comment";
 
 const Comments: FC<CommentsProps> = ({slug}) => {
 
-    const [state, dispatch] = useReducer(commentsReducer, initialState)
+		const [state, dispatch] = useReducer(commentsReducer, initialState)
 
-    const postComment = () => {
-        commentsAPI.postComment(slug, state.commentInput)
-            .then(res => {
-                console.log(res)
-                dispatch(setComment(res.data.comment))
-            })
-            .catch(err => console.log(err))
-    }
+		const postComment = () => {
+				commentsAPI.postComment(slug, state.commentInput)
+						.then(res => {
+								dispatch(setComment(res.data.comment))
+						})
+						.catch(err => console.log(err))
+		}
 
-    const getComment = () => {
-        commentsAPI.getComment(slug)
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
-    }
+		const getComments = () => {
+				commentsAPI.getComments(slug)
+						.then(res => dispatch(setComments(res.data.comments)))
+						.catch(err => console.log(err))
+		}
 
-    useEffect(() => {
-        getComment()
-    }, [])
+		const delComment = (id: number) => {
+				commentsAPI.deleteComment(slug, id)
+						.then(res => dispatch(deleteComment(id)))
+						.catch(err => console.log(err))
+		}
 
-    return (
-        <CommentsRoot>
-            <PostComment
-                state={state}
-                dispatch={dispatch}
-                postComment={postComment}
-            />
-        </CommentsRoot>
-    )
+		useEffect(() => {
+				getComments()
+		}, [])
+
+		return (
+				<CommentsRoot>
+						<PostComment
+								state={state}
+								dispatch={dispatch}
+								postComment={postComment}
+						/>
+						{
+								state.comments.map(comment =>
+										<Comment
+												key={comment.body + comment.id}
+												comment={comment}
+												slug={slug}
+												deleteComment={delComment}
+										/>
+								)
+						}
+				</CommentsRoot>
+		)
 }
 
 export default Comments

@@ -109,3 +109,16 @@ export const getFavoritedArticles = (favorited: string, offset: number, limit: n
         .catch(err => console.log(err))
         .then(() => dispatch(setProgress(false)))
 }
+
+export const favoriteArticle = (slug: string) => (dispatch: Dispatch<ArticlesActions>) => {
+    articlesAPI.favoriteArticle(slug)
+        .then(res => dispatch(setFavorited(res.data.article.favorited, slug)))
+        .catch(err => console.log(err))
+}
+
+export const unFavoriteArticle = (slug: string) => (dispatch: Dispatch<ArticlesActions>) => {
+    articlesAPI.unFavoriteArticle(slug)
+        .then(res => dispatch(setFavorited(res.data.article.favorited, slug)))
+        .catch(err => console.log(err))
+}
+

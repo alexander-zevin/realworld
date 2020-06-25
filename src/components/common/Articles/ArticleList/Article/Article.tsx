@@ -3,7 +3,6 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import ListItemText from "@material-ui/core/ListItemText";
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {ArticlesProps} from "./ArticleTypes";
 import {
     ArticleRoot,
@@ -15,32 +14,23 @@ import {
 } from "./ArticleStyles";
 import Chip from "@material-ui/core/Chip";
 import {TagsBox} from "../../../Tags/TagsStyles";
-import {articlesAPI} from "../../../../../api/api";
 import {useHistory, useRouteMatch} from "react-router-dom";
-import {getGlobalArticlesByTag, setFavorited} from "../../../../../store/actions/articlesActions";
+import {
+    favoriteArticle,
+    getGlobalArticlesByTag,
+    unFavoriteArticle
+} from "../../../../../store/actions/articlesActions";
 import {useDispatch, useSelector} from "react-redux";
 import FavoriteOutlinedIcon from '@material-ui/icons/FavoriteOutlined';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import {RootState} from "../../../../../store/store";
 
 const Article: FC<ArticlesProps> = ({username, createdAt, title, description,
-                                         favorited, favoritesCount, tagList, slug, image}) => {
+                     favorited, favoritesCount, tagList, slug, image}) => {
 
     const history = useHistory()
 
     const dispatch = useDispatch()
-
-    const favoriteArticle = () => {
-        articlesAPI.favoriteArticle(slug)
-            .then(res => dispatch(setFavorited(res.data.article.favorited, slug)))
-            .catch(err => console.log(err))
-    }
-
-    const unFavoriteArticle = () => {
-        articlesAPI.unFavoriteArticle(slug)
-            .then(res => dispatch(setFavorited(res.data.article.favorited, slug)))
-            .catch(err => console.log(err))
-    }
 
     let {limit, offset} = useSelector((state: RootState) => state.articles);
 
@@ -55,7 +45,11 @@ const Article: FC<ArticlesProps> = ({username, createdAt, title, description,
                 <ListItemText primary={username} secondary={createdAt}/>
                 <FavoriteButton
                     startIcon={favorited ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon/>}
-                    onClick={favorited ? unFavoriteArticle : favoriteArticle}
+                    onClick={
+                        favorited
+                            ? () => dispatch(unFavoriteArticle(slug))
+                            : () => dispatch(favoriteArticle(slug))
+                    }
                 >
                     {favoritesCount}
                 </FavoriteButton>

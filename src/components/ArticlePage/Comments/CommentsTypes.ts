@@ -1,4 +1,4 @@
-import {SET_COMMENT, SET_INPUT_COMMENT} from "./CommentsConstants";
+import {DELETE_COMMENT, SET_COMMENT, SET_COMMENTS, SET_INPUT_COMMENT} from "./CommentsConstants";
 
 export interface CommentsProps {
 		slug: string
@@ -32,4 +32,14 @@ export interface SetComment {
 		comment: Comment
 }
 
-export type CommentsActions = SetInputComment | SetComment
+export interface SetComments {
+		type: typeof SET_COMMENTS
+		comments: Array<Comment>
+}
+
+export interface DeleteComment {
+		type: typeof DELETE_COMMENT
+		id: number
+}
+
+export type CommentsActions = SetInputComment | SetComment | SetComments | DeleteComment

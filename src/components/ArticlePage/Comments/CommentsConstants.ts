@@ -1,2 +1,4 @@
 export const SET_INPUT_COMMENT = 'SET_INPUT_COMMENT'
 export const SET_COMMENT = 'SET_COMMENT'
+export const SET_COMMENTS = 'SET_COMMENTS'
+export const DELETE_COMMENT = 'DELETE_COMMENT'
