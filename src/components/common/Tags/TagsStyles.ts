@@ -9,7 +9,7 @@ export const TagsBox = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	& > div {
-		margin: 4px 4px 16px 0px;
+		margin: 4px;
 	}	
 `;
 

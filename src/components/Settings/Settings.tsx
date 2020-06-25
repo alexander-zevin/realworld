@@ -13,6 +13,7 @@ import {usersAPI} from "../../api/api";
 import {setProfile} from "../../store/actions/profileActions";
 import {useHistory} from "react-router-dom";
 import Divider from "@material-ui/core/Divider";
+import {setAuth} from "../../store/actions/authActions";
 
 const Settings = () => {
 
@@ -40,8 +41,8 @@ const Settings = () => {
 
     const logout = () => {
         localStorage.clear()
+        dispatchRedux(setAuth(false))
         history.push("/")
-        window.location.reload();
     }
 
     return (
