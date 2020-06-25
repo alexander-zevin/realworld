@@ -4,6 +4,8 @@ import {ProfileState} from "../../../../store/types/profileTypes";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../../store/store";
 import {useHistory} from "react-router-dom";
+import SettingsIcon from '@material-ui/icons/Settings';
+import PostAddIcon from '@material-ui/icons/PostAdd';
 
 const AuthBlock = () => {
 
@@ -16,8 +18,8 @@ const AuthBlock = () => {
 
     return (
         <>
-            <StyledButton onClick={toEditor}>New Article</StyledButton>
-            <StyledButton onClick={toSettings}>Settings</StyledButton>
+            <StyledButton startIcon={<PostAddIcon/>} onClick={toEditor}>New Article</StyledButton>
+            <StyledButton startIcon={<SettingsIcon/>} onClick={toSettings}>Settings</StyledButton>
             <StyledButton onClick={toProfiles}>{username}</StyledButton>
         </>
     )

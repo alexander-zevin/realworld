@@ -6,6 +6,7 @@ import {useSelector} from "react-redux";
 import {RootState} from "../../../store/store";
 import AuthBlock from "./AuthBlock/AuthBlock";
 import { useHistory } from "react-router-dom";
+import HomeIcon from '@material-ui/icons/Home';
 
 const Header = () => {
 
@@ -18,7 +19,7 @@ const Header = () => {
         <HeaderRoot>
             <Title>conduit</Title>
             <Navigation>
-                <StyledButton onClick={toMain}>Home</StyledButton>
+                <StyledButton startIcon={<HomeIcon/>} onClick={toMain}>Home</StyledButton>
                 { !isAuth ? <SignBlock /> : <AuthBlock/> }
             </Navigation>
         </HeaderRoot>
